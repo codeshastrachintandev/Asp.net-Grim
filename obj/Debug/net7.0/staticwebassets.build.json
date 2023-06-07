@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ntenokQWCAgRI6Riq82NF7BE7JAwQtgwb93UD6k5/qQ=",
+  "Hash": "WUmq+XCVvkF8YiZvcAyBc/W5B2ZScb1EUgFO3G6TGzk=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -204,12 +204,12 @@
       "OriginalItemSpec": "wwwroot\\images\\ib-group-logo.png"
     },
     {
-      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Home.js",
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Home\\Home.js",
       "SourceId": "GrimLogin",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
       "BasePath": "_content/GrimLogin",
-      "RelativePath": "js/Home.js",
+      "RelativePath": "js/Home/Home.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -218,7 +218,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Home.js"
+      "OriginalItemSpec": "wwwroot\\js\\Home\\Home.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\ionicons.js",
@@ -238,12 +238,12 @@
       "OriginalItemSpec": "wwwroot\\js\\ionicons.js"
     },
     {
-      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Login.js",
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Login\\Login.js",
       "SourceId": "GrimLogin",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
       "BasePath": "_content/GrimLogin",
-      "RelativePath": "js/Login.js",
+      "RelativePath": "js/Login/Login.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -252,7 +252,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Login.js"
+      "OriginalItemSpec": "wwwroot\\js\\Login\\Login.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Logout.js",

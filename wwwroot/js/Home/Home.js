@@ -1,5 +1,5 @@
 const Logindata = JSON.parse(localStorage.getItem("user_info"));
-console.log("Logindata----->", Logindata);
+// console.log("Logindata----->", Logindata);
 if (!Logindata) {
   window.location.href = "Login";
 }
@@ -14,13 +14,6 @@ arrows.forEach((arrow) => {
     const arrowParent = e.target.closest(".arrow").parentElement.parentElement;
     arrowParent.classList.toggle("showMenu");
   });
-});
-
-const sidebar = document.querySelector(".sidebar");
-const sidebarBtn = document.querySelector(".bx-menu");
-
-sidebarBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("close");
 });
 
 // api url
@@ -118,3 +111,10 @@ $(document).ready(function () {
     //e.preventDefault();
   });
 });
+
+// const sidebar = document.querySelector(".sidebar");
+// const sidebarBtn = document.querySelector(".bx-menu");
+
+// sidebarBtn.addEventListener("click", () => {
+//   sidebar.classList.toggle("close");
+// });

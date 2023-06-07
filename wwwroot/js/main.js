@@ -17,45 +17,121 @@ function spinner() {
 //   });
 // });
 
-var roles_menus = [
-  //userrole
-  3 = {
-    index: "Index",
-    MyProfile: "MyProfile",
-    Approvals: "Approvals",
-    CreateSTO: "CreateSTO",
-    MyRequests: "MyRequests",
-    NewIndent: "NewIndent",
-    Notifications: "Notifications",
-  },
-  //Indent manager
-  4 = {
-    index: "Index",
-    MyProfile: "MyProfile",
-    Approvals: "Approvals",
-    CreateSTO: "CreateSTO",
-    MyRequests: "MyRequests",
-    NewIndent: "NewIndent",
-    Notifications: "Notifications",
-  },
-  //HOD
-  3 = {
-    index: "Index",
-    MyProfile: "MyProfile",
-    Approvals: "Approvals",
-    CreateSTO: "CreateSTO",
-    MyRequests: "MyRequests",
-    NewIndent: "NewIndent",
-    Notifications: "Notifications",
-  },
-  //SUBHOD
-  4 = {
-    index: "Index",
-    MyProfile: "MyProfile",
-    Approvals: "Approvals",
-    CreateSTO: "CreateSTO",
-    MyRequests: "MyRequests",
-    NewIndent: "NewIndent",
-    Notifications: "Notifications",
-  },
-];
+// var roles_menus = [
+//   {
+//     role_id: 3, //Indent user role
+//     Dashboard: "report", //report
+//     MyProfile: "MyProfile",
+//     MyRequests: "MyRequests",
+//     NewIndent: "NewIndent",
+//     NewPurchaseReq: "NewPurchaseReq", // new material request
+//     Servicerequest: "Service request", // Service request
+//     Vendors: "Vendors", // Manage Vendors
+//     Notifications: "Notifications",
+//   },
+//   {
+//     role_id: 2, //Indent manager role = 2
+//     Dashboard: "report", //report
+//     MyProfile: "MyProfile",
+//     MyApproval: "MyRequests",
+//     NewIndent: "NewIndent",
+//     Itemmaterials: "Item materials",
+//     returns: "returns",
+//     NewPurchaseReq: "new material request", // new material request
+//     Servicerequest: "Service request", // Service request
+//     Vendors: "Vendors", // Manage Vendors
+//     Notifications: "Notifications",
+//   },
+//   {
+//     role_id: 7, //HOD role = 7
+//     Dashboard: "report", //report
+//     MyProfile: "MyProfile",
+//     MyApproval: "MyRequests",
+//     NewIndent: "NewIndent",
+//     Itemmaterials: "Item materials",
+//     returns: "returns",
+//     NewPurchaseReq: "new material request", // new material request
+//     Servicerequest: "Service request", // Service request
+//     Vendors: "Vendors", // Manage Vendors
+//     Notifications: "Notifications",
+//   },
+//   {
+//     role_id: 19, //SUBHOD role = 19
+//     Dashboard: "report", //report
+//     MyProfile: "MyProfile",
+//     MyApproval: "MyRequests",
+//     NewIndent: "NewIndent",
+//     Itemmaterials: "Item materials",
+//     returns: "returns",
+//     NewPurchaseReq: "New material request", // new material request
+//     Servicerequest: "Service request", // Service request
+//     Vendors: "Vendors", // Manage Vendors
+//     Notifications: "Notifications",
+//   },
+//   {
+//     role_id: 5, //Issue manager role = 5
+//     Dashboard: "report", //report
+//     MyProfile: "MyProfile",
+//     MyApproval: "MyRequests",
+//     NewIndent: "Cretate STO",
+//     Itemmaterials: "Item materials",
+//     Notifications: "Notifications",
+//   },
+// ];
+
+var roles_menus = {
+  3: [
+    "report",
+    "MyProfile",
+    "MyRequests",
+    "NewIndent",
+    "NewPurchaseReq",
+    "Service request",
+    "Vendors",
+    "Notifications",
+  ],
+  2: [
+    "report",
+    "MyProfile",
+    "MyRequests",
+    "NewIndent",
+    "Item materials",
+    "returns",
+    "new material request",
+    "Service request",
+    "Vendors",
+    "Notifications",
+  ],
+  7: [
+    "report",
+    "MyProfile",
+    "MyRequests",
+    "NewIndent",
+    "Item materials",
+    "returns",
+    "new material request",
+    "Service request",
+    "Vendors",
+    "Notifications",
+  ],
+  5: [
+    "report",
+    "MyProfile",
+    "MyRequests",
+    "Cretate STO",
+    "Item materials",
+    "Notifications",
+  ],
+  19: [
+    "report",
+    "MyProfile",
+    "MyRequests",
+    "NewIndent",
+    "Item materials",
+    "returns",
+    "New material request",
+    "Service request",
+    "Vendors",
+    "Notifications",
+  ],
+};
