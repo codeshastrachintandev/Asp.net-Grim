@@ -18,7 +18,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Profile()
+    public IActionResult MyProfile()
     {
         return View();
     } 
@@ -31,6 +31,18 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult Notifications()
+    {
+        return View();
+    }
+    public IActionResult NewPurchaseReq()
+    {
+        return View();
+    }
+    public IActionResult Servicerequest()
+    {
+        return View();
+    }
+    public IActionResult Vendors()
     {
         return View();
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WUmq+XCVvkF8YiZvcAyBc/W5B2ZScb1EUgFO3G6TGzk=",
+  "Hash": "r67nDsH54l5OHzMMepb/SMYW1qpoIhAaVTFpZGBAsow=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\style.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\favicon.ico",

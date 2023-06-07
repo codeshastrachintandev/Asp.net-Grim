@@ -81,12 +81,12 @@ function spinner() {
 
 var roles_menus = {
   3: [
-    "report",
+    "Index",
     "MyProfile",
     "MyRequests",
     "NewIndent",
     "NewPurchaseReq",
-    "Service request",
+    "Servicerequest",
     "Vendors",
     "Notifications",
   ],

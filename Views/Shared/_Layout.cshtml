@@ -29,7 +29,7 @@
 
 </head>
 <body>
-    
+
     @* sidebar menu *@
     <div id="wrapper">
 
@@ -38,24 +38,24 @@
                 <h2>GRIM</h2>
             </div>
             <ul class="sidebar-nav" id="sidebar-nav">
-                @* <li >
+                <li>
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
                 </li>
                 <li >
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Profile"><i class="fa fa-user"></i>Profile</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyProfile"></i>Profile</a>
                 </li>
                 <li class ="active">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyRequests"><i class="fa fa-user"></i>My Requests</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyRequests"></i>My Requests</a>
                 </li>
                 <li>
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NewIndent"><i class="fa fa-user"></i>New Indent</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NewIndent"></i>New Indent</a>
                 </li>
                 <li>
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Notifications"><i class="fa fa-user"></i>Notifications</a>
-                </li> *@
-                @* <li onclick="logout()">
-                    <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a>
-                </li> *@
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Notifications"></i>Notifications</a>
+                </li> 
+                <li onclick="logout()">
+                    <a class="nav-link" ></i>LogOut</a>
+                </li>
             </ul>
         </aside>
 
@@ -87,7 +87,7 @@
             window.location.href = "Login";
         }
         var menu ;
-        console.log(Logindata.user[0].role_id);
+        console.log("Logindata.user[0].role_id)->>",Logindata.user[0].role_id);
         if(Logindata.user[0].role_id){
             var menuOptions = roles_menus[Logindata.user[0].role_id];
             var listItems = menuOptions.map(function(option) {
@@ -95,7 +95,7 @@
             console.log("menu->>>",menu);
                 menu += `
                     <li>
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-user">${option}</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="${option}"><i class="fa fa-user">${option}</a>
                     </li>
                 `;
             });
@@ -105,9 +105,9 @@
                 </li>
             `;
         }
-        
+
        console.log("menu->>>",menu);
-        document.getElementById("sidebar-nav").innerHTML = menu;
+        @* /document.getElementById("sidebar-nav").innerHTML = menu; *@
     </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
