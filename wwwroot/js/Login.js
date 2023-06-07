@@ -39,11 +39,11 @@ function Submit() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("response->>>:", response);
-        console.log("role_id->>>:", response.user[0].role_id);
         var data = response.success;
         console.log("data:", data);
         if (data === true) {
+          console.log("response->>>:", response);
+          console.log("role_id->>>:", response.user[0].role_id);
           localStorage.setItem("user_info", JSON.stringify(response));
           document.getElementById("Error-show").style.display = "none";
           document.getElementById("error-msg").innerHTML = "";
@@ -115,9 +115,11 @@ var v = 1;
 function spinner() {
   if (v == 1) {
     v = 0;
+    console.log("block:--", v);
     document.getElementById("spinnerbody").style.display = "block";
   } else {
     v = 1;
+    console.log("none:--", v);
     document.getElementById("spinnerbody").style.display = none;
   }
 }
