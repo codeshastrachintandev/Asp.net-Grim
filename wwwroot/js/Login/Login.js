@@ -54,10 +54,10 @@ function Submit() {
             response.user[0].role_id == 8 ||
             response.user[0].role_id == 9
           ) {
-            window.location.href = "Home"; //home controller
+            window.location.href = "Home/"; //home controller
           } else if (response.user[0].role_id == 3) {
             //("itemmaster");
-            window.location.href = "Home";
+            window.location.href = "Home/NewIndent";
           } else if (response.user[0].role_id == 5) {
             //("/approvals/indents");
           } else if (response.user[0].role_id == 6) {

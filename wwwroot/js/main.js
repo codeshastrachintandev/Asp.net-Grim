@@ -9,14 +9,6 @@ function spinner() {
   }
 }
 
-// $(document).ready(function () {
-//   $(".sidebar-nav li").click(function (e) {
-//     $(".sidebar-nav li").removeClass("active");
-//     $(this).addClass("active");
-//     //e.preventDefault();
-//   });
-// });
-
 // var roles_menus = [
 //   {
 //     role_id: 3, //Indent user role
@@ -81,57 +73,67 @@ function spinner() {
 
 var roles_menus = {
   3: [
-    "Index",
-    "MyProfile",
-    "MyRequests",
-    "NewIndent",
-    "NewPurchaseReq",
-    "Servicerequest",
-    "Vendors",
-    "Notifications",
+    {
+      Index: "Index",
+      MyProfile: "My Profile",
+      MyRequests: "My Requests",
+      NewIndent: "New Indent",
+      NewPurchaseReq: "New PurchaseReq",
+      Servicerequest: "Servicerequest",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
   ],
   2: [
-    "report",
-    "MyProfile",
-    "MyRequests",
-    "NewIndent",
-    "Item materials",
-    "returns",
-    "new material request",
-    "Service request",
-    "Vendors",
-    "Notifications",
+    {
+      report: "report",
+      MyProfile: "My Profile",
+      MyRequests: "My Requests",
+      NewIndent: "New Indent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      newmaterialrequest: "new material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
   ],
   7: [
-    "report",
-    "MyProfile",
-    "MyRequests",
-    "NewIndent",
-    "Item materials",
-    "returns",
-    "new material request",
-    "Service request",
-    "Vendors",
-    "Notifications",
+    {
+      report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyRequests",
+      NewIndent: "NewIndent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      newmaterialrequest: "new material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
   ],
   5: [
-    "report",
-    "MyProfile",
-    "MyRequests",
-    "Cretate STO",
-    "Item materials",
-    "Notifications",
+    {
+      report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyRequests",
+      CretateSTO: "Cretate STO",
+      Itemmaterials: "Item materials",
+      Notifications: "Notifications",
+    },
   ],
   19: [
-    "report",
-    "MyProfile",
-    "MyRequests",
-    "NewIndent",
-    "Item materials",
-    "returns",
-    "New material request",
-    "Service request",
-    "Vendors",
-    "Notifications",
+    {
+      report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyRequests",
+      NewIndent: "NewIndent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      Newmaterialrequest: "New material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
   ],
 };

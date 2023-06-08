@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r67nDsH54l5OHzMMepb/SMYW1qpoIhAaVTFpZGBAsow=",
+  "Hash": "+yJOoK1xY2m2KNECvY9isOQ/eOYYUhn3qA2d4t+5Ams=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\sidebar.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\sidebarandheader.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/sidebarandheader.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\sidebarandheader.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\site.css",
