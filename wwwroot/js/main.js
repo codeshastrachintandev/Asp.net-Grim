@@ -1,4 +1,7 @@
-﻿var v = 1;
+﻿var host = "https://172.16.1.69:3002";
+var path = "/api/v4/";
+
+var v = 1;
 function spinner() {
   if (v == 1) {
     v = 0;

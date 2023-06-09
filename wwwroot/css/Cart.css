@@ -1,0 +1,33 @@
+/* ----------- CART START ---------- */
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-cart-wrapp .table thead tr th:last-child,
+.product-cart-wrapp .table tbody tr td:last-child {
+  background-color: #eee8e8;
+  text-align: center;
+}
+.product-cart-wrapp .table tbody tr td:last-child {
+  font-size: 20px;
+  padding: 28px 8px 8px;
+}
+.product-cart-wrapp .table thead tr th {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.product-cart-wrapp .table tbody tr td {
+  font-size: 12px;
+  padding: 20px 8px 8px;
+}
+.product-cart-wrapp .table tbody tr td.vmiddle {
+  padding: 28px 8px 8px;
+}
+.product-cart-wrapp .table tbody tr td p {
+  text-align: end;
+  display: block;
+  margin: 0;
+}
+/* ----------- CART END ---------- */

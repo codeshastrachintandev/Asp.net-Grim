@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\GrimLogin.bundle.scp.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Cart.css",
+      "PackagePath": "staticwebassets\\css\\Cart.css"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Home.css",
       "PackagePath": "staticwebassets\\css\\Home.css"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\old.css",
       "PackagePath": "staticwebassets\\css\\old.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\section.css",
+      "PackagePath": "staticwebassets\\css\\section.css"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\sidebar.css",

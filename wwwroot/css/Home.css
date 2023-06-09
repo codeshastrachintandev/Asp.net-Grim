@@ -344,6 +344,16 @@ a:focus {
 }
 
 /* PRODUCT CARD START */
+.cardimgbody {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.notfoundimg {
+  width: fit-content;
+}
 
 .product-card {
   background-color: #f5f6fa;

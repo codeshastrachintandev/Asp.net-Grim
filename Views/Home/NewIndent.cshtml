@@ -3,15 +3,12 @@
       <div class="filter-wrap">
         <div class="row">
           <div class="col-md-2">
-            <div class=""> New Indent</div>
+            <div class=""><h3> New Indent</h3></div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <select class="form-control" id="sel1" name="sellist1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+              <select class="form-control" id="myDropdown1" name="sellist1">
+               @* option value from api *@
               </select>
             </div>
           </div>
@@ -19,7 +16,7 @@
             <div class="search-container">
               <form>
                 <div class="search-container-inner">
-                  <input type="text" placeholder="Search.." name="search">
+                  <input type="text" id="searchIndent" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
               </form>
@@ -28,10 +25,10 @@
           <div class="col-md-3">
             <div class="form-group">
 
-              <select class="form-control" id="sel1" name="sellist1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+              <select class="form-control" id="myDropdown2" name="sellist1">
+                <option value="alphabetically">Alphabetically</option>
+                <option value="pricelowtohigh">Price Low to High</option>
+                <option value="pricehightolow">Price High to Low</option>
               </select>
 
             </div>
@@ -50,35 +47,7 @@
         @* card *@
         <div class="product-card-wrap">
           <div class="row" id="cardbody" >
-
-            @* <div class="col-sm-6 col-md-6 col-lg-3">
-              <div class="product-card">
-                <img class="product-img" src="https://grim.co.in:3004/place%20holder%20image.png">
-                <div class="product-text">
-                 <div class="product-title">
-                    <h3>Copy 100 Page</h3>
-                    <span class="bg-yellow">purchase</span>
-                  </div>
-                  <p><span>material Id</span>: 36005238 </p>
-                  <p><span>material Type</span>: Plant spares </p>
-                  <p><span>material Group</span>: It material </p>
-                  <p><span>Base Unit</span>: EA </p>
-                </div>
-                <div class="product-cart">
-                  <div>
-                    <p>0.00 In Stock</p>
-                  </div>
-                  <div>
-                    <div class="wrap">
-                      <button type="button" id="sub" class="sub">-</button>
-                      <input class="count" type="text" id="1" value="1" min="1" max="100" />
-                      <button type="button" id="add" class="add">+</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> *@
-
+                @* js call *@
           </div>
         </div>
         @* card end *@

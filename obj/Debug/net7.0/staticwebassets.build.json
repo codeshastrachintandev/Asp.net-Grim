@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+yJOoK1xY2m2KNECvY9isOQ/eOYYUhn3qA2d4t+5Ams=",
+  "Hash": "1lorSOmBiCWgB2HgklqPvwV9/MIQPV9vt/RHQkvNPwg=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GrimLogin.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Cart.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/Cart.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Cart.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Home.css",
@@ -117,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Poppins.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\section.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/section.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\section.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\sidebar.css",

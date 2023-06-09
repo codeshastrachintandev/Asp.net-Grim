@@ -20,12 +20,12 @@
                     <div class="form-box">
                         <label>Email:</label>
                         <input type="email" placeholder="Enter email" id="email" class="form-input" required>
-                        
+
                     </div>
                     <div class="form-box">
                         <label>Password:</label>
                         <input type="password" placeholder="Enter password" id="password" class=" form-input" required>
-                        
+
                     </div>
                     <div class="form-box">
                         <button class="login-btn" id="submit" onclick="Submit()" type="submit">Login To GRIM</button>
@@ -33,7 +33,7 @@
                             <a href="#" onclick="forgot()" title="Forgot Password?">Forgot Password?</a>
                         </div>
                     </div>
-               @* </form> *@
+                @* </form> *@
             </div>
             <div class="Error-show" id="Error-show">
                 <i class="bi bi-exclamation-triangle"></i>
@@ -42,29 +42,28 @@
         </div>
     </div>
     <!-- Login End -->
-    
+
     <!-- Forgot Password Popup Start -->
     <div class="popup-forgot-pass" id="popup-forgot-pass">
         <div class="forgot-pass-box">
             <div class="popup-forgot-title">
-                <h3>Forgot Password?</h3>
+                <h3>Forgot your password?</h3>
                 <span class="popup-forgot-close" onclick="popClose()" >&#10006;</span>
             </div>
             <div class="popup-forgot-content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur odio quos, quae suscipit.</p>
-                @* <form> *@
+                <p>Don't worry. Resetting your password is easy, just tell us the email address you registered with GRIM.</p>
+            @* <form> *@
                     <div class="form-box">
                         <input type="email" id="forgot-email" placeholder="Enter email" class="form-input" required>
                         <button type="submit" onclick="forgot_password()" class="send-btn">Send</button>
                     </div>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
-                @* </form> *@
+            @* </form> *@
             </div>
         </div>
     </div>
     <!-- Forgot Password Popup End -->
 
-        @* spinner *@
+@* spinner *@
         <div class="spinnerbody" id="spinnerbody">
             <div class="spinnerchild">
                 <div class="spinner-border text-success " role="status">
@@ -72,7 +71,7 @@
                 </div>
             </div>
         </div>
-        @* spinner end *@
+@* spinner end *@
 
     <!-- Login script -->
     <script src="./js/Login/Login.js"></script>

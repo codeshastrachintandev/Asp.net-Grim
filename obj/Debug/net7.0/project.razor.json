@@ -18715,6 +18715,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\Views\\Home\\Cart.cshtml",
+      "TargetPath": "Views\\Home\\Cart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
