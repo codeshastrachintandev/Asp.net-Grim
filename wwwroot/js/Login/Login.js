@@ -60,8 +60,10 @@ function Submit() {
             window.location.href = "Home/NewIndent";
           } else if (response.user[0].role_id == 5) {
             //("/approvals/indents");
+            window.location.href = "Home/NewIndent";
           } else if (response.user[0].role_id == 6) {
             //("purchaseRequests");
+            window.location.href = "Home/NewIndent";
           } else {
             alert("this user has no page foud");
           }

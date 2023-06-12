@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1lorSOmBiCWgB2HgklqPvwV9/MIQPV9vt/RHQkvNPwg=",
+  "Hash": "Rfsn4Ak33aD8uZIzLciW1prVF1+90L876cHmzm8NsLE=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GrimLogin.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\badge_notifiction.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/badge_notifiction.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\badge_notifiction.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Cart.css",

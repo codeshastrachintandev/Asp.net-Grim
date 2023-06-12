@@ -8,3 +8,12 @@
 .notfoundimg {
   width: fit-content;
 }
+
+.stockcount {
+  border: none;
+  background: none;
+  outline: none;
+}
+.error {
+  color: red;
+}

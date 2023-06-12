@@ -115,6 +115,8 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
     },
   });
 
+  var instock;
+
   //home page cards function
   function homepagecards(products_result) {
     if (products_result.length > 0) {
@@ -127,8 +129,13 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
             labcolor = "bg-yellow";
           }
         }
+        if (element.stock == 0) {
+          instock = "<span class='error'> Stock not available</span>";
+        } else {
+          instock = "<span> In Stock</span>";
+        }
         // card detail store in body
-        var body = `
+        document.getElementById("cardbody").innerHTML += `
             <div class="col-sm-6 col-md-6 col-lg-3">
               <div class="product-card">
                 <img class="product-img" src="${element.image_url}">
@@ -143,13 +150,13 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
                   <p><span>Base Unit</span>: ${element.base_unit} </p>
                 </div>
                 <div class="product-cart">
-                  <div>
-                    <p><span class="stockcount">${element.stock}</span> In Stock</p>
+                  <div class="stockcountbox">
+                    <input class="stockcount" type="text" value="${element.stock}" disabled />${instock}
                   </div>
                   <div>
                     <div class="wrap">
-                      <button type="button"  class="sub">-</button>
-                      <input class="count" type="text" value="1" min="1" max="100" />
+                      <button type="button" class="sub">-</button>
+                      <input class="count" type="text" value="0" min="1" max="100" />
                       <button type="button"  class="add">+</button>
                     </div>
                   </div>
@@ -157,7 +164,6 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
               </div>
             </div>
           `;
-        document.getElementById("cardbody").innerHTML += body;
       });
     } else {
       var body = `<div class="cardimgbody">
@@ -170,18 +176,68 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
   }
 }
 
-// function for add and sub btn
+// function for add and sub btn   <p><span class="stockcount">${element.stock}</span> In Stock</p>
 $(document).ready(function () {
+  // add click btn
+
   $(document).on("click", ".add", function () {
     var th = $(this).closest(".wrap").find(".count");
-    var st = $(".stockcount").val();
+    var avaItems = $(this)
+      .parent()
+      .parent()
+      .siblings(".stockcountbox")
+      .find(".stockcount")
+      .val();
+    if (avaItems == 0) {
+      //pop show--->>>>   PR/STO Request.   ---> Material Stock is not available. Please approve to raised PR/STO request.
+      alert(
+        " Material Stock is not available. Please approve to raised PR/STO request"
+      );
+      $(this)
+        .parent()
+        .parent()
+        .siblings(".stockcountbox")
+        .find("span")
+        .addClass("error")
+        .text("Stock not available");
+    } else {
+      avaItems--;
+      $(this)
+        .parent()
+        .parent()
+        .siblings(".stockcountbox")
+        .find(".stockcount")
+        .val(avaItems);
+    }
+    console.log("input(+)--->", avaItems);
     th.val(+th.val() + 1);
   });
 
+  //  sub click btn
   $(document).on("click", ".sub", function () {
     var th = $(this).closest(".wrap").find(".count");
-    var st = $(".stockcount");
-    if (th.val() > 1) th.val(+th.val() - 1);
+    if (th.val() > 0) th.val(+th.val() - 1);
+
+    var avaItems = $(this)
+      .parent()
+      .parent()
+      .siblings(".stockcountbox")
+      .find(".stockcount")
+      .val();
+
+    if (th.val() != 0) {
+      avaItems++;
+    }
+
+    $(this)
+      .parent()
+      .parent()
+      .siblings(".stockcountbox")
+      .find(".stockcount")
+      .val(avaItems);
+
+    console.log("input(-)--->", avaItems);
+    console.log("th(-)--->", th.val());
   });
 });
 
@@ -208,3 +264,20 @@ arrows.forEach((arrow) => {
     arrowParent.classList.toggle("showMenu");
   });
 });
+
+var i = 1;
+var badge = document.getElementById("badge");
+
+var int = window.setInterval(updateBadge, 2000); //Update the badge ever 5 seconds
+var badgeNum;
+function updateBadge() {
+  //To rerun the animation the element must be re-added back to the DOM
+  // var badgeChild = badge.children[0];
+  // if (badgeChild.className === "badge-num")
+  //   badge.removeChild(badge.children[0]);
+  // badgeNum = document.createElement("div");
+  //badge.setAttribute("class", "badge-num");
+  // badgeNum.innerHTML = i++;
+  // var insertedElement = badge.insertBefore(badgeNum, badge.firstChild);
+  // console.log(badge.children[0]);
+}

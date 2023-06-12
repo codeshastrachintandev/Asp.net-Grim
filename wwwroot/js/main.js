@@ -75,6 +75,7 @@ function spinner() {
 // ];
 
 var roles_menus = {
+  //Indent user role
   3: [
     {
       Index: "Index",
@@ -87,6 +88,7 @@ var roles_menus = {
       Notifications: "Notifications",
     },
   ],
+  //Indent manager role = 2
   2: [
     {
       report: "report",
@@ -101,6 +103,7 @@ var roles_menus = {
       Notifications: "Notifications",
     },
   ],
+  //HOD role = 7
   7: [
     {
       report: "report",
@@ -115,6 +118,7 @@ var roles_menus = {
       Notifications: "Notifications",
     },
   ],
+  //Issue manager role = 5
   5: [
     {
       report: "report",
@@ -125,6 +129,7 @@ var roles_menus = {
       Notifications: "Notifications",
     },
   ],
+  //SUBHOD role = 19
   19: [
     {
       report: "report",

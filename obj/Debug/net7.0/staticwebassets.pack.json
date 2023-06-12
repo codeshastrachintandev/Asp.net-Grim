@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\Poppins.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\badge_notifiction.css",
+      "PackagePath": "staticwebassets\\css\\badge_notifiction.css"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\old.css",
       "PackagePath": "staticwebassets\\css\\old.css"
     },

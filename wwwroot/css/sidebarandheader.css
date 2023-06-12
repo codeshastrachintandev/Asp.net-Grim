@@ -300,6 +300,15 @@ a:focus {
   font-size: 24px;
 }
 
+/* 12-06-23 */
+.sidebar-nav li a {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 /* PRODUCT CARD START */
 
 img {
