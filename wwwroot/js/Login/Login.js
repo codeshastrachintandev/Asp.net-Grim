@@ -8,6 +8,22 @@ var host = "https://172.16.1.69:3002";
 var block = "block";
 var none = "none";
 
+function CheckAll() {
+  document.getElementById("Error-show").style.display = "none";
+  var Username = document.forms["My_Form"]["Username"].value;
+  var Password = document.forms["My_Form"]["Password"].value;
+
+  if (Username == null || Username == "") {
+    document.getElementById("Error-show").style.display = "block";
+    document.getElementById("error-msg").innerHTML = "Please enter email";
+  }
+  if (Password == null || Password == "") {
+    document.getElementById("Error-show").style.display = "block";
+    document.getElementById("error-msg").innerHTML = "Please enter password";
+  }
+  return false;
+}
+
 function Submit() {
   document.getElementById("Error-show").style.display = "none";
   var email = document.getElementById("email").value;
@@ -54,16 +70,16 @@ function Submit() {
             response.user[0].role_id == 8 ||
             response.user[0].role_id == 9
           ) {
-            window.location.href = "Home/"; //home controller
+            window.location.href = "/Home/"; //home controller
           } else if (response.user[0].role_id == 3) {
             //("itemmaster");
-            window.location.href = "Home/NewIndent";
+            window.location.href = "/Home/NewIndent";
           } else if (response.user[0].role_id == 5) {
             //("/approvals/indents");
-            window.location.href = "Home/NewIndent";
+            window.location.href = "/Home/NewIndent";
           } else if (response.user[0].role_id == 6) {
             //("purchaseRequests");
-            window.location.href = "Home/NewIndent";
+            window.location.href = "/Home/NewIndent";
           } else {
             alert("this user has no page foud");
           }

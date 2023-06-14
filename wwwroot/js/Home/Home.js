@@ -11,6 +11,11 @@ var user_loc_response;
 var plant;
 var products_result;
 var selectedValue;
+var products_pagination;
+var pagenumber = 1;
+
+const notification_Api = host + path + "notification_logs";
+var notification_Payload = { user_id: Logindata.user[0].id };
 const user_store_locations_api =
   host + path + "user_store_locations?id=" + Logindata.user[0].id;
 const Product_api = host + path + "products";
@@ -24,13 +29,30 @@ $.ajax({
     console.log(" loc js -> Data created successfully:", response);
     user_loc_response = response;
     dropdownlist(response);
-    cardshow(response.locations[0].id, response, sort_by, search);
+    cardshow(response.locations[0].id, response, sort_by, search, pagenumber);
   },
   error: function (error) {
     console.error("Error creating data on user_store_locations:->>", error);
   },
 });
 //ajax of user_store_locations_api end
+
+// notification_logs Api call hear
+$.ajax({
+  url: notification_Api,
+  type: "POST",
+  contentType: "application/json",
+  data: JSON.stringify(notification_Payload),
+  success: function (response) {
+    // console.log("notification_logs js ->Get successfully:", response);
+    document.getElementById("notifications_no").innerHTML =
+      response.notification_logs.length;
+  },
+  error: function (error) {
+    console.error("Error creating data on user_store_locations:->>", error);
+  },
+});
+// notification_logs Api call end hear
 
 //dropdownlist display method start
 
@@ -59,7 +81,7 @@ $("#myDropdown1").change(function () {
   console.log("Selected value: " + selectedValue);
   // Call cardshow function here on change dropdown
   console.log("plan_id---------->>>>>>", user_loc_response);
-  cardshow(selectedValue, user_loc_response, sort_by, search);
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
 });
 //dropdownlist display method end
 
@@ -67,18 +89,18 @@ $("#myDropdown2").change(function () {
   sort_by = $(this).val();
   console.log("sort_by: " + selectedValue);
   // Call cardshow function here on change dropdown
-  cardshow(selectedValue, user_loc_response, sort_by, search);
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
 });
 
 $("#searchIndent").keydown(function () {
   search = $(this).val();
   console.log("search--->", search);
-  cardshow(selectedValue, user_loc_response, sort_by, search);
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
 });
 
 //cardshow function and product APi call hear
 
-function cardshow(loc_id, user_loc_response, sort_by, search) {
+function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
   document.getElementById("cardbody").innerHTML = "";
   user_loc_response.locations.forEach((element) => {
     if (element.id == loc_id) {
@@ -88,7 +110,7 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
   });
   //payload data
   const Payload = {
-    page: 1,
+    page: pagenumber,
     npp: 12,
     sort_by: sort_by,
     search: search,
@@ -105,10 +127,11 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
     success: function (response) {
       // console.log(" Home js -> Data created successfully:", response);
       products_result = response.products.result;
+      products_pagination = response.products.pagination;
       // console.log("result ajax in Home js ->>>>>", result);
 
       //home page cards function call hear
-      homepagecards(products_result);
+      homepagecards(products_result, products_pagination);
     },
     error: function (error) {
       console.error("Error creating data:", error);
@@ -118,7 +141,7 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
   var instock;
 
   //home page cards function
-  function homepagecards(products_result) {
+  function homepagecards(products_result, products_pagination) {
     if (products_result.length > 0) {
       products_result.forEach((element, Index) => {
         if (element.valution_type != "") {
@@ -151,13 +174,14 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
                 </div>
                 <div class="product-cart">
                   <div class="stockcountbox">
+                    <input type="hidden" class="hiddeninput" value="${element.id}">
                     <input class="stockcount" type="text" value="${element.stock}" disabled />${instock}
                   </div>
                   <div>
                     <div class="wrap">
-                      <button type="button" class="sub">-</button>
+                      <button type="button" class="sub"><span class="material-symbols-rounded" onclick="RemoveClick(${element.id})" >remove</span></button>
                       <input class="count" type="text" value="0" min="1" max="100" />
-                      <button type="button"  class="add">+</button>
+                      <button type="button" class="add"><span class="material-symbols-rounded" onclick="AddClick(${element.id})">add</span></button>
                     </div>
                   </div>
                 </div>
@@ -165,22 +189,126 @@ function cardshow(loc_id, user_loc_response, sort_by, search) {
             </div>
           `;
       });
+
+      console.log("current-->", products_pagination.current);
+      console.log("total-->", products_pagination.total);
+      console.log("next-->", products_pagination.next);
+      console.log("perPage;-->", products_pagination.perPage);
+      var Arrow = "";
+      document.getElementById("paginationlist").innerHTML = "";
+      if (products_pagination.current == 0 || products_pagination.total - 1) {
+        //Arrow_left are  disabled
+        Arrow = "disabled";
+      } else {
+        //Arrow_left are  visible
+        Arrow = "";
+      }
+
+      // const Arrow_left =
+      document.getElementById("paginationlist").innerHTML += `<!--Arrow left-->
+                          <li onclick="page(${
+                            products_pagination.current - 1
+                          })" class="page-item" ${Arrow}>
+                            <a class="page-link prev"
+                                aria-label="Previous">
+                                <span
+                                    aria-hidden="true">&#10094;</span>
+                                <span
+                                    class="sr-only">Previous</span>
+                            </a>
+                          </li>`;
+
+      var current;
+      for (var page = 0; page < products_pagination.total; page++) {
+        if (products_pagination.current == page) {
+          current = "active";
+        } else {
+          current = "";
+        }
+        document.getElementById(
+          "paginationlist"
+        ).innerHTML += `<li onclick="page(${
+          page + 1
+        })" class="page-item ${current}">
+                          <a class="page-link">${page + 1}</a>
+                        </li>`;
+      }
+
+      // const Arrow_Right =
+      document.getElementById("paginationlist").innerHTML += ` <!--Numbers-->
+                                <li onclick="page(${
+                                  products_pagination.next + 1
+                                })" class="page-item"${Arrow}>
+                                  <a class="page-link next"
+                                      aria-label="Next">
+                                      <span
+                                          aria-hidden="true">&#10095;</span>
+                                      <span
+                                          class="sr-only">Next</span>
+                                  </a>
+                            </li>`;
+
+      // document.getElementById("paginationlist").innerHTML +=
+      // Arrow_left + " " + paginationlist + " " + Arrow_Right;
     } else {
-      var body = `<div class="cardimgbody">
+      document.getElementById(
+        "cardbody"
+      ).innerHTML += `<div class="cardimgbody">
                     <div class="notfoundimg">
                       <img src="https://172.16.1.69/img/no_results_found.ff4ae51d.jpg">
                     </div>
                   </div>`;
-      document.getElementById("cardbody").innerHTML += body;
     }
   }
 }
+
+//page
+function page(clickpagenumber) {
+  pagenumber = clickpagenumber;
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
+}
+function Previoupage(clickpagenumber) {
+  pagenumber = clickpagenumber;
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
+}
+function Nextpage(clickpagenumber) {
+  pagenumber = clickpagenumber;
+  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
+}
+//
+
+var obj1 = [];
+// const handleClick = (elem) => {
+//   // obj1.push(elem);
+//   console.log("element current ========>", elem);
+// };
+function AddClick(id) {
+  products_result.forEach((element) => {
+    if (element.id === id) {
+      console.log("->>>>>>>>>>>>>>>>>>>>>>>>", id, element);
+    }
+  });
+}
+function RemoveClick(id) {}
 
 // function for add and sub btn   <p><span class="stockcount">${element.stock}</span> In Stock</p>
 $(document).ready(function () {
   // add click btn
 
   $(document).on("click", ".add", function () {
+    // console.log("element current ========>", obj1);
+    var obj = $(this)
+      .parent()
+      .parent()
+      .siblings(".stockcountbox")
+      .find(".hiddeninput")
+      .val();
+    // console.log("hiddeninput id------------------------>>>>>>>>>", obj);
+    // obj1.map((ob) => {
+    //   if (ob.id == obj) {
+    //     console.log("found", ob);
+    //   }
+    // });
     var th = $(this).closest(".wrap").find(".count");
     var avaItems = $(this)
       .parent()
@@ -213,7 +341,7 @@ $(document).ready(function () {
     th.val(+th.val() + 1);
   });
 
-  //  sub click btn
+  //  minus click btn
   $(document).on("click", ".sub", function () {
     var th = $(this).closest(".wrap").find(".count");
     if (th.val() > 0) th.val(+th.val() - 1);
@@ -240,6 +368,8 @@ $(document).ready(function () {
     console.log("th(-)--->", th.val());
   });
 });
+
+var Cart = [];
 
 // const button = document.querySelector("#sidebar-toggle");
 // const wrapper = document.querySelector("#wrapper");

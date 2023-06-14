@@ -108,20 +108,23 @@ a:focus {
 }
 #navbar-wrapper .navbar {
   border-width: 0 0 0 0;
-  background-color: #eee;
+  /* background-color: #eee; */
+  background-color: #1976d2;
   font-size: 24px;
+  color: #f3f3f3;
   margin-bottom: 0;
   border-radius: 0;
-
   transition: all 0.2s ease-out;
   position: fixed;
   width: calc(100% - var(--aside-width));
 }
 #navbar-wrapper .navbar a {
-  color: #757575;
+  /* color: #757575; */
+  color: #ececec;
 }
 #navbar-wrapper .navbar a:hover {
-  color: #f8be12;
+  /* color: #f8be12; */
+  color: #ecececc4;
 }
 
 #content-wrapper {
@@ -158,6 +161,7 @@ a:focus {
 @media (min-width: 768px) {
   #wrapper {
     padding-left: var(--aside-width);
+    overflow: hidden;
   }
 
   #wrapper.toggled {
@@ -366,17 +370,20 @@ img {
   background-color: #00f;
 }
 .product-cart button {
-  border: 0;
-  border-radius: 10px;
-  /*color: #f5f6fa;*/
+  border-radius: 50%;
+  display: flex;
+  /* color: #f5f6fa; */
   cursor: pointer;
   font-family: inherit;
-  padding: 0.1em 1em;
+  /* padding: 0.1em 1em; */
   text-transform: uppercase;
   transition: all linear 0.3s;
   background-color: transparent;
-  border: 1px solid #000;
-  /*width: 100%;*/
+  /* border: 1px solid #000; */
+  background-color: #dddee1;
+  border: none;
+  /* width: 100%; */
+  align-items: center;
 }
 
 .product-cart button:hover {
@@ -392,7 +399,17 @@ img {
 .product-cart input {
   width: 34px;
   text-align: center;
+  border: none;
+  background-color: transparent;
 }
+.product-cart .stockcount {
+  width: 36px;
+  font-size: 1.1em;
+}
+.product-cart .count {
+  font-weight: bold;
+}
+
 /* color */
 
 .product-card h3 {
@@ -405,3 +422,77 @@ img {
   }
 }
 /* -----------PRODUCT CARD END---------- */
+
+/* .pagination {
+  font-size: 12px;
+  line-height: 0;
+} */
+
+/*------------------------------------------- pagination css start -------------------------------------------*/
+.pagination-wrap .pagination .page-item .page-link {
+  color: #1976d2;
+  border: 2px solid #1976d2 !important;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 0.9rem;
+  color: #999;
+  font-weight: bold;
+  padding: 4px 10px;
+}
+.pagination-wrap
+  .pagination.pagination-circle
+  .page-item.active
+  .page-link:hover {
+  background-color: #1976d2;
+}
+.pagination-wrap .pagination .page-item .page-link.prev,
+.pagination-wrap .pagination .page-item .page-link.next {
+  border: 0 !important;
+}
+.pagination-wrap .pagination .page-item .page-link.prev:hover,
+.pagination-wrap .pagination .page-item .page-link.next:hover {
+  background-color: initial;
+}
+.pagination-wrap .pagination .page-item .page-link:hover {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  border-radius: 0.125rem;
+  background-color: #1976d2;
+  color: #ffffff;
+}
+.pagination-wrap .pagination.pagination-circle .page-item .page-link:hover {
+  border-radius: 50%;
+}
+nav.pagination-wrap {
+  margin: 0 auto;
+  padding-top: 35px;
+}
+.pagination-wrap .pagination.pagination-circle .page-item.active .page-link {
+  border-radius: 50%;
+  color: #fff;
+}
+.pagination-wrap .pagination.pg-blue .page-item.active .page-link:hover {
+  background-color: #1976d2;
+}
+.pagination-wrap .pagination .page-item.active .page-link {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border-radius: 0.125rem;
+  background-color: #1976d2;
+  color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.pagination-wrap .pagination.pagination-circle .page-item .page-link {
+  margin: 0 2px;
+  font-size: inherit;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.pagination-wrap .page-link {
+  border: none !important;
+}
+
+/*------------------------------------------- pagination css end -------------------------------------------*/

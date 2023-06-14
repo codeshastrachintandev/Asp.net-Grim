@@ -16,15 +16,17 @@
                 <p>Goods Receiving and Indent Management</p>
             </div>
             <div class="login-form">
-                @* <form> *@
+                <form   method="post"
+                        name="My_Form"
+                        onsubmit="javascript:return CheckAll()">
                     <div class="form-box">
                         <label>Email:</label>
-                        <input type="email" placeholder="Enter email" id="email" class="form-input" required>
+                        <input type="email" placeholder="Enter email" name="Username" id="email" class="form-input" required>
 
                     </div>
                     <div class="form-box">
                         <label>Password:</label>
-                        <input type="password" placeholder="Enter password" id="password" class=" form-input" required>
+                        <input type="password" placeholder="Enter password" name="Password" id="password" class=" form-input" required>
 
                     </div>
                     <div class="form-box">
@@ -33,7 +35,7 @@
                             <a href="#" onclick="forgot()" title="Forgot Password?">Forgot Password?</a>
                         </div>
                     </div>
-                @* </form> *@
+                </form>
             </div>
             <div class="Error-show" id="Error-show">
                 <i class="bi bi-exclamation-triangle"></i>

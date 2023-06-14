@@ -12,67 +12,7 @@ function spinner() {
   }
 }
 
-// var roles_menus = [
-//   {
-//     role_id: 3, //Indent user role
-//     Dashboard: "report", //report
-//     MyProfile: "MyProfile",
-//     MyRequests: "MyRequests",
-//     NewIndent: "NewIndent",
-//     NewPurchaseReq: "NewPurchaseReq", // new material request
-//     Servicerequest: "Service request", // Service request
-//     Vendors: "Vendors", // Manage Vendors
-//     Notifications: "Notifications",
-//   },
-//   {
-//     role_id: 2, //Indent manager role = 2
-//     Dashboard: "report", //report
-//     MyProfile: "MyProfile",
-//     MyApproval: "MyRequests",
-//     NewIndent: "NewIndent",
-//     Itemmaterials: "Item materials",
-//     returns: "returns",
-//     NewPurchaseReq: "new material request", // new material request
-//     Servicerequest: "Service request", // Service request
-//     Vendors: "Vendors", // Manage Vendors
-//     Notifications: "Notifications",
-//   },
-//   {
-//     role_id: 7, //HOD role = 7
-//     Dashboard: "report", //report
-//     MyProfile: "MyProfile",
-//     MyApproval: "MyRequests",
-//     NewIndent: "NewIndent",
-//     Itemmaterials: "Item materials",
-//     returns: "returns",
-//     NewPurchaseReq: "new material request", // new material request
-//     Servicerequest: "Service request", // Service request
-//     Vendors: "Vendors", // Manage Vendors
-//     Notifications: "Notifications",
-//   },
-//   {
-//     role_id: 19, //SUBHOD role = 19
-//     Dashboard: "report", //report
-//     MyProfile: "MyProfile",
-//     MyApproval: "MyRequests",
-//     NewIndent: "NewIndent",
-//     Itemmaterials: "Item materials",
-//     returns: "returns",
-//     NewPurchaseReq: "New material request", // new material request
-//     Servicerequest: "Service request", // Service request
-//     Vendors: "Vendors", // Manage Vendors
-//     Notifications: "Notifications",
-//   },
-//   {
-//     role_id: 5, //Issue manager role = 5
-//     Dashboard: "report", //report
-//     MyProfile: "MyProfile",
-//     MyApproval: "MyRequests",
-//     NewIndent: "Cretate STO",
-//     Itemmaterials: "Item materials",
-//     Notifications: "Notifications",
-//   },
-// ];
+var icons_list = {};
 
 var roles_menus = {
   //Indent user role
