@@ -77,6 +77,7 @@ function dropdownlist(data) {
 //dropdownlist display method end
 
 $("#myDropdown1").change(function () {
+  pagenumber = 1;
   selectedValue = $(this).val();
   console.log("Selected value: " + selectedValue);
   // Call cardshow function here on change dropdown
@@ -194,27 +195,33 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
       console.log("total-->", products_pagination.total);
       console.log("next-->", products_pagination.next);
       console.log("perPage;-->", products_pagination.perPage);
-      var Arrow = "";
+      var Arrow_Right = "";
+      var Arrow_left = "";
       document.getElementById("paginationlist").innerHTML = "";
-      if (products_pagination.current == 0 || products_pagination.total - 1) {
+      if (products_pagination.current != 0) {
         //Arrow_left are  disabled
-        Arrow = "disabled";
+        Arrow_left = `onclick = "Previoupage(${products_pagination.current})"`;
       } else {
         //Arrow_left are  visible
-        Arrow = "";
+        Arrow_left = "";
+      }
+      if (products_pagination.current != products_pagination.total - 1) {
+        //Arrow_left are  disabled
+        Arrow_Right = `onclick="Nextpage(${products_pagination.next + 1})"`;
+      } else {
+        //Arrow_left are  visible
+        Arrow_Right = "";
       }
 
       // const Arrow_left =
       document.getElementById("paginationlist").innerHTML += `<!--Arrow left-->
-                          <li onclick="page(${
-                            products_pagination.current - 1
-                          })" class="page-item" ${Arrow}>
-                            <a class="page-link prev"
+                          <li ${Arrow_left} class="page-item">
+                            <a class="page-link prev" 
                                 aria-label="Previous">
                                 <span
-                                    aria-hidden="true">&#10094;</span>
+                                    aria-hidden="true" >&#10094;</span>
                                 <span
-                                    class="sr-only">Previous</span>
+                                    class="sr-only" >Previous</span>
                             </a>
                           </li>`;
 
@@ -236,9 +243,7 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
 
       // const Arrow_Right =
       document.getElementById("paginationlist").innerHTML += ` <!--Numbers-->
-                                <li onclick="page(${
-                                  products_pagination.next + 1
-                                })" class="page-item"${Arrow}>
+                                <li class="page-item" ${Arrow_Right}>
                                   <a class="page-link next"
                                       aria-label="Next">
                                       <span
