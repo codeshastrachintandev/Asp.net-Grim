@@ -477,7 +477,7 @@ nav.pagination-wrap {
 .pagination-wrap .pagination.pg-blue .page-item.active .page-link:hover {
   background-color: #1976d2;
 }
-.pagination-wrap .pagination .page-item.active .page-link {
+.pagination-wrap .pagination .page-item .active .page-link {
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
   border-radius: 0.125rem;

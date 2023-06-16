@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets\\css\\Home.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Home\\NewIndent.css",
+      "PackagePath": "staticwebassets\\css\\Home\\NewIndent.css"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Login.css",
       "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\MyRequests.css",
+      "PackagePath": "staticwebassets\\css\\MyRequests.css"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\Poppins.css",
@@ -23,6 +31,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\badge_notifiction.css",
       "PackagePath": "staticwebassets\\css\\badge_notifiction.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\common.css",
+      "PackagePath": "staticwebassets\\css\\common.css"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\css\\old.css",
@@ -63,6 +75,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Home\\Home.js",
       "PackagePath": "staticwebassets\\js\\Home\\Home.js"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Home\\NewIndent.js",
+      "PackagePath": "staticwebassets\\js\\Home\\NewIndent.js"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\wwwroot\\js\\Login\\Login.js",

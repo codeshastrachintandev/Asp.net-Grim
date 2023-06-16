@@ -93,16 +93,6 @@ function Submit() {
   }
 }
 
-// var element = document.getElementById("Error-show");
-// var addError = function () {
-//   console.log("addError");
-//   element.classList.add("error");
-// };
-// var removeError = function () {
-//   console.log("removeError");
-//   element.classList.remove("error");
-// };
-
 function forgot() {
   document.getElementById("popup-forgot-pass").style.display = "block";
 }
@@ -141,3 +131,13 @@ function spinner() {
     document.getElementById("spinnerbody").style.display = none;
   }
 }
+
+// var element = document.getElementById("Error-show");
+// var addError = function () {
+//   console.log("addError");
+//   element.classList.add("error");
+// };
+// var removeError = function () {
+//   console.log("removeError");
+//   element.classList.remove("error");
+// };
