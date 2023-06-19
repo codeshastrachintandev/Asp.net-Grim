@@ -28,6 +28,35 @@ var Product_api = host + path + "products";
 var user_locations_Api =
   host + path + "user_locations" + "?id=" + Logindata.user[0].id;
 
+// notification_logs Api call hear
+$.ajax({
+  url: notification_Api,
+  type: "POST",
+  contentType: "application/json",
+  data: JSON.stringify(notification_Payload),
+  success: function (response) {
+    // console.log("notification_logs js ->Get successfully:", response);
+    document.getElementById("notifications_no").innerHTML =
+      response.notification_logs.length;
+  },
+  error: function (error) {
+    console.error("Error creating data on user_store_locations:->>", error);
+  },
+});
+// notification_logs Api call end hear
+
+// cart notifications
+
+function cartcount() {
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  if (cart != null) {
+    document.getElementById("notifications_cart").innerHTML = cart.length;
+  } else {
+    document.getElementById("notifications_cart").innerHTML = 0;
+  }
+}
+cartcount();
+
 var v = 1;
 
 function spinner(isloading) {

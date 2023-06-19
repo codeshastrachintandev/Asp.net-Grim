@@ -57,12 +57,12 @@ function CheckAll() {
       // Handle successful login
       //"Login successful!";
       if (response.success === true) {
-        if (response.data.user[0].role_id == 1) {
+        if (response.user[0].role_id == 1) {
           // console.log("-------------- admim Login");
           //vm.$router.push("CreateUser");
           alert("Admin page not created");
         } else {
-          if (response.data.user[0].is_password_changed == "NO") {
+          if (response.user[0].is_password_changed == "NO") {
             alert("reset_password page not created");
           } else {
             localStorage.setItem("user_info", JSON.stringify(response));

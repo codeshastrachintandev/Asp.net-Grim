@@ -6,7 +6,7 @@
             <h1>Cart</h1>
         </div>
         <div>
-            <button class="common-button common-blue-button"><span class="material-symbols-rounded">add</span>ADD ITEM</button>
+           <a href="./NewIndent"><button class="common-button common-blue-button"><span class="material-symbols-rounded">add</span>ADD ITEM</button></a> 
         </div>
 
     </div>
@@ -30,19 +30,14 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <select class="form-control" id="sel3" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="form-control" id="sel4" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                    <option>Self Pickup</option>
+                                    <option>Store</option>
                                 </select>
                             </div>
                         </div>
@@ -59,8 +54,9 @@
 
 
             <div class="container-fluid">
-                <div class="product-cart-wrapp table-responsive">
-                    <table class="table table-striped">
+            <div id="tableid">
+                <div class="product-cart-wrapp table-responsive" >
+                    <table class="table table-striped" >
                         <thead>
                             <tr>
                                 <th>SI No</th>
@@ -167,14 +163,16 @@
                 </div>
                 <div class="cart-buttons-wrap">
 
-                    <button class="common-button common-blue-button"><span><i class="fa fa-print" aria-hidden="true"></i></span> PREVIEW
-                        INDENT</button>
+                    <button class="common-button common-blue-button" onclick="window.print();return false;"><span class="material-symbols-rounded">print</span> PREVIEW INDENT</button>
 
-                    <button class="common-button common-orange-button">CLEAR</button>
+                    <button class="common-button common-orange-button" onclick="clearcart()">CLEAR</button>
 
-                    <button class="common-button common-yellow-button">PLACE STO</button>
+                    <button class="common-button common-yellow-button" onclick="Pordectorder()">PLACE INDENT</button>
 
                 </div>
+            </div>
+            <br>
+            <div id="showmsg"></div>
             </div>
 </section>
 <br><br>

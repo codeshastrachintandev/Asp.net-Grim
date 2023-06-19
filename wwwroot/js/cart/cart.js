@@ -23,13 +23,13 @@ $.ajax({
 function dropdownfor_user_loc(data) {
   if (data.success === true) {
     var locations = data.locations;
-    console.log("plant_id", locations, plant_id);
+    // console.log("plant_id", locations, plant_id);
 
     var dropdown = $("#sel2");
 
     locations.forEach((element) => {
       const optionElement = $("<option>", {
-        value: element.id,
+        value: element.plant_id,
         text:
           element.plant_id +
           " - " +
@@ -41,11 +41,62 @@ function dropdownfor_user_loc(data) {
     });
   }
 }
+
+$("#sel2").change(function () {
+  selectedValue = $(this).val();
+  WBS_Element_Number(selectedValue);
+});
+function WBS_Element_Number(no) {
+  $.ajax({
+    url: host + path + "wbs_numbers?plant_id=" + no,
+    type: "GET",
+    contentType: "application/json",
+    success: function (response) {
+      console.log(response);
+      if (response.success === true) {
+        var dropdown = $("#sel3");
+
+        // Remove all existing options from the dropdown
+        dropdown.empty();
+
+        if (response.wbs_numbers.length > 0) {
+          response.wbs_numbers.forEach((element) => {
+            const optionElement = $("<option>", {
+              value: element.id,
+              text: element.display_name,
+            });
+
+            dropdown.append(optionElement);
+          });
+        } else {
+          const optionElement = $("<option>", {
+            value: "",
+            text: "No data found...",
+          });
+          dropdown.append(optionElement);
+        }
+      }
+    },
+    error: function (error) {
+      console.error("Error creating data on user_store_locations:->>", error);
+    },
+  });
+}
 const cartdata = JSON.parse(localStorage.getItem("cart"));
 if (cartdata) {
   cartdata.forEach((element, index) => {
     tbody(element, index + 1);
   });
+} else {
+  document.getElementById("tableid").style.display = "none";
+  document.getElementById("showmsg").innerHTML += `<div style="
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    ">Your indent is currently empty.</div> `;
 }
 
 function roundUp(num, precision) {
