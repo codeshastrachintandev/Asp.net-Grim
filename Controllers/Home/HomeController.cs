@@ -21,11 +21,11 @@ public class HomeController : Controller
     public IActionResult MyProfile()
     {
         return View();
-    } 
+    }
     public IActionResult MyRequests()
     {
         return View();
-    } 
+    }
     public IActionResult NewIndent()
     {
         return View();
@@ -47,6 +47,10 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult Cart()
+    {
+        return View();
+    }
+    public IActionResult MyApprovals()
     {
         return View();
     }

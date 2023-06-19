@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\GrimLogin.csproj",
+      "projectUniqueName": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj",
       "projectName": "GrimLogin",
-      "projectPath": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\GrimLogin.csproj",
+      "projectPath": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj",
       "packagesPath": "C:\\Users\\sai\\.nuget\\packages\\",
-      "outputPath": "D:\\Chintan\\GRIM\\Grimloginpage\\GrimLogin\\obj\\",
+      "outputPath": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sai\\AppData\\Roaming\\NuGet\\NuGet.Config",

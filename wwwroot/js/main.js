@@ -2,7 +2,7 @@
 var path = "/api/v4/";
 
 //check login user data
-const Logindata = JSON.parse(localStorage.getItem("user_info"));
+var Logindata = JSON.parse(localStorage.getItem("user_info"));
 // console.log("Logindata data on Home js----->", Logindata);
 if (!Logindata) {
   window.location.href = "../Login";
@@ -20,19 +20,20 @@ var pagenumber = 1;
 var search_type = false;
 // var addtocart = [];
 
-const notification_Api = host + path + "notification_logs";
+var notification_Api = host + path + "notification_logs";
 var notification_Payload = { user_id: Logindata.user[0].id };
-const user_store_locations_api =
+var user_store_locations_api =
   host + path + "user_store_locations?id=" + Logindata.user[0].id;
-const Product_api = host + path + "products";
+var Product_api = host + path + "products";
+var user_locations_Api =
+  host + path + "user_locations" + "?id=" + Logindata.user[0].id;
 
 var v = 1;
-function spinner() {
-  if (v == 1) {
-    v = 0;
+
+function spinner(isloading) {
+  if (isloading == true) {
     document.getElementById("spinnerbody").style.display = "block";
   } else {
-    v = 1;
     document.getElementById("spinnerbody").style.display = none;
   }
 }
@@ -46,13 +47,14 @@ var icons_list = {
   NewPurchaseReq:
     '<span class="material-symbols-rounded">assignment_add</span>',
   Servicerequest: '<span class="material-symbols-rounded">settings</span>',
-  Itemmaterials: "Item materials",
+  Itemmaterials: '<span class="material-symbols-rounded">priority_high</span>',
   Vendors: '<span class="material-symbols-rounded">group</span>',
   Notifications:
     '<span class="material-symbols-rounded">mark_chat_unread</span>',
   Newmaterialrequest:
     '<span class="material-symbols-rounded">assignment_add</span>',
   CretateSTO: '<span class="material-symbols-rounded">priority_high</span>',
+  report: '<span class="material-symbols-rounded">dashboard</span>',
 };
 
 //else{icon='<span class="material-symbols-rounded">priority_high</span>'}
@@ -73,7 +75,7 @@ var roles_menus = {
   //Indent manager role = 2
   2: [
     {
-      report: "report",
+      Index: "Index",
       MyProfile: "My Profile",
       MyRequests: "My Requests",
       NewIndent: "New Indent",
@@ -88,7 +90,7 @@ var roles_menus = {
   //HOD role = 7
   7: [
     {
-      report: "report",
+      Index: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyRequests",
       NewIndent: "NewIndent",
@@ -103,7 +105,7 @@ var roles_menus = {
   //Issue manager role = 5
   5: [
     {
-      report: "report",
+      Index: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyRequests",
       CretateSTO: "Cretate STO",
@@ -114,9 +116,24 @@ var roles_menus = {
   //SUBHOD role = 19
   19: [
     {
-      report: "report",
+      Index: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyRequests",
+      NewIndent: "NewIndent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      Newmaterialrequest: "New material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
+  ],
+  // requestmanager
+  11: [
+    {
+      Index: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyApprovals",
       NewIndent: "NewIndent",
       Itemmaterials: "Item materials",
       returns: "returns",

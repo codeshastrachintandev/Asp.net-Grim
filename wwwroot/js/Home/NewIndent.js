@@ -1,21 +1,3 @@
-// var plant_id = JSON.parse(localStorage.getItem("plant_id"));
-// var sort_by = "alphabetically";
-// var search = "";
-// var user_loc_response;
-// var plant;
-// var products_result;
-// var selectedValue;
-// var products_pagination;
-// var pagenumber = 1;
-// var search_type = false;
-// // var addtocart = [];
-
-// const notification_Api = host + path + "notification_logs";
-// var notification_Payload = { user_id: Logindata.user[0].id };
-// const user_store_locations_api =
-//   host + path + "user_store_locations?id=" + Logindata.user[0].id;
-// const Product_api = host + path + "products";
-
 //ajax of user_store_locations_api start
 $.ajax({
   url: user_store_locations_api,

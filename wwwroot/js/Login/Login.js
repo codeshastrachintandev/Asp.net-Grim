@@ -4,16 +4,19 @@ if (data) {
 }
 
 //Host URl
-var host = "https://172.16.1.69:3002";
+var hostlogin = "https://172.16.1.69:3002";
 var block = "block";
 var none = "none";
 
 function CheckAll() {
   document.getElementById("Error-show").style.display = "none";
-  var Username = document.forms["My_Form"]["Username"].value;
+  var email = document.forms["My_Form"]["email"].value;
   var Password = document.forms["My_Form"]["Password"].value;
 
-  if (Username == null || Username == "") {
+  if (email === "" || password === "") {
+    displayNotification("Please fill in all fields");
+  }
+  if (email == null || email == "") {
     document.getElementById("Error-show").style.display = "block";
     document.getElementById("error-msg").innerHTML = "Please enter email";
   }
@@ -21,76 +24,105 @@ function CheckAll() {
     document.getElementById("Error-show").style.display = "block";
     document.getElementById("error-msg").innerHTML = "Please enter password";
   }
-  return false;
-}
 
-function Submit() {
-  document.getElementById("Error-show").style.display = "none";
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+  var notification = $(".notification");
+
+  var email = $("#email").val();
+  var password = $("#password").val();
   var sap_id = "";
 
-  if (!email && !password) {
-    document.getElementById("Error-show").style.display = "block";
-    document.getElementById("error-msg").innerHTML =
-      "Please enter email and password";
-  } else if (!email) {
-    document.getElementById("Error-show").style.display = "block";
-    document.getElementById("error-msg").innerHTML = "Please enter email";
-  } else if (!password) {
-    document.getElementById("Error-show").style.display = "block";
-    document.getElementById("error-msg").innerHTML = "Please enter password";
-  } else {
-    console.log("api call");
-    spinner();
-    const api_url = host + "/api/v4/login";
-    console.log("---->", JSON.stringify({ email: email, password: password }));
-    fetch(api_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, password: password }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        var data = response.success;
-        console.log("data:", data);
-        if (data === true) {
-          console.log("response->>>:", response);
-          console.log("role_id->>>:", response.user[0].role_id);
-          localStorage.setItem("user_info", JSON.stringify(response));
-          document.getElementById("Error-show").style.display = "none";
-          document.getElementById("error-msg").innerHTML = "";
-          spinner();
-          if (
-            response.user[0].role_id == 2 ||
-            response.user[0].role_id == 7 ||
-            response.user[0].role_id == 8 ||
-            response.user[0].role_id == 9
-          ) {
-            window.location.href = "/Home/"; //home controller
-          } else if (response.user[0].role_id == 3) {
-            //("itemmaster");
-            window.location.href = "/Home/NewIndent";
-          } else if (response.user[0].role_id == 5) {
-            //("/approvals/indents");
-            window.location.href = "/Home/NewIndent";
-          } else if (response.user[0].role_id == 6) {
-            //("purchaseRequests");
-            window.location.href = "/Home/NewIndent";
-          } else {
-            alert("this user has no page foud");
-          }
-        } else {
-          spinner();
-          document.getElementById("Error-show").style.display = "block";
-          document.getElementById("error-msg").innerHTML =
-            "Incorrect Email Or Password ";
-        }
-      });
+  console.log("api call");
+  const api_url = hostlogin + "/api/v4/login";
+  console.log(
+    "login---->",
+    JSON.stringify({ email: email, password: password })
+  );
+
+  // Perform client-side validation (optional)
+  if (email === "" || password === "") {
+    alert("Please fill in all fields");
+    // return;
   }
+  spinner(true);
+  // Make AJAX request to the server
+  $.ajax({
+    url: api_url,
+    method: "POST",
+    dataType: "json",
+    data: {
+      email: email,
+      password: password,
+    },
+    success: function (response) {
+      // Handle successful login
+      //"Login successful!";
+      if (response.success === true) {
+        if (response.data.user[0].role_id == 1) {
+          // console.log("-------------- admim Login");
+          //vm.$router.push("CreateUser");
+          alert("Admin page not created");
+        } else {
+          if (response.data.user[0].is_password_changed == "NO") {
+            alert("reset_password page not created");
+          } else {
+            localStorage.setItem("user_info", JSON.stringify(response));
+            document.getElementById("Error-show").style.display = "none";
+            document.getElementById("error-msg").innerHTML = "";
+            spinner(false);
+            console.log("Login successful!");
+            if (
+              response.user[0].role_id == 2 ||
+              response.user[0].role_id == 7 ||
+              response.user[0].role_id == 8 ||
+              response.user[0].role_id == 9
+            ) {
+              window.location.href = "/Home/"; //home controller
+            } else if (response.user[0].role_id == 3) {
+              //("itemmaster");
+              window.location.href = "/Home/NewIndent";
+            } else if (response.user[0].role_id == 5) {
+              //("/approvals/indents");
+              window.location.href = "/Home/NewIndent";
+            } else if (response.user[0].role_id == 6) {
+              //("purchaseRequests");
+              window.location.href = "/Home/NewIndent";
+            } else if (response.user[0].role_id == 11) {
+              //("purchaseRequests");
+              window.location.href = "/Home/Index";
+            } else {
+              alert("this role page not");
+            }
+          }
+        }
+      } else {
+        alert("Incorrect Email Or Password ");
+        document.getElementById("Error-show").style.display = "block";
+        document.getElementById("error-msg").innerHTML =
+          "Incorrect Email Or Password ";
+      }
+    },
+
+    error: function (xhr, status, error) {
+      spinner(false);
+      // Handle login error
+      console.log("Error: " + error);
+      alert("Login failed. Please try again.");
+    },
+
+    complete: function (xhr, status) {
+      spinner(false);
+      if (status === "error" || !xhr.responseText) {
+        // Handle network or server error
+        alert("Network error. Please try again later.");
+      }
+    },
+  });
+
+  function displayNotification(message) {
+    notification.text(message);
+    notification.fadeIn().delay(3000).fadeOut();
+  }
+  return false;
 }
 
 function forgot() {
@@ -119,25 +151,11 @@ function forgot_password() {
     });
 }
 
-var v = 1;
 function spinner() {
-  if (v == 1) {
-    v = 0;
-    console.log("block:--", v);
-    document.getElementById("spinnerbody").style.display = "block";
+  var element = document.getElementById("spinnerbody");
+  if (element.style.display === "none") {
+    element.style.display = "block";
   } else {
-    v = 1;
-    console.log("none:--", v);
-    document.getElementById("spinnerbody").style.display = none;
+    element.style.display = "none";
   }
 }
-
-// var element = document.getElementById("Error-show");
-// var addError = function () {
-//   console.log("addError");
-//   element.classList.add("error");
-// };
-// var removeError = function () {
-//   console.log("removeError");
-//   element.classList.remove("error");
-// };

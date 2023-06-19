@@ -15,40 +15,30 @@
                 <div class="filter-wrap">
                     <div class="row">
 
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                <select class="form-control" id="sel1" disabled name="sellist1">
+                                    <option value="" id="plant_name" ></option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                                <select class="form-control" id="sel2" name="sellist1"></select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-
-                                <select class="form-control" id="sel1" name="sellist1">
+                                <select class="form-control" id="sel3" name="sellist1">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
-
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" id="sel1" name="sellist1">
+                                <select class="form-control" id="sel4" name="sellist1">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -56,7 +46,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <div class="">
                                 <input type="checkbox" id="urgent-indent" name="Urgent Indent" value="1">
                                 <label for="Urgent Indent">Urgent Indent</label>
@@ -88,8 +78,8 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="tbody">
+                            @* <tr>
                                 <td class="vmiddle">
                                     <div>1</div>
                                 </td>
@@ -170,7 +160,7 @@
                                         <span><a><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> *@
 
                         </tbody>
                     </table>
@@ -188,3 +178,7 @@
             </div>
 </section>
 <br><br>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/cart/cart.js"></script>
+
