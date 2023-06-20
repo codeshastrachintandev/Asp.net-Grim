@@ -1,5 +1,5 @@
 var user_loc_response;
-var plant_id = JSON.parse(localStorage.getItem("plant_id"));
+
 //ajax of user_store_locations_api start
 function user_loc() {
   $.ajax({
@@ -14,6 +14,7 @@ function user_loc() {
         user_loc_response.locations.forEach((element, index) => {
           if (index == 1) {
             localStorage.setItem("plant_id", JSON.stringify(element));
+            plant_id = JSON.parse(localStorage.getItem("plant_id"));
           }
         });
       }
