@@ -8,10 +8,8 @@ if (!Logindata) {
   window.location.href = "../Login";
 }
 
-var plant_id = JSON.parse(localStorage.getItem("plant_id"));
 var sort_by = "alphabetically";
 var search = "";
-var user_loc_response;
 var plant;
 var products_result;
 var selectedValue;

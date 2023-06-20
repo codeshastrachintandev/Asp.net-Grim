@@ -1,17 +1,31 @@
+var user_loc_response;
+var plant_id = JSON.parse(localStorage.getItem("plant_id"));
 //ajax of user_store_locations_api start
-$.ajax({
-  url: user_store_locations_api,
-  type: "GET",
-  contentType: "application/json",
-  success: function (response) {
-    // console.log(" loc js -> Data created successfully:", response);
-    user_loc_response = response;
-    dropdownlist(response);
-  },
-  error: function (error) {
-    console.error("Error creating data on user_store_locations:->>", error);
-  },
-});
+function user_loc() {
+  $.ajax({
+    url: user_store_locations_api,
+    type: "GET",
+    contentType: "application/json",
+    success: function (response) {
+      //console.log(" loc js -> Data created successfully:", response);
+      user_loc_response = response;
+      if (plant_id == null) {
+        console.log("user_loc_response-->>", user_loc_response);
+        user_loc_response.locations.forEach((element, index) => {
+          if (index == 1) {
+            localStorage.setItem("plant_id", JSON.stringify(element));
+          }
+        });
+      }
+
+      dropdownlist(response);
+    },
+    error: function (error) {
+      console.error("Error creating data on user_store_locations:->>", error);
+    },
+  });
+}
+user_loc();
 //ajax of user_store_locations_api end
 
 //dropdownlist display method start

@@ -13,6 +13,8 @@ function CheckAll() {
   var email = document.forms["My_Form"]["email"].value;
   var Password = document.forms["My_Form"]["Password"].value;
 
+  // Perform client-side validation (optional)
+
   if (email === "" || password === "") {
     displayNotification("Please fill in all fields");
   }
@@ -38,11 +40,6 @@ function CheckAll() {
     JSON.stringify({ email: email, password: password })
   );
 
-  // Perform client-side validation (optional)
-  if (email === "" || password === "") {
-    alert("Please fill in all fields");
-    // return;
-  }
   spinner(true);
   // Make AJAX request to the server
   $.ajax({
@@ -95,7 +92,7 @@ function CheckAll() {
           }
         }
       } else {
-        alert("Incorrect Email Or Password ");
+        spinner(false);
         document.getElementById("Error-show").style.display = "block";
         document.getElementById("error-msg").innerHTML =
           "Incorrect Email Or Password ";
@@ -151,11 +148,10 @@ function forgot_password() {
     });
 }
 
-function spinner() {
-  var element = document.getElementById("spinnerbody");
-  if (element.style.display === "none") {
-    element.style.display = "block";
+function spinner(isloading) {
+  if (isloading == true) {
+    document.getElementById("spinnerbody").style.display = "block";
   } else {
-    element.style.display = "none";
+    document.getElementById("spinnerbody").style.display = none;
   }
 }
