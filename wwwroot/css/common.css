@@ -114,7 +114,7 @@ img {
 }
 
 #wrapper.toggled {
-  --aside-width: 70px;
+  --aside-width: 100px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -137,11 +137,13 @@ img {
 
 .sidebar-nav {
   position: absolute;
-  top: 75px;
+  /* top: 75px; */
+  top: 90px;
   width: 250px;
   margin: 0;
   padding: 0;
   list-style: none;
+  border-top: 1px solid #fff;
 }
 .sidebar-nav > li {
   text-indent: 10px;
@@ -156,8 +158,14 @@ img {
 }
 .toggled .sidebar-nav > li a > span {
   display: block;
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: 11px;
   line-height: 14px;
+  white-space: break-spaces;
+}
+.toggled .sidebar-nav > li a > span:first-child {
+  font-size: 25px;
+  padding-bottom: 6px;
 }
 .toggled .sidebar-nav > li > a i.fa {
   margin-left: -3px;
@@ -251,10 +259,10 @@ img {
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    width: 70px;
+    width: 100px;
   }
   #wrapper.toggled #sidebar-wrapper #sidebar-nav {
-    width: 70px;
+    width: 100px;
   }
 
   #wrapper.toggled #navbar-wrapper {
@@ -283,7 +291,7 @@ img {
   #wrapper.toggled #navbar-wrapper,
   #wrapper.toggled #content-wrapper {
     position: relative;
-    margin-right: 70px;
+    margin-right: 100px;
   }
 }
 
@@ -299,10 +307,10 @@ img {
     width: 100%;
   }
   .toggled #navbar-wrapper .navbar {
-    width: calc(100% - 70px);
+    width: calc(100% - 100px);
   }
   #wrapper.toggled #sidebar-wrapper {
-    width: 70px;
+    width: 100px;
   }
 
   #wrapper.toggled #navbar-wrapper {
@@ -389,6 +397,28 @@ img {
   align-content: center;
   justify-content: flex-start;
   align-items: center;
+}
+.toggled .sidebar-nav li a {
+  display: block;
+  text-align: center;
+  padding: 0.8rem 0.5rem;
+  margin-left: -10px;
+}
+.toggled .sidebar-brand .nav-link {
+  text-align: left;
+  padding: 0 32px;
+}
+.sidebar-brand .nav-link span {
+  color: #fff;
+  font-size: 1.2em;
+}
+.toggled .sidebar-brand .nav-link span {
+  display: block;
+  color: #fff;
+}
+.sidebar-brand .nav-link img {
+  height: 35px;
+  width: 35px;
 }
 /* --------------------------------COMMON CSS sidebar and header END--------------------------------------- */
 
@@ -891,3 +921,91 @@ nav.pagination-wrap {
   }
 }
 /* ----------modal css end------------------- */
+
+/* -------------notification modal css start-------------- */
+
+.notification-right-bar.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 320px;
+  height: 100%;
+  z-index: 100;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.notification-right-bar.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.notification-right-bar.modal.right .modal-body {
+  padding: 15px 15px 80px;
+}
+
+.notification-right-bar.modal.right.fade .modal-dialog {
+  right: -320px;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.notification-right-bar.modal.right.fade.in .modal-dialog {
+  right: 0;
+}
+
+.notification-right-bar .modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.notification-right-bar .modal-header {
+  border-bottom-color: #eeeeee;
+  background-color: #fafafa;
+  display: block;
+}
+/* -------------notification modal css end-------------- */
+
+/* -------------notification css start-------------- */
+.page-title {
+  padding: 20px 10px;
+}
+.page-title h1 {
+  color: #1976d2;
+}
+.notification-wrap {
+  /* border-bottom: 1px solid #ddd; */
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+.notification-wrap:hover {
+  background-color: #ddd;
+}
+.notification-wrap .notification-inner {
+  display: flex;
+  align-items: center;
+}
+.notification-wrap .notification-inner .user-img img {
+  width: 45px;
+  max-width: 100%;
+}
+.notification-wrap .notification-inner .user-info {
+  padding: 10px;
+}
+.notification-wrap .notification-inner .user-info h3 {
+  font-size: 17px;
+  margin-bottom: 0;
+}
+.notification-wrap:hover .notification-inner .user-info h3 {
+  color: #1976d2;
+}
+.notification-wrap .notification-inner .user-info p {
+  margin-bottom: 0;
+}
+/* -------------notification css end-------------- */

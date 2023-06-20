@@ -66,7 +66,7 @@ function CheckAll() {
             document.getElementById("Error-show").style.display = "none";
             document.getElementById("error-msg").innerHTML = "";
             spinner(false);
-            console.log("Login successful!");
+            toast("success", " Login successful!");
             if (
               response.user[0].role_id == 2 ||
               response.user[0].role_id == 7 ||
@@ -96,6 +96,7 @@ function CheckAll() {
         document.getElementById("Error-show").style.display = "block";
         document.getElementById("error-msg").innerHTML =
           "Incorrect Email Or Password ";
+        toast("error", "Incorrect Email Or Password");
       }
     },
 
@@ -103,14 +104,16 @@ function CheckAll() {
       spinner(false);
       // Handle login error
       console.log("Error: " + error);
-      alert("Login failed. Please try again.");
+      // alert("Login failed. Please try again.");
+      toast("warning", "Login failed. Please try again.");
     },
 
     complete: function (xhr, status) {
       spinner(false);
       if (status === "error" || !xhr.responseText) {
         // Handle network or server error
-        alert("Network error. Please try again later.");
+        // alert("Network error. Please try again later.");
+        toast("error", "Network error. Please try again later.");
       }
     },
   });
@@ -154,4 +157,26 @@ function spinner(isloading) {
   } else {
     document.getElementById("spinnerbody").style.display = none;
   }
+}
+
+// toast function
+function toast(action, msg) {
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+  };
+  Command: toastr[action](msg);
 }

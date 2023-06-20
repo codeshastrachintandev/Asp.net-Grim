@@ -33,9 +33,26 @@ $.ajax({
   contentType: "application/json",
   data: JSON.stringify(notification_Payload),
   success: function (response) {
-    // console.log("notification_logs js ->Get successfully:", response);
-    document.getElementById("notifications_no").innerHTML =
-      response.notification_logs.length;
+    if (response.success === true) {
+      console.log("notification_logs js ->Get successfully:", response);
+      document.getElementById("notifications_no").innerHTML =
+        response.notification_logs.length;
+      response.notification_logs.forEach((element) => {
+        document.getElementById("noticationbody").innerHTML += `
+                    <div class="notification-wrap">
+                        <div class="notification-inner">
+                            <div class="user-img"><img src="https://172.16.1.69/img/profile.28fb3626.jpg"></div>
+                            <div class="user-info">
+                                <h3>${element.message}</h3>
+                                <p>(${
+                                  element.product_id + "-" + element.name
+                                })</p>
+                                <p>${element.created_at}</p>
+                            </div>
+                        </div>
+                    </div>`;
+      });
+    }
   },
   error: function (error) {
     console.error("Error creating data on user_store_locations:->>", error);
@@ -171,3 +188,25 @@ var roles_menus = {
     },
   ],
 };
+
+// toast function
+function toast(action, msg) {
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+  };
+  Command: toastr[action](msg);
+}

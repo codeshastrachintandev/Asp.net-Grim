@@ -5,6 +5,22 @@
       "PackagePath": "staticwebassets\\GrimLogin.bundle.scp.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.css",
+      "PackagePath": "staticwebassets\\assets\\toastr\\toastr.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.js.map",
+      "PackagePath": "staticwebassets\\assets\\toastr\\toastr.js.map"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.min.css",
+      "PackagePath": "staticwebassets\\assets\\toastr\\toastr.min.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.min.js",
+      "PackagePath": "staticwebassets\\assets\\toastr\\toastr.min.js"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\Cart.css",
       "PackagePath": "staticwebassets\\css\\Cart.css"
     },
@@ -27,6 +43,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\Poppins.css",
       "PackagePath": "staticwebassets\\css\\Poppins.css"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\Profile.css",
+      "PackagePath": "staticwebassets\\css\\Profile.css"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\badge_notifiction.css",
@@ -73,6 +93,10 @@
       "PackagePath": "staticwebassets\\images\\ib-group-logo.png"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\profile-bg.jpg",
+      "PackagePath": "staticwebassets\\images\\profile-bg.jpg"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Home\\Home.js",
       "PackagePath": "staticwebassets\\js\\Home\\Home.js"
     },
@@ -87,6 +111,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Logout.js",
       "PackagePath": "staticwebassets\\js\\Logout.js"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Profile\\profile.js",
+      "PackagePath": "staticwebassets\\js\\Profile\\profile.js"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\cart\\cart.js",

@@ -1,5 +1,5 @@
 var user_loc_response;
-
+var plant_id = JSON.parse(localStorage.getItem("plant_id"));
 //ajax of user_store_locations_api start
 function user_loc() {
   $.ajax({
@@ -304,6 +304,7 @@ $(document).on("click", ".add", function () {
   //store data
   localStorage.setItem("cart", JSON.stringify(result_added));
   cartcount();
+  toast("success", "Prodect added into the cart successfuly");
 });
 
 //  minus click btn
