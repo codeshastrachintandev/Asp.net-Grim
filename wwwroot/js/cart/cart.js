@@ -46,6 +46,7 @@ $("#sel2").change(function () {
   selectedValue = $(this).val();
   WBS_Element_Number(selectedValue);
 });
+
 function WBS_Element_Number(no) {
   $.ajax({
     url: host + path + "wbs_numbers?plant_id=" + no,
@@ -82,14 +83,17 @@ function WBS_Element_Number(no) {
     },
   });
 }
-const cartdata = JSON.parse(localStorage.getItem("cart"));
-if (cartdata) {
-  cartdata.forEach((element, index) => {
-    tbody(element, index + 1);
-  });
-} else {
-  document.getElementById("tableid").style.display = "none";
-  document.getElementById("showmsg").innerHTML += `<div style="
+cartshow();
+function cartshow() {
+  document.getElementById("showmsg").innerHTML = "";
+  const cartdata = JSON.parse(localStorage.getItem("cart"));
+  if (cartdata) {
+    cartdata.forEach((element, index) => {
+      tbody(element, index + 1);
+    });
+  } else {
+    document.getElementById("tableid").style.display = "none";
+    document.getElementById("showmsg").innerHTML += `<div style="
     display: flex;
     align-content: center;
     flex-direction: row;
@@ -97,6 +101,12 @@ if (cartdata) {
     align-items: center;
     flex-wrap: wrap;
     ">Your indent is currently empty.</div> `;
+  }
+}
+function clearcart() {
+  // alert("your cart remove");
+  // localStorage.removeItem("cart");
+  // cartshow();
 }
 
 function roundUp(num, precision) {
