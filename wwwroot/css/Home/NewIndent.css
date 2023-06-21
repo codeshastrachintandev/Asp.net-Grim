@@ -4,7 +4,7 @@
   background-color: #f5f6fa;
   border-radius: 10px;
   color: #2f3640;
-  margin: 1.3em;
+  margin: 1.3em 0;
   transition: all linear 0.2s;
 }
 /* .product-card :hover {
@@ -108,6 +108,24 @@
 @media (min-width: 1200px) and (max-width: 1350px) {
   .product-card-wrap .col-lg-3 {
     width: 33.33%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .product-card-wrap .col-sm-6.col-md-6.col-lg-3.card-cut-col {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+@media (max-width: 1024px) {
+  .product-card-wrap .col-sm-6.col-md-6.col-lg-3.card-cut-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 575px) {
+  .product-card-wrap .col-sm-6.col-md-6.col-lg-3.card-cut-col {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 /* --------------------------------PRODUCT CARD END--------------------------------------- */

@@ -26,7 +26,7 @@ function dropdownfor_user_loc(data) {
     // console.log("plant_id", locations, plant_id);
 
     var dropdown = $("#sel2");
-
+    dropdown.append(`<option value="0">Search Locations</option>`);
     locations.forEach((element) => {
       const optionElement = $("<option>", {
         value: element.plant_id,
@@ -48,46 +48,56 @@ $("#sel2").change(function () {
 });
 
 function WBS_Element_Number(no) {
-  $.ajax({
-    url: host + path + "wbs_numbers?plant_id=" + no,
-    type: "GET",
-    contentType: "application/json",
-    success: function (response) {
-      console.log(response);
-      if (response.success === true) {
-        var dropdown = $("#sel3");
+  if (no != "0") {
+    $.ajax({
+      url: host + path + "wbs_numbers?plant_id=" + no,
+      type: "GET",
+      contentType: "application/json",
+      success: function (response) {
+        console.log(response);
+        if (response.success === true) {
+          var dropdown = $("#sel3");
+          // Remove all existing options from the dropdown
+          dropdown.empty();
 
-        // Remove all existing options from the dropdown
-        dropdown.empty();
+          if (response.wbs_numbers.length > 0) {
+            response.wbs_numbers.forEach((element) => {
+              const optionElement = $("<option>", {
+                value: element.id,
+                text: element.display_name,
+              });
 
-        if (response.wbs_numbers.length > 0) {
-          response.wbs_numbers.forEach((element) => {
-            const optionElement = $("<option>", {
-              value: element.id,
-              text: element.display_name,
+              dropdown.append(optionElement);
             });
-
+          } else {
+            const optionElement = $("<option>", {
+              value: "",
+              text: "No data found...",
+            });
             dropdown.append(optionElement);
-          });
-        } else {
-          const optionElement = $("<option>", {
-            value: "",
-            text: "No data found...",
-          });
-          dropdown.append(optionElement);
+          }
         }
-      }
-    },
-    error: function (error) {
-      console.error("Error creating data on user_store_locations:->>", error);
-    },
-  });
+      },
+      error: function (error) {
+        console.error("Error creating data on user_store_locations:->>", error);
+      },
+    });
+  } else {
+    var dropdown = $("#sel3");
+    dropdown.empty();
+    const optionElement = $("<option>", {
+      value: "",
+      text: "No data found...",
+    });
+    dropdown.append(optionElement);
+  }
 }
 cartshow();
 function cartshow() {
   document.getElementById("showmsg").innerHTML = "";
   const cartdata = JSON.parse(localStorage.getItem("cart"));
-  if (cartdata) {
+
+  if (cartdata && cartdata.length > 0) {
     cartdata.forEach((element, index) => {
       tbody(element, index + 1);
     });
@@ -116,92 +126,89 @@ function roundUp(num, precision) {
 
 function tbody(element, sr) {
   document.getElementById("tbody").innerHTML += `  
-                            <tr>
-                                <td class="vmiddle">
-                                    <div>${sr}</div>
-                                </td>
-                                <td class="vmiddle">
-                                    <div>${element.name}</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" class="form-control" id="usr" value="${
-                                          element.quantity
-                                        }">
-                                    </div>
-                                </td>
-                                <td class="vmiddle">
-                                    <div>
-                                        ₹${roundUp(
-                                          element.price * element.quantity,
-                                          3
-                                        )}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="date" class="form-control" id="usr">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div class="">
-                                            <select class="form-control" placeholder="Delivery Priority*" id="sel1">
-                                                <option>Delivery Priority</option>
-                                                <option>High</option>
-                                                <option>Medium</option>
-                                                <option>Low</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" class="form-control" id="usr">
-                                        <p>0 / 2</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" class="form-control" id="usr">
-                                        <p>0 / 20</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" class="form-control" id="usr">
-                                    </div>
-                                    <p>0 / 50</p>
-                                </td>
-                                <td>
-                                    <div>
-                                        <textarea class="form-control" rows="1" id="comment"></textarea>
-                                        <p> 0 / 100</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <textarea class="form-control" rows="1" id="comment"></textarea>
-                                        <p>0 / 50</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div class="">
-                                            <select class="form-control" id="sel1">
-                                                <option>User</option>
-                                                <option>QA Team</option>
-                                                <option>stores</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <span><a><span class="material-symbols-rounded">delete</span></a></span>
-                                    </div>
-                                </td>
-                            </tr>
+  <tr>
+      <td class="vmiddle">
+          <div>${sr}</div>
+      </td>
+      <td class="vmiddle">
+          <div>${element.name}</div>
+      </td>
+      <td>
+          <div>
+              <input type="text" class="form-control" id="usr" value="${
+                element.quantity
+              }"required>
+          </div>
+      </td>
+      <td class="vmiddle">
+          <div>
+              ₹${roundUp(element.price * element.quantity, 3)}
+          </div>
+      </td>
+      <td>
+          <div>
+              <input type="date" class="form-control" id="usr" required>
+          </div>
+      </td>
+      <td>
+          <div>
+              <div class="">
+                  <select class="form-control" placeholder="Delivery Priority*" id="sel1">
+                      <option>Delivery Priority</option>
+                      <option>High</option>
+                      <option>Medium</option>
+                      <option>Low</option>
+                  </select>
+              </div>
+          </div>
+      </td>
+      <td>
+          <div>
+              <input type="text" class="form-control" id="usr" required>
+              <p>0 / 2</p>
+          </div>
+      </td>
+      <td>
+          <div>
+              <input type="text" class="form-control" id="usr" required>
+              <p>0 / 20</p>
+          </div>
+      </td>
+      <td>
+          <div>
+              <input type="text" class="form-control" id="usr" required>
+          </div>
+          <p>0 / 50</p>
+      </td>
+      <td>
+          <div>
+              <textarea class="form-control" rows="1" id="comment" required></textarea>
+              <p> 0 / 100</p>
+          </div>
+      </td>
+      <td>
+          <div>
+              <textarea class="form-control" rows="1" id="comment" required></textarea>
+              <p>0 / 50</p>
+          </div>
+      </td>
+      <td>
+          <div>
+              <div class="">
+                  <select class="form-control" id="sel1" required>
+                      <option>User</option>
+                      <option>QA Team</option>
+                      <option>stores</option>
+                  </select>
+              </div>
+          </div>
+      </td>
+      <td>
+          <div>
+              <span><a><span class="material-symbols-rounded">delete</span></a></span>
+          </div>
+      </td>
+  </tr>
 `;
 }
 
@@ -212,8 +219,24 @@ function Pordectorder() {
 }
 
 function validation() {
-  let valid = true;
+  let valid = false;
+
+  if (Deliverystoredorpdown()) {
+    valid = true;
+  }
+
+  return valid;
+}
+
+function Deliverystoredorpdown() {
   let Deliverystoredorpdown = $("#sel2").val();
-  console.log("Deliverystoredorpdown", Deliverystoredorpdown);
-  if (Deliverystoredorpdown) return true;
+  if (Deliverystoredorpdown != 0) {
+    console.log("Deliverystoredorpdown", Deliverystoredorpdown);
+    document.getElementById("cartdropbox1").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("cartdropbox1").style.display = "block";
+    console.log("select option pls");
+    return false;
+  }
 }

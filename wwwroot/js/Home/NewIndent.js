@@ -175,6 +175,8 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
             }
           });
         }
+        var totelstock =
+          element.stock - cartquan >= 0 ? element.stock - cartquan : 0;
         // if (element.stock == 0) {
         //   countstock = element.stock - cartquan;
         // } else {
@@ -183,7 +185,7 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
 
         // card detail store in body
         document.getElementById("cardbody").innerHTML += `
-            <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="col-sm-6 col-md-6 col-lg-3 card-cut-col">
               <div class="product-card">
                 <img class="product-img" src="${element.image_url}">
                 <div class="product-text">
@@ -198,14 +200,12 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
                 </div>
                 <div class="product-cart">
                   <div class="stockcountbox">
-                    <input class="stockcount" type="text" value="${
-                      element.stock - cartquan
-                    }" disabled />${instock}
+                    <input class="stockcount" type="text" value="${totelstock}" disabled />${instock}
                   </div>
                   <div>
                     <div class="wrap">
                       <button type="button" class="sub" data-index="${Index}"><span class="material-symbols-rounded">remove</span></button>
-                      <input class="count" type="text" value="${cartquan}" min="1" max="100" />
+                      <input class="count" type="text" data-val="${element.stock}"  data-index="${Index}" value="${cartquan}" min="1" max="100" />
                       <button type="button" class="add" data-index="${Index}"><span class="material-symbols-rounded">add</span></button>
                     </div>
                   </div>
@@ -237,10 +237,75 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
 // $(document).ready(function () {
 
 // add click btn
+// Define the stock variable
 
+// input on val
+$(document).on("input", ".count", function () {
+  var enteredValue = $(this).val();
+  var stock = $(this).data("val");
+  var index = $(this).data("index");
+  let val = $(this)
+    .parent()
+    .parent()
+    .siblings(".stockcountbox")
+    .find(".stockcount");
+  // Check if the entered value is a number
+  if ($.isNumeric(enteredValue)) {
+    if (enteredValue === "0" || enteredValue.trim() === "") {
+      // Set default value to 1
+      $(this).val("0");
+      enteredValue = 0; // Update the enteredValue variable
+    }
+
+    // Check if enteredValue is less than stock
+    if (parseInt(enteredValue) > stock) {
+      alert("Entered value is less than stock.");
+      stock - enteredValue >= 0 ? val.val(stock - enteredValue) : val.val(0);
+    } else {
+      console.log("Number entered:", enteredValue);
+      stock - enteredValue >= 0 ? val.val(stock - enteredValue) : val.val(0);
+    }
+    var temp = {
+      id: products_result[index].id,
+      name: products_result[index].name,
+      price: products_result[index].price,
+      stock: products_result[index].stock,
+      i_stock: 1,
+      bag: products_result[index].bag,
+      quantity: parseInt(enteredValue),
+      plant_id: products_result[index].plant_id,
+      status: "Pending",
+      p_location: "",
+      p_remarks: "",
+      //?
+      wbs_element_number: "WBS123456",
+      sap_id: "SAP123456",
+      //?
+      base_unit: products_result[index].base_unit,
+      valution_type: products_result[index].valution_type,
+    };
+    var subtocart = JSON.parse(localStorage.getItem("cart"));
+    if (temp.quantity == 0) {
+      subtocart.forEach((element, tempindex) => {
+        if (element.id == products_result[index].id) {
+          subtocart.splice(tempindex, 1);
+        }
+      });
+    } else {
+      subtocart.push(temp);
+    }
+    var result_added = removeDuplicatesAndUpdate(subtocart);
+
+    localStorage.setItem("cart", JSON.stringify(result_added));
+    cartcount();
+    toast("success", "Prodect added into the cart successfuly");
+  }
+});
+
+// add click btn
 $(document).on("click", ".add", function () {
   var index = $(this).data("index");
-  console.log("products_result[index]->", products_result[index]);
+  // console.log("products_result[index]->", products_result[index]);
 
   var th = $(this).closest(".wrap").find(".count");
   var avaItems = $(this)
@@ -269,9 +334,9 @@ $(document).on("click", ".add", function () {
       .siblings(".stockcountbox")
       .find(".stockcount")
       .val(avaItems);
+    console.log("input(+)--->", avaItems);
+    th.val(+th.val() + 1);
   }
-  console.log("input(+)--->", avaItems);
-  th.val(+th.val() + 1);
 
   var temp = {
     id: products_result[index].id,
@@ -299,8 +364,6 @@ $(document).on("click", ".add", function () {
   addtocart.push(temp);
   var result_added = removeDuplicatesAndUpdate(addtocart);
 
-  // console.log("removeDupandUpdate->", result_added);
-
   //store data
   localStorage.setItem("cart", JSON.stringify(result_added));
   cartcount();
@@ -310,7 +373,7 @@ $(document).on("click", ".add", function () {
 //  minus click btn
 $(document).on("click", ".sub", function () {
   var index = $(this).data("index");
-  console.log("products_result[index]->", products_result[index]);
+  // console.log("products_result[index]->", products_result[index]);
 
   var th = $(this).closest(".wrap").find(".count");
 

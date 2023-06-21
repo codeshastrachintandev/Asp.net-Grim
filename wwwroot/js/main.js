@@ -34,7 +34,7 @@ $.ajax({
   data: JSON.stringify(notification_Payload),
   success: function (response) {
     if (response.success === true) {
-      console.log("notification_logs js ->Get successfully:", response);
+      // console.log("notification_logs js ->Get successfully:", response);
       document.getElementById("notifications_no").innerHTML =
         response.notification_logs.length;
       response.notification_logs.forEach((element) => {
@@ -194,14 +194,14 @@ function toast(action, msg) {
   toastr.options = {
     closeButton: true,
     debug: false,
-    newestOnTop: false,
+    newestOnTop: true,
     progressBar: true,
     positionClass: "toast-top-right",
-    preventDuplicates: false,
+    preventDuplicates: true,
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
-    timeOut: "5000",
+    timeOut: "1000",
     extendedTimeOut: "1000",
     showEasing: "swing",
     hideEasing: "linear",

@@ -66,7 +66,7 @@ function CheckAll() {
             document.getElementById("Error-show").style.display = "none";
             document.getElementById("error-msg").innerHTML = "";
             spinner(false);
-            toast("success", " Login successful!");
+            toastlogin("success", " Login successful!");
             if (
               response.user[0].role_id == 2 ||
               response.user[0].role_id == 7 ||
@@ -96,7 +96,7 @@ function CheckAll() {
         document.getElementById("Error-show").style.display = "block";
         document.getElementById("error-msg").innerHTML =
           "Incorrect Email Or Password ";
-        toast("error", "Incorrect Email Or Password");
+        toastlogin("error", "Incorrect Email Or Password");
       }
     },
 
@@ -105,7 +105,7 @@ function CheckAll() {
       // Handle login error
       console.log("Error: " + error);
       // alert("Login failed. Please try again.");
-      toast("warning", "Login failed. Please try again.");
+      toastlogin("warning", "Login failed. Please try again.");
     },
 
     complete: function (xhr, status) {
@@ -113,7 +113,7 @@ function CheckAll() {
       if (status === "error" || !xhr.responseText) {
         // Handle network or server error
         // alert("Network error. Please try again later.");
-        toast("error", "Network error. Please try again later.");
+        toastlogin("error", "Network error. Please try again later.");
       }
     },
   });
@@ -153,7 +153,7 @@ function forgot_password() {
         // Handle login error
         console.log("Error: " + error);
         // alert("Login failed. Please try again.");
-        toast("warning", error);
+        toastlogin("warning", error);
       }
     },
 
@@ -162,7 +162,7 @@ function forgot_password() {
       if (!xhr.responseText) {
         // Handle network or server error
         // alert("Network error. Please try again later.");
-        toast("error", "Network error. Please try again later.");
+        toastlogin("error", "Network error. Please try again later.");
       }
     },
   });
@@ -177,14 +177,14 @@ function spinner(isloading) {
 }
 
 // toast function
-function toast(action, msg) {
+function toastlogin(action, msg) {
   toastr.options = {
     closeButton: true,
     debug: false,
-    newestOnTop: false,
+    newestOnTop: true,
     progressBar: true,
     positionClass: "toast-top-right",
-    preventDuplicates: false,
+    preventDuplicates: true,
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
