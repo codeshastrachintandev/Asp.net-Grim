@@ -104,7 +104,7 @@ function cartshow() {
   }
 }
 function clearcart() {
-  // alert("your cart remove");
+  alert("your cart remove");
   // localStorage.removeItem("cart");
   // cartshow();
 }
@@ -203,4 +203,17 @@ function tbody(element, sr) {
                                 </td>
                             </tr>
 `;
+}
+
+function Pordectorder() {
+  if (validation()) {
+    console.log("valid");
+  }
+}
+
+function validation() {
+  let valid = true;
+  let Deliverystoredorpdown = $("#sel2").val();
+  console.log("Deliverystoredorpdown", Deliverystoredorpdown);
+  if (Deliverystoredorpdown) return true;
 }

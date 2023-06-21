@@ -134,21 +134,38 @@ function popClose() {
 
 function forgot_password() {
   let forgot_email = document.getElementById("forgot-email").value;
-  let api_url_forgot = "https://172.16.1.69:3002/api/v4/forgot_password";
-  fetch(api_url_forgot, {
+  let api_url_forgot = hostlogin + "/api/v4/forgot_password";
+
+  $.ajax({
+    url: api_url_forgot,
     method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+    dataType: "json",
+    data: { email: forgot_email },
+
+    success: function (response) {
+      // Handle successful login
+      console.log("Login successful!");
     },
-    body: JSON.stringify({ email: forgot_email }),
-  })
-    .then((response) => response.json())
-    .then((response) => console.log(JSON.stringify(response)))
-    .then((response) => {
-      let data = response;
-      console.log(data);
-    });
+
+    error: function (xhr, status, error) {
+      if (status === "error") {
+        spinner(false);
+        // Handle login error
+        console.log("Error: " + error);
+        // alert("Login failed. Please try again.");
+        toast("warning", error);
+      }
+    },
+
+    complete: function (xhr, status) {
+      spinner(false);
+      if (!xhr.responseText) {
+        // Handle network or server error
+        // alert("Network error. Please try again later.");
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
 }
 
 function spinner(isloading) {
