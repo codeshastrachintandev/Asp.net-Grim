@@ -1,4 +1,6 @@
 ﻿<link rel="stylesheet" type="text/css" href="~/css/Cart.css"> 
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"> 
 <section id="content-wrapper">
 
     <div class="page-title">
@@ -36,7 +38,8 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" id="sel4" name="sellist1">
+                                <select class="form-control" id="sel4"  name="sellist1">
+                                    <option value="0">Delivery Type*</option>
                                     <option>Self Pickup</option>
                                     <option>Store</option>
                                 </select>
@@ -57,8 +60,9 @@
 
             <div class="container-fluid">
             <div id="tableid">
+            <form id="formId">   
                 <div class="product-cart-wrapp table-responsive" >
-                    <table class="table table-striped" >
+                    <table class="table table-striped" id="example" >
                         <thead>
                             <tr>
                                 <th>SI No</th>
@@ -76,6 +80,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+
                         <tbody id="tbody">
                             @* <tr>
                                 <td class="vmiddle">
@@ -161,10 +166,12 @@
                             </tr> *@
 
                         </tbody>
+
                     </table>
+
                 </div>
                 <div class="cart-buttons-wrap">
-                 
+
                     <button class="common-button common-blue-button" onclick="window.print();return false;"><span class="material-symbols-rounded">print</span> PREVIEW INDENT</button>
 
                     <button class="common-button common-orange-button"  onclick="clearcart()" data-toggle="modal" data-target="#exampleModalCenter">CLEAR</button>
@@ -172,6 +179,7 @@
                     <button type="submit" class="common-button common-yellow-button" onclick="Pordectorder()">PLACE INDENT</button>
 
                 </div>  
+            </form>
             </div>
             <br>
             <div id="showmsg"></div>
@@ -179,6 +187,23 @@
 </section>
 <br><br>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+@* <script src="https://code.jquery.com/jquery-3.5.1.js"></script> *@
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
     <script src="~/js/main.js"></script>
     <script src="~/js/cart/cart.js"></script>
+    <script>
 
+            $("#example").DataTable({
+                dom: "Bfrtip",
+                buttons: ["print"],
+            });
+
+
+    </script>

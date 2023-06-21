@@ -164,53 +164,62 @@ function tbody(element, sr) {
       </td>
       <td>
           <div>
-              <input type="text" class="form-control" id="usr" required>
+              <input type="text" value="test" class="form-control" required>
               <p>0 / 2</p>
           </div>
       </td>
       <td>
           <div>
-              <input type="text" class="form-control" id="usr" required>
+              <input type="text" class="form-control" required>
               <p>0 / 20</p>
           </div>
       </td>
       <td>
           <div>
-              <input type="text" class="form-control" id="usr" required>
+              <input type="text" class="form-control" required>
           </div>
           <p>0 / 50</p>
       </td>
       <td>
           <div>
-              <textarea class="form-control" rows="1" id="comment" required></textarea>
+              <textarea class="form-control" rows="1"  required></textarea>
               <p> 0 / 100</p>
           </div>
       </td>
       <td>
           <div>
-              <textarea class="form-control" rows="1" id="comment" required></textarea>
+              <textarea class="form-control" rows="1" " required></textarea>
               <p>0 / 50</p>
           </div>
       </td>
       <td>
           <div>
               <div class="">
-                  <select class="form-control" id="sel1" required>
-                      <option>User</option>
-                      <option>QA Team</option>
-                      <option>stores</option>
+                  <select class="form-control Qualitycheckby" placeholder="Quality Check By*"  required>
+                      <option value="0">Quality Check By*</option>
+                      <option value="User">User</option>
+                      <option value="QA Team">QA Team</option>
+                      <option value="stores">stores</option>
                   </select>
+                <span class="error-msg" id="cartdropbox3" style="display: none;">*The QualityCheckBy field is required.</span>
               </div>
           </div>
       </td>
       <td>
           <div>
-              <span><a><span class="material-symbols-rounded">delete</span></a></span>
+              <span><a><span class="material-symbols-rounded deleteicon">delete</span></a></span>
           </div>
       </td>
   </tr>
 `;
 }
+
+var form = document.getElementById("formId");
+function submitForm(event) {
+  event.preventDefault();
+}
+
+form.addEventListener("submit", submitForm);
 
 function Pordectorder() {
   if (validation()) {
@@ -219,10 +228,16 @@ function Pordectorder() {
 }
 
 function validation() {
-  let valid = false;
+  let valid = true;
 
-  if (Deliverystoredorpdown()) {
-    valid = true;
+  if (!Deliverystoredorpdown()) {
+    valid = false;
+  }
+  if (!DeliveryTypedorpdown()) {
+    valid = false;
+  }
+  if (!Qualitycheckby()) {
+    valid = false;
   }
 
   return valid;
@@ -231,12 +246,34 @@ function validation() {
 function Deliverystoredorpdown() {
   let Deliverystoredorpdown = $("#sel2").val();
   if (Deliverystoredorpdown != 0) {
-    console.log("Deliverystoredorpdown", Deliverystoredorpdown);
     document.getElementById("cartdropbox1").style.display = "none";
     return true;
   } else {
     document.getElementById("cartdropbox1").style.display = "block";
-    console.log("select option pls");
+    return false;
+  }
+}
+
+function DeliveryTypedorpdown() {
+  let DeliveryTypedorpdown = $("#sel4").val();
+  if (DeliveryTypedorpdown != 0) {
+    document.getElementById("cartdropbox2").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("cartdropbox2").style.display = "block";
+    return false;
+  }
+}
+
+function Qualitycheckby() {
+  let Deliverystoredorpdown = $(".Qualitycheckby").val();
+  $(document).on(".Qualitycheckby", function () {});
+
+  if (Deliverystoredorpdown != 0) {
+    document.getElementById("cartdropbox3").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("cartdropbox3").style.display = "block";
     return false;
   }
 }
