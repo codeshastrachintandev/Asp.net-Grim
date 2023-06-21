@@ -25,6 +25,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <select class="form-control" id="sel2" name="sellist1"></select>
+                                <span class="error-msg" id="cartdropbox1" style="display: none;">*The location field is required.</span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -39,6 +40,7 @@
                                     <option>Self Pickup</option>
                                     <option>Store</option>
                                 </select>
+                                <span class="error-msg" id="cartdropbox2" style="display: none;">*The DeliveryType field is required..</span>
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -162,14 +164,14 @@
                     </table>
                 </div>
                 <div class="cart-buttons-wrap">
-
+                 
                     <button class="common-button common-blue-button" onclick="window.print();return false;"><span class="material-symbols-rounded">print</span> PREVIEW INDENT</button>
 
                     <button class="common-button common-orange-button"  onclick="clearcart()" data-toggle="modal" data-target="#exampleModalCenter">CLEAR</button>
 
-                    <button class="common-button common-yellow-button" onclick="Pordectorder()">PLACE INDENT</button>
+                    <button type="submit" class="common-button common-yellow-button" onclick="Pordectorder()">PLACE INDENT</button>
 
-                </div>
+                </div>  
             </div>
             <br>
             <div id="showmsg"></div>
