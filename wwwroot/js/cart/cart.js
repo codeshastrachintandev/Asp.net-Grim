@@ -95,22 +95,18 @@ function WBS_Element_Number(no) {
 cartshow();
 function cartshow() {
   document.getElementById("showmsg").innerHTML = "";
+  document.getElementById("tbody").innerHTML = "";
   const cartdata = JSON.parse(localStorage.getItem("cart"));
 
   if (cartdata && cartdata.length > 0) {
     cartdata.forEach((element, index) => {
-      tbody(element, index + 1);
+      tbody(element, index);
     });
   } else {
     document.getElementById("tableid").style.display = "none";
-    document.getElementById("showmsg").innerHTML += `<div style="
-    display: flex;
-    align-content: center;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    ">Your indent is currently empty.</div> `;
+    document.getElementById(
+      "showmsg"
+    ).innerHTML += `<div class="showmsg">Your indent is currently empty.</div> `;
   }
 }
 function clearcart() {
@@ -128,16 +124,16 @@ function tbody(element, sr) {
   document.getElementById("tbody").innerHTML += `  
   <tr>
       <td class="vmiddle">
-          <div>${sr}</div>
+          <div>${sr + 1}</div>
       </td>
       <td class="vmiddle">
           <div>${element.name}</div>
       </td>
       <td>
           <div>
-              <input type="text" class="form-control" id="usr" value="${
-                element.quantity
-              }"required>
+              <input type="text" class="form-control quantity quantity${sr}" id="usr" value="${
+    element.quantity
+  }"required>
           </div>
       </td>
       <td class="vmiddle">
@@ -147,67 +143,70 @@ function tbody(element, sr) {
       </td>
       <td>
           <div>
-              <input type="date" class="form-control" id="usr" required>
+              <input type="date" class="form-control minDate minDate${sr}" id="minDate${sr}" required>
           </div>
       </td>
       <td>
           <div>
               <div class="">
-                  <select class="form-control" placeholder="Delivery Priority*" id="sel1">
-                      <option>Delivery Priority</option>
-                      <option>High</option>
-                      <option>Medium</option>
-                      <option>Low</option>
+                  <select class="form-control DeliveryPriority DeliveryPriority${sr}" data-obj="${element}" placeholder="Delivery Priority*" id="${sr}">
+                      <option value="0">Delivery Priority</option>
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
                   </select>
+              <span class="error-msg cartdropbox4" id="DeliveryPriority${sr}" style="display: none;">*The DeliveryPriority field is required.</span>
               </div>
           </div>
       </td>
       <td>
           <div>
-              <input type="text" value="test" class="form-control" required>
+              <input type="text" id="Delval${sr}" disabled name="input1" class="form-control" required>
               <p>0 / 2</p>
           </div>
-      </td>
+      </td>     
       <td>
           <div>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control input1-${sr}" value="test"  required>
               <p>0 / 20</p>
           </div>
       </td>
       <td>
           <div>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control input2-${sr}"  value="test"  required>
           </div>
           <p>0 / 50</p>
       </td>
       <td>
           <div>
-              <textarea class="form-control" rows="1"  required></textarea>
+              <textarea class="form-control input3-${sr}" rows="1" value="test"   required></textarea>
               <p> 0 / 100</p>
           </div>
       </td>
       <td>
           <div>
-              <textarea class="form-control" rows="1" " required></textarea>
+              <textarea class="form-control input4-${sr}" rows="1" value="test"  required></textarea>
               <p>0 / 50</p>
           </div>
       </td>
       <td>
           <div>
               <div class="">
-                  <select class="form-control Qualitycheckby" placeholder="Quality Check By*"  required>
+                  <select class="form-control Qualitycheckby" data-obj="${element}" placeholder="Quality Check By*"  required>
                       <option value="0">Quality Check By*</option>
                       <option value="User">User</option>
                       <option value="QA Team">QA Team</option>
                       <option value="stores">stores</option>
                   </select>
-                <span class="error-msg" id="cartdropbox3" style="display: none;">*The QualityCheckBy field is required.</span>
+                <span class="error-msg cartdropbox3" id="Qualitycheckby${sr}" style="display: none;">*The QualityCheckBy field is required.</span>
               </div>
           </div>
       </td>
       <td>
           <div>
-              <span><a><span class="material-symbols-rounded deleteicon">delete</span></a></span>
+              <span><a><span id="${sr}" data-obj="${
+    element.id
+  }" class="material-symbols-rounded deleteicon">delete</span></a></span>
           </div>
       </td>
   </tr>
@@ -222,9 +221,17 @@ function submitForm(event) {
 form.addEventListener("submit", submitForm);
 
 function Pordectorder() {
-  if (validation()) {
-    console.log("valid");
-  }
+  // if (validation()) {
+  console.log("valid");
+  // get all data from cart page
+  var cartarray = JSON.parse(localStorage.getItem("cart"));
+  cartarray.forEach((element) => {
+    console.table(element);
+  });
+  var quantity = $(".quantity");
+
+  // console.table(quantity);
+  // }
 }
 
 function validation() {
@@ -234,6 +241,9 @@ function validation() {
     valid = false;
   }
   if (!DeliveryTypedorpdown()) {
+    valid = false;
+  }
+  if (!DeliveryPriority()) {
     valid = false;
   }
   if (!Qualitycheckby()) {
@@ -265,15 +275,105 @@ function DeliveryTypedorpdown() {
   }
 }
 
-function Qualitycheckby() {
-  let Deliverystoredorpdown = $(".Qualitycheckby").val();
-  $(document).on(".Qualitycheckby", function () {});
+function DeliveryPriority() {
+  let valid;
+  $(".DeliveryPriority").each(function (index) {
+    let dorpdownvalDel = $(this).val();
+    valid = checkerrormsg(dorpdownvalDel, index, "DeliveryPriority");
+  });
+  return valid;
+}
 
-  if (Deliverystoredorpdown != 0) {
-    document.getElementById("cartdropbox3").style.display = "none";
+function Qualitycheckby() {
+  let valid;
+  $(".Qualitycheckby").each(function (index) {
+    let dorpdownvalQua = $(this).val();
+    valid = checkerrormsg(dorpdownvalQua, index, "Qualitycheckby");
+  });
+
+  return valid;
+}
+
+function checkerrormsg(dorpdownval, index, span_name) {
+  let id = span_name + index;
+  if (dorpdownval != 0) {
+    document.getElementById(id).style.display = "none";
     return true;
   } else {
-    document.getElementById("cartdropbox3").style.display = "block";
+    document.getElementById(id).style.display = "block";
     return false;
   }
 }
+
+// set date forment
+var today = new Date().toISOString().split("T")[0];
+$(".minDate").each(function (index) {
+  $("#minDate" + index).attr("min", today);
+});
+
+// on change in dropdown
+$(".DeliveryPriority").change(function () {
+  const selectedOption = $(this).find("option:selected");
+
+  // Check if it is the first option with a value of 0
+  if (selectedOption.index() === 0 && selectedOption.val() === "0") {
+    // Remove the first option
+    selectedOption.remove();
+  }
+
+  $(this).each(function (index) {
+    let val = $(this).val();
+    let id = $(this).attr("id");
+    // console.log(val, id);
+    if (val == "High") {
+      $("#Delval" + id).val(3);
+    } else if (val == "Medium") {
+      $("#Delval" + id).val(6);
+    } else if (val == "Low") {
+      $("#Delval" + id).val(15);
+    }
+  });
+});
+
+$(".Qualitycheckby").change(function () {
+  const selectedOption = $(this).find("option:selected");
+
+  // Check if it is the first option with a value of 0
+  if (selectedOption.index() === 0 && selectedOption.val() === "0") {
+    selectedOption.remove();
+  }
+});
+
+$("#sel4").change(function () {
+  const selectedOption = $(this).find("option:selected");
+
+  if (selectedOption.index() === 0 && selectedOption.val() === "0") {
+    selectedOption.remove();
+  }
+});
+var isChecked;
+$("#urgent-indent").change(function () {
+  // Get the checked status of the checkbox
+  isChecked = $(this).is(":checked");
+  console.log(isChecked);
+});
+
+$(document).on("click", ".deleteicon", function () {
+  var index = $(this).attr("id");
+  var objid = $(this).data("obj");
+  console.log(index, objid);
+
+  var getcart = JSON.parse(localStorage.getItem("cart"));
+
+  var filteredArray = getcart.filter(function (obj) {
+    return obj.id !== objid;
+  });
+
+  console.log("filteredArray->>>", filteredArray);
+
+  localStorage.setItem("cart", JSON.stringify(filteredArray));
+
+  alert("data-deleated");
+  cartshow();
+  cartcount();
+});
