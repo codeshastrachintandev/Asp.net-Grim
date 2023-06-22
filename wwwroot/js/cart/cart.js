@@ -221,17 +221,17 @@ function submitForm(event) {
 form.addEventListener("submit", submitForm);
 
 function Pordectorder() {
-  // if (validation()) {
-  console.log("valid");
-  // get all data from cart page
-  var cartarray = JSON.parse(localStorage.getItem("cart"));
-  cartarray.forEach((element) => {
-    console.table(element);
-  });
-  var quantity = $(".quantity");
+  if (validation()) {
+    console.log("valid");
+    // get all data from cart page
+    var cartarray = JSON.parse(localStorage.getItem("cart"));
+    cartarray.forEach((element) => {
+      console.table(element);
+    });
+    var quantity = $(".quantity");
 
-  // console.table(quantity);
-  // }
+    // console.table(quantity);
+  }
 }
 
 function validation() {
