@@ -54,7 +54,17 @@ $.ajax({
       });
     }
   },
+  error: function (xhr, status, error) {
+    if (status === "error") {
+      spinner(false);
+      // Handle login error
+      console.log("Error: " + error);
+      toastlogin("warning", error);
+    }
+  },
   error: function (error) {
+    toastlogin("error", error);
+    toastlogin("error", "Network error. Please try again later.");
     console.error("Error creating data on user_store_locations:->>", error);
   },
 });

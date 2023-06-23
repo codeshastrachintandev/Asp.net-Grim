@@ -1,4 +1,4 @@
-const plantdata = JSON.parse(localStorage.getItem("plant_id"));
+let plantdata = JSON.parse(localStorage.getItem("plant_id"));
 if (plantdata) {
   document.getElementById("plant_name").innerHTML =
     plantdata.plant_id +
@@ -36,14 +36,22 @@ function dropdownfor_user_loc(data) {
           element.storage_loc +
           " - " +
           element.plant_name,
+        "data-id": element.id,
       });
       dropdown.append(optionElement);
     });
   }
 }
-
+var selectedId;
 $("#sel2").change(function () {
   selectedValue = $(this).val();
+  var selectedOption = $(this).find("option:selected");
+  // Get the value of the data-id attribute
+  selectedId = selectedOption.data("id");
+  // Print the data-id value
+
+  // console.log("selectedId->>", selectedId);
+  // console.log("selectedValue->>", selectedValue);
   WBS_Element_Number(selectedValue);
 });
 
@@ -63,7 +71,7 @@ function WBS_Element_Number(no) {
           if (response.wbs_numbers.length > 0) {
             response.wbs_numbers.forEach((element) => {
               const optionElement = $("<option>", {
-                value: element.id,
+                value: element.wbs_number,
                 text: element.display_name,
               });
 
@@ -122,23 +130,26 @@ function roundUp(num, precision) {
 
 function tbody(element, sr) {
   document.getElementById("tbody").innerHTML += `  
-  <tr>
+  <tr id="getitem${sr}" data-itemid="${element.id}">
       <td class="vmiddle">
           <div>${sr + 1}</div>
       </td>
       <td class="vmiddle">
           <div>${element.name}</div>
       </td>
-      <td>
+      <td> 
           <div>
-              <input type="text" class="form-control quantity quantity${sr}" id="usr" value="${
+              <input type="number"  min="1" class="form-control quantity quantity${sr}" id="${sr}" value="${
     element.quantity
   }"required>
           </div>
       </td>
       <td class="vmiddle">
           <div>
-              ₹${roundUp(element.price * element.quantity, 3)}
+              ₹<span id="Tprice${sr}" data-price="${element.price}" >${roundUp(
+    element.price * element.quantity,
+    3
+  )}</span>
           </div>
       </td>
       <td>
@@ -192,7 +203,7 @@ function tbody(element, sr) {
       <td>
           <div>
               <div class="">
-                  <select class="form-control Qualitycheckby" data-obj="${element}" placeholder="Quality Check By*"  required>
+                  <select class="form-control Qualitycheckby Qualitycheckby${sr}" data-obj="${element}" placeholder="Quality Check By*"  required>
                       <option value="0">Quality Check By*</option>
                       <option value="User">User</option>
                       <option value="QA Team">QA Team</option>
@@ -221,16 +232,60 @@ function submitForm(event) {
 form.addEventListener("submit", submitForm);
 
 function Pordectorder() {
-  if (validation()) {
-    console.log("valid");
-    // get all data from cart page
-    var cartarray = JSON.parse(localStorage.getItem("cart"));
-    cartarray.forEach((element) => {
-      console.table(element);
-    });
-    var quantity = $(".quantity");
+  var total = 1;
 
-    // console.table(quantity);
+  if (validation()) {
+    // console.log("valid");
+    // get all data from cart page
+    let itemsdata = [];
+    var cartarray = JSON.parse(localStorage.getItem("cart"));
+    cartarray.forEach((element, index) => {
+      // console.log(index, "-", $(".quantity" + index).val() * element.price);
+      // console.log("up", total);
+      total += $(".quantity" + index).val() * element.price;
+      // console.log("down", total);
+      let itemstempobj = {
+        product_id: $("#getitem" + index).data("itemid"),
+        product_name: element.name,
+        quantity: $(".quantity" + index).val(),
+        total_price: element.price * $(".quantity" + index).val(),
+        price: element.price,
+        delivery_priority: $(".DeliveryPriority" + index).val(),
+        remarks: "",
+        stock: element.stock,
+        bag: element.bag,
+        reason: $(".input3-" + index).val(),
+        where_used: $(".input4-" + index).val(),
+        section: $(".input2-" + index).val(),
+        tracking_no: $(".input1-" + index).val(),
+        priority_days: $("#Delval" + index).val(),
+        base_unit: element.base_unit,
+        delivery_date: $(".minDate" + index).val(),
+        quality_check_by: $(".Qualitycheckby" + index).val(),
+        valution_type: element.valution_type,
+      };
+      itemsdata.push(itemstempobj);
+    });
+    console.log("total->>", total);
+
+    var temporderobj = {
+      order: {
+        user_id: Logindata.user[0].id,
+        first_name: Logindata.user[0].first_name,
+        role_id: Logindata.user[0].role_id,
+        plant: plantdata,
+        items: itemsdata,
+        total: total, //total from all prodects -> items
+        address: selectedId, //
+        WBS_NO: $("#sel3").val(),
+        urgent_flag: $("#urgent-indent").is(":checked"),
+        delivery_type: $("#sel4").val(),
+        ref: "", //??
+        ticket_id: "", //??
+      },
+    };
+    console.log("itemsdata--->>", temporderobj);
+    // console.log(temporderobj);
   }
 }
 
@@ -335,6 +390,19 @@ $(".DeliveryPriority").change(function () {
   });
 });
 
+$(".quantity").change(function () {
+  $(this).each(function (index) {
+    let id = $(this).attr("id");
+    let price = $("#Tprice" + id).data("price");
+    let quantity = $(this).val();
+    if (quantity == 0) {
+      $(this).val(1); // Set the value to 1
+      quantity = 1; // Update the quantity variable
+    }
+    $("#Tprice" + id).text(price * quantity);
+  });
+});
+
 $(".Qualitycheckby").change(function () {
   const selectedOption = $(this).find("option:selected");
 
@@ -351,12 +419,11 @@ $("#sel4").change(function () {
     selectedOption.remove();
   }
 });
-var isChecked;
-$("#urgent-indent").change(function () {
-  // Get the checked status of the checkbox
-  isChecked = $(this).is(":checked");
-  console.log(isChecked);
-});
+// var isChecked;
+// $("#urgent-indent").change(function () {
+//   // Get the checked status of the checkbox
+//   isChecked = $(this).is(":checked");
+// });
 
 $(document).on("click", ".deleteicon", function () {
   var index = $(this).attr("id");

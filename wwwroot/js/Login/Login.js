@@ -152,7 +152,6 @@ function forgot_password() {
         spinner(false);
         // Handle login error
         console.log("Error: " + error);
-        // alert("Login failed. Please try again.");
         toastlogin("warning", error);
       }
     },
