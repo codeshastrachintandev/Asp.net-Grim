@@ -113,6 +113,10 @@
       "PackagePath": "staticwebassets\\js\\Logout.js"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Notifications\\Notifications.js",
+      "PackagePath": "staticwebassets\\js\\Notifications\\Notifications.js"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Profile\\profile.js",
       "PackagePath": "staticwebassets\\js\\Profile\\profile.js"
     },

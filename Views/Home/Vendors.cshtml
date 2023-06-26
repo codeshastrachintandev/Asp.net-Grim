@@ -1,4 +1,153 @@
-﻿<section id="content-wrapper">
-  <h1>Vendors</h1>
-</section>
+﻿ <link rel="stylesheet" type="text/css" href="~/css/common.css">
+<section id="content-wrapper">
+            <div class="page-title">
+                <h1>Manage Vendors</h1>
+            </div>
+            <div class="container-fluid">
+                <div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
 
+                            <div class="vendors-wrap">
+                                <h3>Add New Vendor</h3>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="usr">Vendor Name<span>*</span></label>
+                                        <input type="text" class="form-control" id="usr">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Contact Name<span>*</span></label>
+                                        <input type="text" class="form-control" id="usr">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="number">Mobile Number<span>*</span></label>
+                                        <input type="tel" id="phone" name="phone" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment">Address<span>*</span></label>
+                                        <textarea class="form-control" rows="3" id="comment"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment">Remark</label>
+                                        <textarea class="form-control" rows="3" id="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="vendors-buttons-wrap">
+                                    <button class="common-button common-orange-button">RESET</button>
+                                    <button class="common-button common-blue-button">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-12 col-sm-12">
+                            <div class="vendors-wrap">
+                                <h3> Vendor List</h3>
+                                <div id="table-scroll" class="table-scroll table-scroll-wrap">
+                                    <table id="main-table" class="main-table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Vendor Name</th>
+                                                <th scope="col">Contact Name</th>
+                                                <th scope="col">Mobile No</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Eretail</td>
+                                                <td>Eretail</td>
+                                                <td>7412589630</td>
+                                                <td>Hyderabad</td>
+                                                <td>29-july-2022</td>
+                                                <td>
+                                                    <div data-toggle="modal" data-target="#customModalCenter"><span
+                                                            class="cust-badge pendiing-badge">Pendiing</span></div>
+                                                </td>
+                                                <th>
+                                                    <div>
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            edit
+                                                        </span>
+
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            delete
+                                                        </span>
+
+
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>Eretail</td>
+                                                <td>Eretail</td>
+                                                <td>7412589630</td>
+                                                <td>Hyderabad</td>
+                                                <td>29-july-2022</td>
+                                                <td>
+                                                    <div data-toggle="modal" data-target="#orderPlacedModal"><span
+                                                            class="cust-badge pendiing-badge ">Pendiing</span></div>
+                                                </td>
+                                                <th>
+                                                    <div>
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            edit
+                                                        </span>
+
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            delete
+                                                        </span>
+
+
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>Eretail</td>
+                                                <td>Eretail</td>
+                                                <td>7412589630</td>
+                                                <td>Hyderabad</td>
+                                                <td>29-july-2022</td>
+                                                <td>
+                                                    <div><span class="cust-badge pendiing-badge ">Pendiing</span></div>
+                                                </td>
+                                                <th>
+                                                    <div>
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            edit
+                                                        </span>
+
+
+
+                                                        <span class="material-symbols-rounded">
+                                                            delete
+                                                        </span>
+
+
+                                                    </div>
+                                                </th>
+                                            </tr>
+
+
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -65,8 +65,9 @@ function WBS_Element_Number(no) {
         console.log(response);
         if (response.success === true) {
           var dropdown = $("#sel3");
-          // Remove all existing options from the dropdown
+          // Remove all existing options from the dropdown  WBS_GENERAL
           dropdown.empty();
+          dropdown.append(`<option value="WBS_GENERAL">Search WBS</option>`);
 
           if (response.wbs_numbers.length > 0) {
             response.wbs_numbers.forEach((element) => {
@@ -117,10 +118,11 @@ function cartshow() {
     ).innerHTML += `<div class="showmsg">Your indent is currently empty.</div> `;
   }
 }
+
 function clearcart() {
-  alert("your cart remove");
+  $("#customModalCenter").modal("show");
   // localStorage.removeItem("cart");
-  // cartshow();
+  cartshow();
 }
 
 function roundUp(num, precision) {
@@ -286,6 +288,57 @@ function Pordectorder() {
     };
     console.log("itemsdata--->>", temporderobj);
     // console.log(temporderobj);
+    // api call
+    $.ajax({
+      url: "https://172.16.1.69:3002/api/v4/create_orders",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(temporderobj),
+
+      success: function (response) {
+        if (response.success === true) {
+          toast("success", response.message);
+          console.log("response->>>", response);
+          $("#orderPlacedModal").modal("show");
+          $("#usernameprint").text("Hey, " + response.data.first_name);
+          let plantname = JSON.parse(localStorage.getItem("plant_id"));
+          $("#orderid").text(
+            "Your order id: " +
+              response.data.id +
+              " is placed and will be delivered from" +
+              response.data.plant.plant_id +
+              " - " +
+              response.data.plant.storage_location_desc +
+              " to " +
+              plantname.plant_id +
+              "-" +
+              plantname.storage_location_desc
+          );
+          //remove localstorege cart data
+          localStorage.removeItem("cart");
+          showModal("");
+          cartshow();
+          cartcount();
+        }
+      },
+
+      error: function (xhr, status, error) {
+        if (status === "error") {
+          // spinner(false);
+          // Handle login error
+          console.log("Error: " + error);
+          toast("warning", error);
+        }
+      },
+
+      complete: function (xhr, status) {
+        // spinner(false);
+        if (!xhr.responseText) {
+          toast("error", "Network error. Please try again later.");
+        }
+      },
+    });
   }
 }
 
@@ -419,6 +472,13 @@ $("#sel4").change(function () {
     selectedOption.remove();
   }
 });
+$("#sel3").change(function () {
+  const selectedOption = $(this).find("option:selected");
+
+  if (selectedOption.index() === 0 && selectedOption.val() === "WBS_GENERAL") {
+    selectedOption.remove();
+  }
+});
 // var isChecked;
 // $("#urgent-indent").change(function () {
 //   // Get the checked status of the checkbox
@@ -429,6 +489,7 @@ $(document).on("click", ".deleteicon", function () {
   var index = $(this).attr("id");
   var objid = $(this).data("obj");
   console.log(index, objid);
+  showModal("Warning", "Do you really want to remove?", "");
 
   var getcart = JSON.parse(localStorage.getItem("cart"));
 
@@ -439,8 +500,11 @@ $(document).on("click", ".deleteicon", function () {
   console.log("filteredArray->>>", filteredArray);
 
   localStorage.setItem("cart", JSON.stringify(filteredArray));
-
-  alert("data-deleated");
+  toast("warning", "prodect deleted");
   cartshow();
   cartcount();
 });
+
+function popClose(name) {
+  $("#" + name).modal("hide");
+}

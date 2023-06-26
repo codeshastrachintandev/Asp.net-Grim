@@ -9,81 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GrimLogin
 build_property.RootNamespace = GrimLogin
-build_property.ProjectDir = d:\Chintan\GRIM\Grim_v1\Grim\
+build_property.ProjectDir = D:\Chintan\GRIM\Grim_v1\Grim\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\Chintan\GRIM\Grim_v1\Grim
+build_property.MSBuildProjectDirectory = D:\Chintan\GRIM\Grim_v1\Grim
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Cart.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Index.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyApprovals.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyApprovals.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNeUFwcHJvdmFscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyProfile.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyRequests.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/MyRequests.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNeVJlcXVlc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/NewIndent.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/NewIndent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdJbmRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/NewPurchaseReq.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/NewPurchaseReq.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdQdXJjaGFzZVJlcS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Notifications.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Notifications.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RpZmljYXRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Privacy.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Servicerequest.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Servicerequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlcmVxdWVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Vendors.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Home/Vendors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWZW5kb3JzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Login/Index.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/Error.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_Login.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/_ViewImports.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/_ViewStart.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_Layout.cshtml]
+[D:/Chintan/GRIM/Grim_v1/Grim/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-npwct8nxwx

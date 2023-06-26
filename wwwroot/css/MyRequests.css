@@ -263,6 +263,8 @@
   color: #222;
 }
 .cust-border-wrap {
+  display: flex;
+  justify-content: center;
   border-right: 1px solid #000;
 }
 .amount-info {
@@ -351,6 +353,9 @@
 .table-scroll.table-scroll-wrap th:last-child div p {
   cursor: pointer;
   margin-bottom: 6px;
+}
+.table-scroll.table-scroll-wrap th:last-child div p i {
+  color: #1976d2;
 }
 .table-scroll.table-scroll-wrap th:last-child div p i {
   color: #1976d2;

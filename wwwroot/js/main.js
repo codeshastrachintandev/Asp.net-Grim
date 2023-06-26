@@ -27,18 +27,23 @@ var user_locations_Api =
   host + path + "user_locations" + "?id=" + Logindata.user[0].id;
 
 // notification_logs Api call hear
-$.ajax({
-  url: notification_Api,
-  type: "POST",
-  contentType: "application/json",
-  data: JSON.stringify(notification_Payload),
-  success: function (response) {
-    if (response.success === true) {
-      // console.log("notification_logs js ->Get successfully:", response);
-      document.getElementById("notifications_no").innerHTML =
-        response.notification_logs.length;
-      response.notification_logs.forEach((element) => {
-        document.getElementById("noticationbody").innerHTML += `
+
+function Notifications() {
+  $.ajax({
+    url: notification_Api,
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(notification_Payload),
+    success: function (response) {
+      if (response.success === true) {
+        // console.log("notification_logs js ->Get successfully:", response);
+        document.getElementById("noticationbody").innerHTML = "";
+        document.getElementById("notifications_no").innerHTML =
+          response.notification_logs.length;
+        response.notification_logs.forEach((element) => {
+          var inputTimestamp = new Date(element.created_at);
+          const formattedTime = getTimeAgo(inputTimestamp);
+          document.getElementById("noticationbody").innerHTML += `
                     <div class="notification-wrap">
                         <div class="notification-inner">
                             <div class="user-img"><img src="https://172.16.1.69/img/profile.28fb3626.jpg"></div>
@@ -47,27 +52,28 @@ $.ajax({
                                 <p>(${
                                   element.product_id + "-" + element.name
                                 })</p>
-                                <p>${element.created_at}</p>
+                                <p>${formattedTime}</p>
                             </div>
                         </div>
                     </div>`;
-      });
-    }
-  },
-  error: function (xhr, status, error) {
-    if (status === "error") {
-      spinner(false);
-      // Handle login error
-      console.log("Error: " + error);
-      toastlogin("warning", error);
-    }
-  },
-  error: function (error) {
-    toastlogin("error", error);
-    toastlogin("error", "Network error. Please try again later.");
-    console.error("Error creating data on user_store_locations:->>", error);
-  },
-});
+        });
+      }
+    },
+    error: function (xhr, status, error) {
+      if (status === "error") {
+        spinner(false);
+        console.log("Error: " + error);
+        toastlogin("warning", error);
+      }
+    },
+    error: function (error) {
+      toastlogin("error", error);
+      toastlogin("error", "Network error. Please try again later.");
+      console.error("Error creating data on user_store_locations:->>", error);
+    },
+  });
+}
+Notifications();
 // notification_logs Api call end hear
 
 // cart notifications
@@ -211,7 +217,7 @@ function toast(action, msg) {
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
-    timeOut: "1000",
+    timeOut: "1500",
     extendedTimeOut: "1000",
     showEasing: "swing",
     hideEasing: "linear",
@@ -219,4 +225,54 @@ function toast(action, msg) {
     hideMethod: "fadeOut",
   };
   Command: toastr[action](msg);
+}
+
+function getTimeAgo(timestamp) {
+  var currentTime = new Date();
+  var timeDifference = Math.floor((currentTime - timestamp) / 1000); // Time difference in seconds
+
+  var hours = Math.floor(timeDifference / 3600); // Convert seconds to hours
+  var days = Math.floor(hours / 24); // Convert hours to days
+
+  if (days >= 1) {
+    if (days === 1) {
+      return "1 day ago";
+    } else {
+      return days + " days ago";
+    }
+  } else {
+    return hours + " hours ago";
+  }
+}
+
+function popClose(name) {
+  $("#" + name).modal("hide");
+}
+
+function showModal(bodyContent, title, otherMessage) {
+  const modal = $("#customModalCenter");
+  const modalTitle = modal.find(".modal-title");
+  const modalBody = modal.find(".modal-body");
+
+  modalTitle.text(title);
+  modalBody.text(bodyContent);
+
+  // Add any other logic or modifications you need for the modal content
+
+  modal.modal("show");
+}
+
+function handleNo() {
+  // Add your code here for the "No" button functionality
+  console.log("No button clicked");
+  // You can close the modal if needed:
+  // $('#customModalCenter').modal('hide');
+}
+
+function handleYes() {
+  // Add your code here for the "Yes" button functionality
+  console.log("Yes button clicked");
+  // You can close the modal if needed:
+  $("#customModalCenter").modal("hide");
+  return true;
 }
