@@ -11,12 +11,12 @@ $.ajax({
         response.notification_logs.length;
       var timestamps = [];
       response.notification_logs.forEach((element) => {
-        console.log(element.created_at);
+        // console.log(element.created_at);
         var inputTimestamp = new Date(element.created_at);
 
         var formattedTime = getTimeAgo(inputTimestamp);
-
-        console.log(formattedTime);
+        //date get only in hour and day i have isues in mins
+        // console.log(formattedTime);
 
         document.getElementById("Notificationsfullbody").innerHTML += `
             <div class="col-md-6">

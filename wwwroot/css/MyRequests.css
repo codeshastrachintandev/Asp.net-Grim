@@ -307,7 +307,7 @@
 .table-scroll.table-scroll-wrap th,
 .table-scroll.table-scroll-wrap td {
   padding: 5px 10px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   background: #fff;
   vertical-align: middle;
   font-size: 14px;

@@ -9,5 +9,17 @@ namespace GrimLogin.Controllers.Login
         {
             return View();
         }
+
+        //[Route("{statusCode}")]
+        //public IActionResult NotFoundPageHandler(int statusCode)
+        //{
+        //    switch (statusCode)
+        //    {
+        //        case 404:
+        //            ViewBag.ErrorMsg = " sorry, page not found";
+        //            break;
+        //    }
+        //    return View("NotFound");
+        //}
     }
 }

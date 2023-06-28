@@ -179,7 +179,7 @@
     aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-yellow">
+            <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">
                     <span class="material-symbols-rounded">warning</span>
                     Replace Cart Material
@@ -195,7 +195,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="common-button common-red-button" data-dismiss="modal" onclick="popClose('customModalCenter')">No</button>
-                <button type="button" class="common-button common-blue-button" onclick="handleYes()">Yes</button>
+                <button type="button" class="common-button common-blue-button">Yes</button>
             </div>
         </div>
     </div>
@@ -250,12 +250,11 @@
                 if(ikey==key){icon=ivalue } 
             });
             var $li = $("<li>");
-            var $a = $("<a>").addClass("nav-link").attr({
-                "asp-area": "",
-                "asp-controller": "Home",
+            var $a = $("<a>").attr({
                 "asp-action": key,
+                "asp-controller": "Home",
                 "href": key,
-            }).html(`${icon}<span>${value}</span>`);
+            }).addClass("nav-link").html(`${icon}<span>${value}</span>`);
             $li.append($a);
             $("#sidebar-nav").append($li);
         });

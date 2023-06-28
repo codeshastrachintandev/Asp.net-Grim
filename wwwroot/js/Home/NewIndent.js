@@ -219,7 +219,8 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
         products_pagination.current,
         products_pagination.total,
         products_pagination.next,
-        products_pagination.perPage
+        products_pagination.perPage,
+        "NewIndent"
       );
     } else {
       document.getElementById(
@@ -323,9 +324,15 @@ $(document).on("click", ".add", function () {
       .find("span")
       .addClass("error")
       .text("Stock not available");
-    alert(
-      "Material Stock is not available. Please approve to raised PR/STO request"
+
+    showModal(
+      "Material Stock is not available. Please approve to raised PR/STO request.",
+      "PR/STO Request.",
+      "PR_raised",
+      "",
+      "bg-blue"
     );
+    th.val(1);
   } else {
     avaItems--;
     $(this)
@@ -336,6 +343,7 @@ $(document).on("click", ".add", function () {
       .val(avaItems);
     console.log("input(+)--->", avaItems);
     th.val(+th.val() + 1);
+    toast("success", "Prodect added into the cart successfuly");
   }
 
   var temp = {
@@ -367,7 +375,6 @@ $(document).on("click", ".add", function () {
   //store data
   localStorage.setItem("cart", JSON.stringify(result_added));
   cartcount();
-  toast("success", "Prodect added into the cart successfuly");
 });
 
 //  minus click btn
@@ -474,64 +481,3 @@ function removeDuplicatesAndUpdate(arr) {
 function isEqual(obj1, obj2) {
   return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
-
-// display pagination btn
-function paginationlist(current, total, next, perPage) {
-  var Arrow_Right = "";
-  var Arrow_left = "";
-  document.getElementById("paginationlist").innerHTML = "";
-
-  current != 0
-    ? (Arrow_left = `onclick = "Previoupage(${current})"`)
-    : (Arrow_left = "");
-
-  current != total - 1
-    ? (Arrow_Right = `onclick="Nextpage(${next + 1})"`)
-    : (Arrow_Right = "");
-
-  // const Arrow_left =
-  document.getElementById("paginationlist").innerHTML += `
-    <li ${Arrow_left} class="page-item">
-      <a class="page-link prev" aria-label="Previous">
-          <span aria-hidden="true" >&#10094;</span>
-          <span class="sr-only" >Previous</span>
-      </a>
-    </li>`;
-  var current_active;
-  for (var page = 0; page < total; page++) {
-    if (current == page) {
-      current_active = "active";
-    } else {
-      current_active = "";
-    }
-    document.getElementById("paginationlist").innerHTML += `
-    <li onclick="page(${page + 1})" class="page-item ${current_active}">
-        <a class="page-link">${page + 1}</a>
-    </li>`;
-  }
-
-  // const Arrow_Right =
-  document.getElementById("paginationlist").innerHTML += ` <!--Numbers-->
-    <li class="page-item" ${Arrow_Right}>
-      <a class="page-link next"
-          aria-label="Next">
-          <span aria-hidden="true">&#10095;</span>
-          <span class="sr-only">Next</span>
-      </a>
-    </li>`;
-}
-
-//page
-function page(clickpagenumber) {
-  pagenumber = clickpagenumber;
-  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
-}
-function Previoupage(clickpagenumber) {
-  pagenumber = clickpagenumber;
-  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
-}
-function Nextpage(clickpagenumber) {
-  pagenumber = clickpagenumber;
-  cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
-}
-//

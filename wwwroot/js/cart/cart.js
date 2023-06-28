@@ -119,12 +119,6 @@ function cartshow() {
   }
 }
 
-function clearcart() {
-  $("#customModalCenter").modal("show");
-  // localStorage.removeItem("cart");
-  cartshow();
-}
-
 function roundUp(num, precision) {
   precision = Math.pow(10, precision);
   return Math.ceil(num * precision) / precision;
@@ -485,25 +479,29 @@ $("#sel3").change(function () {
 //   isChecked = $(this).is(":checked");
 // });
 
+//showModal("bodyContent","title","which pop name","otherMessage for id" )
 $(document).on("click", ".deleteicon", function () {
   var index = $(this).attr("id");
   var objid = $(this).data("obj");
   console.log(index, objid);
-  showModal("Warning", "Do you really want to remove?", "");
-
-  var getcart = JSON.parse(localStorage.getItem("cart"));
-
-  var filteredArray = getcart.filter(function (obj) {
-    return obj.id !== objid;
-  });
-
-  console.log("filteredArray->>>", filteredArray);
-
-  localStorage.setItem("cart", JSON.stringify(filteredArray));
-  toast("warning", "prodect deleted");
-  cartshow();
-  cartcount();
+  showModal(
+    "Do you really want to remove?",
+    "Warning",
+    "s_p_delete",
+    objid,
+    "bg-yellow"
+  );
 });
+
+function clearcart() {
+  showModal(
+    "Do you really want to clear the cart ?",
+    "Clear Cart?",
+    "clearcart",
+    "",
+    "bg-yellow"
+  );
+}
 
 function popClose(name) {
   $("#" + name).modal("hide");

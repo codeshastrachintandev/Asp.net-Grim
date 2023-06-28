@@ -88,6 +88,74 @@ function cartcount() {
 }
 cartcount();
 
+// display pagination btn method start
+
+function paginationlist(current, total, next, perPage, pagename) {
+  var Arrow_Right = "";
+  var Arrow_left = "";
+  document.getElementById("paginationlist").innerHTML = "";
+
+  current != 0
+    ? (Arrow_left = `onclick = "page(${current},'${pagename}')"`)
+    : (Arrow_left = "");
+
+  current != total - 1
+    ? (Arrow_Right = `onclick="page(${next + 1},'${pagename}')"`)
+    : (Arrow_Right = "");
+
+  // const Arrow_left =
+  document.getElementById("paginationlist").innerHTML += `
+    <li ${Arrow_left} class="page-item">
+      <a class="page-link prev" aria-label="Previous">
+          <span aria-hidden="true" >&#10094;</span>
+          <span class="sr-only" >Previous</span>
+      </a>
+    </li>`;
+  var current_active;
+  for (var page = 0; page < total; page++) {
+    if (current == page) {
+      current_active = "active";
+    } else {
+      current_active = "";
+    }
+    document.getElementById("paginationlist").innerHTML += `
+    <li onclick="page(${
+      page + 1
+    },'${pagename}')" class="page-item ${current_active}">
+        <a class="page-link">${page + 1}</a>
+    </li>`;
+  }
+
+  // const Arrow_Right =
+  document.getElementById("paginationlist").innerHTML += ` <!--Numbers-->
+    <li class="page-item" ${Arrow_Right}>
+      <a class="page-link next"
+          aria-label="Next">
+          <span aria-hidden="true">&#10095;</span>
+          <span class="sr-only">Next</span>
+      </a>
+    </li>`;
+}
+
+function page(clickpagenumber, pagename) {
+  pagenumber = clickpagenumber;
+  switch (pagename) {
+    case "MyRequests":
+      i_ordershow(pagenumber);
+      break;
+
+    case "NewIndent":
+      cardshow(selectedValue, user_loc_response, sort_by, search, pagenumber);
+      break;
+
+    default:
+      alert("name not found");
+      break;
+  }
+}
+
+// display pagination btn method end
+
 var v = 1;
 
 function spinner(isloading) {
@@ -249,30 +317,62 @@ function popClose(name) {
   $("#" + name).modal("hide");
 }
 
-function showModal(bodyContent, title, otherMessage) {
+function showModal(bodyContent, title, popname, otherMessage, color) {
   const modal = $("#customModalCenter");
+  const bgcolor = modal.find(".modal-header");
   const modalTitle = modal.find(".modal-title");
   const modalBody = modal.find(".modal-body");
-
+  const modalbtnyes = modal.find(".common-blue-button");
+  bgcolor.addClass(color);
   modalTitle.text(title);
   modalBody.text(bodyContent);
 
-  // Add any other logic or modifications you need for the modal content
+  switch (popname) {
+    case "s_p_delete":
+      modalbtnyes.on("click", function () {
+        var getcart = JSON.parse(localStorage.getItem("cart"));
+        var filteredArray = getcart.filter(function (obj) {
+          return obj.id !== otherMessage;
+        });
+        // console.log("filteredArray->>>", filteredArray);
+        localStorage.setItem("cart", JSON.stringify(filteredArray));
+        toast("error", "prodect deleted");
+        cartshow();
+        cartcount();
+        modal.modal("hide");
+      });
+      break;
+
+    case "clearcart":
+      modalbtnyes.on("click", function () {
+        localStorage.removeItem("cart");
+        toast("error", "all prodect clear");
+        cartshow();
+        cartcount();
+        modal.modal("hide");
+      });
+      break;
+
+    case "PR_raised":
+      modal.find(".common-blue-button").text("Approve");
+      modal.find(".common-red-button").text("Cancel");
+      modalbtnyes.on("click", function () {
+        console.log("PR_raised");
+        modal.modal("hide");
+      });
+      break;
+
+    default:
+      break;
+  }
 
   modal.modal("show");
-}
-
-function handleNo() {
-  // Add your code here for the "No" button functionality
-  console.log("No button clicked");
-  // You can close the modal if needed:
-  // $('#customModalCenter').modal('hide');
 }
 
 function handleYes() {
   // Add your code here for the "Yes" button functionality
   console.log("Yes button clicked");
-  // You can close the modal if needed:
+  // close the modal
   $("#customModalCenter").modal("hide");
   return true;
 }

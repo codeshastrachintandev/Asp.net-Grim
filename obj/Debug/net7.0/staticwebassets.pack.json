@@ -93,8 +93,24 @@
       "PackagePath": "staticwebassets\\images\\ib-group-logo.png"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\ooop.jpg",
+      "PackagePath": "staticwebassets\\images\\ooop.jpg"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\ooop404.jpg",
+      "PackagePath": "staticwebassets\\images\\ooop404.jpg"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\place holder image.png",
+      "PackagePath": "staticwebassets\\images\\place holder image.png"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\profile-bg.jpg",
       "PackagePath": "staticwebassets\\images\\profile-bg.jpg"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\urgent.df4378bd.png",
+      "PackagePath": "staticwebassets\\images\\urgent.df4378bd.png"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Home\\Home.js",
@@ -111,6 +127,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Logout.js",
       "PackagePath": "staticwebassets\\js\\Logout.js"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\MyRequests\\MyRequests.js",
+      "PackagePath": "staticwebassets\\js\\MyRequests\\MyRequests.js"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Notifications\\Notifications.js",

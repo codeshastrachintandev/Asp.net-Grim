@@ -55,8 +55,22 @@ public class HomeController : Controller
         return View();
     }
 
+    // [Route("Home/{statusCode}")]
+    // public IActionResult NotFoundPageHandler(int statusCode)
+    // {
+    //     switch (statusCode)
+    //     {
+    //         case 404:
+    //             ViewBag.ErrorMsg = "sorry, page not found";
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    //     return View("NotFound");
+    // }
 
 
+    // "ASPNETCORE_ENVIRONMENT": "Development"
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

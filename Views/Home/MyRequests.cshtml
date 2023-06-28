@@ -38,22 +38,38 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="eleve-eco-tab" data-toggle="tab"
                                                     href="#eleve-eco" role="tab" aria-controls="first"
-                                                    aria-selected="true">PENDIND APPROVALS</a>
+                                                    aria-selected="true">
+                                                        <div class="position">
+                                                            PENDIND APPROVALS<span class="badge badge-success badgepending">1</span>
+                                                        </div>
+                                                </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="eleve-standard-tab" data-toggle="tab"
                                                     href="#eleve-standard" role="tab" aria-controls="second"
-                                                    aria-selected="false">OPEN INDENTS</a>
+                                                    aria-selected="false">
+                                                        <div class="position">
+                                                           OPEN INDENTS<span class="badge badge-success badgeopen">1</span>
+                                                        </div>
+                                                </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="eleve-standard-tab1" data-toggle="tab"
                                                     href="#eleve-standard1" role="tab" aria-controls="second1"
-                                                    aria-selected="false">CLOSE INDENTS</a>
+                                                    aria-selected="false">
+                                                        <div class="position">
+                                                           CLOSE INDENTS<span class="badge badge-success badgeclose">1</span>
+                                                        </div>
+                                                </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="eleve-standard-tab2" data-toggle="tab"
                                                     href="#eleve-standard2" role="tab" aria-controls="second2"
-                                                    aria-selected="false">ALL INDENTS</a>
+                                                    aria-selected="false">
+                                                    <div class="position">
+                                                           ALL INDENTS<span class="badge badge-success badgeall">1</span>
+                                                        </div>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -97,8 +113,8 @@
 
                                         <div>
                                             <div id="main">
-                                                <div class="accordion" id="faq">
-                                                    <div class="card">
+                                                <div class="accordion accordionbody" id="faq">
+                                                    @* <div class="card">
                                                         <div class="card-header" id="faqhead1">
                                                             <a href="#" class="btn btn-header-link collapsed"
                                                                 data-toggle="collapse" data-target="#faq1"
@@ -379,579 +395,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    @* <div class="card">
-                                                        <div class="card-header" id="faqhead2">
-                                                            <a href="#" class="btn btn-header-link collapsed"
-                                                                data-toggle="collapse" data-target="#faq2"
-                                                                aria-expanded="true" aria-controls="faq2">
-                                                                <div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-2 cust-border-wrap">
-                                                                            <div class="date-time-wrap">
-                                                                                <h3>30 May 2023</h3>
-                                                                                <div class="mb-4">
-                                                                                    <button
-                                                                                        class="common-button common-blue-button">open</button>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <button
-                                                                                        class="common-button common-yellow-button">store</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p> indent id : <span>51</span></p>
-                                                                            <p> indentor name : <span>indentor
-                                                                                    user</span></p>
-                                                                            <p> Store address :
-                                                                                <span>NO08-cgGN-centerl-jfijje</span>
-                                                                            </p>
-                                                                            <p> Delivery Address : <span>B251 CGEN
-                                                                                    jfode
-                                                                                    deojfkoe defretg</span>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="amount-info">
-                                                                                <p>WBS Elementor No :
-                                                                                    <span>WBS_GENRAL</span>
-                                                                                </p>
-                                                                                <p> Total amount: <span> <i> &#8377;
-                                                                                        </i> 565.22</span></p>
-                                                                                <p> Total item: <span>2</span></p>
-                                                                                <p> total Quntity: <span>2</span>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </a>
-                                                        </div>
-
-                                                        <div id="faq2" class="collapse" aria-labelledby="faqhead2"
-                                                            data-parent="#faq">
-                                                            <div class="card-body">
-                                                                <div>
-                                                                    <div class="table-search">
-                                                                        <div class="search-container">
-                                                                            <form>
-                                                                                <div class="search-container-inner">
-                                                                                    <input type="text"
-                                                                                        placeholder="Search.."
-                                                                                        name="search">
-                                                                                    <button type="submit"><i
-                                                                                            class="fa fa-search"></i></button>
-                                                                                </div>
-
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="table-scroll"
-                                                                        class="table-scroll table-scroll-wrap">
-                                                                        <table id="main-table" class="main-table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th scope="col">&nbsp;</th>
-                                                                                    <th scope="col">S No</th>
-                                                                                    <th scope="col">Material Name
-                                                                                    </th>
-                                                                                    <th scope="col">Base Unit</th>
-                                                                                    <th scope="col">Stock</th>
-                                                                                    <th scope="col">Status</th>
-                                                                                    <th scope="col">Demand Qty</th>
-                                                                                    <th scope="col">issue Qty</th>
-                                                                                    <th scope="col">Pending Qty</th>
-                                                                                    <th scope="col">Rejected Qty
-                                                                                    </th>
-                                                                                    <th scope="col">Return Qty</th>
-                                                                                    <th scope="col">Total Price</th>
-                                                                                    <th scope="col">Delivery Date
-                                                                                    </th>
-                                                                                    <th scope="col">Tracking Plant
-                                                                                    </th>
-                                                                                    <th scope="col">Where in Plant
-                                                                                    </th>
-                                                                                    <th scope="col">Reason </th>
-                                                                                    <th scope="col">Where Used</th>
-                                                                                    <th scope="col">Delivery
-                                                                                        Priority
-                                                                                    </th>
-                                                                                    <th scope="col">Delivery Days
-                                                                                    </th>
-                                                                                    <th scope="col">Action</th>
-
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="form-check">
-                                                                                            <input type="checkbox"
-                                                                                                class="form-check-input"
-                                                                                                value="">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>1</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <p>11000044-40KW
-                                                                                                SQMOTOR,1440 RPM</p>
-                                                                                            <p class="cust-badge">
-                                                                                                New
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>EA</td>
-                                                                                    <td>-37.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td> <i> &#8377; </i> 40.00</td>
-                                                                                    <td>30 May 2023</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <th>
-                                                                                        <div>
-                                                                                            <p> <span
-                                                                                                    data-toggle="modal"
-                                                                                                    data-target="#indent-timeline-modal"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                TIMELINE
-                                                                                            </p>
-                                                                                            <p> <span
-                                                                                                    data-toggle="modal"
-                                                                                                    data-target="#indentApproval"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                Approval
-                                                                                                Flow</p>
-                                                                                        </div>
-                                                                                    </th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="form-check">
-                                                                                            <input type="checkbox"
-                                                                                                class="form-check-input"
-                                                                                                value="">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>1</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <p>11000044-40KW
-                                                                                                SQMOTOR,1440 RPM</p>
-                                                                                            <p class="cust-badge">
-                                                                                                New
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>EA</td>
-                                                                                    <td>-37.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td><i> &#8377; </i> 40.00</td>
-                                                                                    <td>30 May 2023</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <th>
-                                                                                        <div>
-                                                                                            <p><span data-toggle="modal"
-                                                                                                    data-target="#indent-timeline-modal"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                TIMELINE
-                                                                                            </p>
-                                                                                            <p><span data-toggle="modal"
-                                                                                                    data-target="#indentApproval"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                Approval
-                                                                                                Flow</p>
-                                                                                        </div>
-                                                                                    </th>
-                                                                                </tr>
-
-
-                                                                            </tbody>
-                                                                            <!-- <tfoot>
-                                                                                <tr>
-
-                                                                                    <td>Footer 2</td>
-                                                                                    <td>Footer 3</td>
-                                                                                    <td>Footer 4</td>
-                                                                                    <td>Footer 5</td>
-                                                                                    <td>Footer 6</td>
-                                                                                    <td>Footer 7</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <th>Footer 1</th>
-                                                                                </tr>
-                                                                            </tfoot> -->
-                                                                        </table>
-                                                                    </div>
-                                                                    <div>
-                                                                        <!--Pagination 4-->
-                                                                        <nav class="pagination-wrap"
-                                                                            aria-label="pagination example">
-                                                                            <ul
-                                                                                class="pagination pagination-circle justify-content-center">
-
-                                                                                <!--Arrow left-->
-                                                                                <li class="page-item disabled">
-                                                                                    <a class="page-link prev"
-                                                                                        aria-label="Previous">
-                                                                                        <span
-                                                                                            aria-hidden="true">&#10094;</span>
-                                                                                        <span
-                                                                                            class="sr-only">Previous</span>
-                                                                                    </a>
-                                                                                </li>
-
-                                                                                <!--Numbers-->
-                                                                                <li class="page-item active"><a
-                                                                                        class="page-link">1</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">2</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">3</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">4</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">5</a></li>
-
-                                                                                <!--Arrow right-->
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link next"
-                                                                                        aria-label="Next">
-                                                                                        <span
-                                                                                            aria-hidden="true">&#10095;</span>
-                                                                                        <span
-                                                                                            class="sr-only">Next</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </nav>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card">
-                                                        <div class="card-header" id="faqhead3">
-                                                            <a href="#" class="btn btn-header-link collapsed"
-                                                                data-toggle="collapse" data-target="#faq3"
-                                                                aria-expanded="true" aria-controls="faq3">
-                                                                <div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-2 cust-border-wrap">
-                                                                            <div class="date-time-wrap">
-                                                                                <h3>31 May 2023</h3>
-                                                                                <div class="mb-4">
-                                                                                    <button
-                                                                                        class="common-button common-blue-button">open</button>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <button
-                                                                                        class="common-button common-yellow-button">store</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p> indent id : <span>51</span></p>
-                                                                            <p> indentor name : <span>indentor
-                                                                                    user</span></p>
-                                                                            <p> Store address :
-                                                                                <span>NO08-cgGN-centerl-jfijje</span>
-                                                                            </p>
-                                                                            <p> Delivery Address : <span>B251 CGEN
-                                                                                    jfode
-                                                                                    deojfkoe defretg</span>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="amount-info">
-                                                                                <p>WBS Elementor No :
-                                                                                    <span>WBS_GENRAL</span>
-                                                                                </p>
-                                                                                <p> Total amount: <span> <i> &#8377;
-                                                                                        </i> 565.22</span></p>
-                                                                                <p> Total item: <span>2</span></p>
-                                                                                <p> total Quntity: <span>2</span>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </a>
-                                                        </div>
-
-                                                        <div id="faq3" class="collapse" aria-labelledby="faqhead3"
-                                                            data-parent="#faq">
-                                                            <div class="card-body">
-                                                                <div>
-                                                                    <div class="table-search">
-                                                                        <div class="search-container">
-                                                                            <form>
-                                                                                <div class="search-container-inner">
-                                                                                    <input type="text"
-                                                                                        placeholder="Search.."
-                                                                                        name="search">
-                                                                                    <button type="submit"><i
-                                                                                            class="fa fa-search"></i></button>
-                                                                                </div>
-
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="table-scroll"
-                                                                        class="table-scroll table-scroll-wrap">
-                                                                        <table id="main-table" class="main-table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th scope="col">&nbsp;</th>
-                                                                                    <th scope="col">S No</th>
-                                                                                    <th scope="col">Material Name
-                                                                                    </th>
-                                                                                    <th scope="col">Base Unit</th>
-                                                                                    <th scope="col">Stock</th>
-                                                                                    <th scope="col">Status</th>
-                                                                                    <th scope="col">Demand Qty</th>
-                                                                                    <th scope="col">issue Qty</th>
-                                                                                    <th scope="col">Pending Qty</th>
-                                                                                    <th scope="col">Rejected Qty
-                                                                                    </th>
-                                                                                    <th scope="col">Return Qty</th>
-                                                                                    <th scope="col">Total Price</th>
-                                                                                    <th scope="col">Delivery Date
-                                                                                    </th>
-                                                                                    <th scope="col">Tracking Plant
-                                                                                    </th>
-                                                                                    <th scope="col">Where in Plant
-                                                                                    </th>
-                                                                                    <th scope="col">Reason </th>
-                                                                                    <th scope="col">Where Used</th>
-                                                                                    <th scope="col">Delivery
-                                                                                        Priority
-                                                                                    </th>
-                                                                                    <th scope="col">Delivery Days
-                                                                                    </th>
-                                                                                    <th scope="col">Action</th>
-
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="form-check">
-                                                                                            <input type="checkbox"
-                                                                                                class="form-check-input"
-                                                                                                value="">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>1</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <p>11000044-40KW
-                                                                                                SQMOTOR,1440 RPM</p>
-                                                                                            <p class="cust-badge">
-                                                                                                New
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>EA</td>
-                                                                                    <td>-37.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td> <i> &#8377; </i> 40.00</td>
-                                                                                    <td>30 May 2023</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <th>
-                                                                                        <div>
-                                                                                            <p> <span
-                                                                                                    data-toggle="modal"
-                                                                                                    data-target="#indent-timeline-modal"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                TIMELINE
-                                                                                            </p>
-                                                                                            <p> <span
-                                                                                                    data-toggle="modal"
-                                                                                                    data-target="#indentApproval"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                Approval
-                                                                                                Flow</p>
-                                                                                        </div>
-                                                                                    </th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="form-check">
-                                                                                            <input type="checkbox"
-                                                                                                class="form-check-input"
-                                                                                                value="">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>1</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <p>11000044-40KW
-                                                                                                SQMOTOR,1440 RPM</p>
-                                                                                            <p class="cust-badge">
-                                                                                                New
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>EA</td>
-                                                                                    <td>-37.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>1.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td>0.00</td>
-                                                                                    <td><i> &#8377; </i> 40.00</td>
-                                                                                    <td>30 May 2023</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <td>Test</td>
-                                                                                    <th>
-                                                                                        <div>
-                                                                                            <p><span data-toggle="modal"
-                                                                                                    data-target="#indent-timeline-modal"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                TIMELINE
-                                                                                            </p>
-                                                                                            <p><span data-toggle="modal"
-                                                                                                    data-target="#indentApproval"><i
-                                                                                                        class="fa fa-eye"
-                                                                                                        aria-hidden="true"></i></span>
-                                                                                                Approval
-                                                                                                Flow</p>
-                                                                                        </div>
-                                                                                    </th>
-                                                                                </tr>
-
-
-                                                                            </tbody>
-                                                                            <!-- <tfoot>
-                                                                                <tr>
-
-                                                                                    <td>Footer 2</td>
-                                                                                    <td>Footer 3</td>
-                                                                                    <td>Footer 4</td>
-                                                                                    <td>Footer 5</td>
-                                                                                    <td>Footer 6</td>
-                                                                                    <td>Footer 7</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <td>Footer 8</td>
-                                                                                    <th>Footer 1</th>
-                                                                                </tr>
-                                                                            </tfoot> -->
-                                                                        </table>
-                                                                    </div>
-                                                                    <div>
-                                                                        <!--Pagination 4-->
-                                                                        <nav class="pagination-wrap"
-                                                                            aria-label="pagination example">
-                                                                            <ul
-                                                                                class="pagination pagination-circle justify-content-center">
-
-                                                                                <!--Arrow left-->
-                                                                                <li class="page-item disabled">
-                                                                                    <a class="page-link prev"
-                                                                                        aria-label="Previous">
-                                                                                        <span
-                                                                                            aria-hidden="true">&#10094;</span>
-                                                                                        <span
-                                                                                            class="sr-only">Previous</span>
-                                                                                    </a>
-                                                                                </li>
-
-                                                                                <!--Numbers-->
-                                                                                <li class="page-item active"><a
-                                                                                        class="page-link">1</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">2</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">3</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">4</a></li>
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link">5</a></li>
-
-                                                                                <!--Arrow right-->
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link next"
-                                                                                        aria-label="Next">
-                                                                                        <span
-                                                                                            aria-hidden="true">&#10095;</span>
-                                                                                        <span
-                                                                                            class="sr-only">Next</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </nav>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div> *@
+
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -959,6 +405,13 @@
 
                                         <!-- ****************************************************** -->
                                         <!-- END inner tab one -->
+                                        <div>
+                                            <!--Pagination 4-->
+                                            <nav class="pagination-wrap"
+                                                aria-label="pagination example" style="display: flex;flex-direction: row;justify-content: center;">
+                                                <ul class="pagination pagination-circle justify-content-center" id="paginationlist" > </ul>
+                                            </nav>
+                                        </div>
 
                                     </div>
                                     <div class="tab-pane fade" id="eleve-standard" role="tabpanel"
@@ -1259,5 +712,15 @@
             </div>
         </div>
     </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+@* table script *@
+@* <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> *@
+
+<script src="~/js/main.js"></script>
+<script src="~/js/MyRequests/MyRequests.js"></script>
+
+
+@* <span class="material-symbols-rounded">visibility</span> *@
