@@ -25,7 +25,7 @@
   position: relative;
   width: 56px;
 }
-.badge {
+.notif-badge {
   position: absolute;
   top: -10px;
   right: -4px;
@@ -48,7 +48,7 @@
   animation: pulse 1.5s 1;
 }
 
-.badge:after {
+.notif-badge:after {
   content: "";
   position: absolute;
   top: -2px;
@@ -100,24 +100,24 @@
 .black {
   background: #000;
 }
-.position:hover .badge {
+.position:hover .notif-badge {
   /* background-color: #232323; */
   /* background-color: #535353e4; */
   transform: scale(1.08);
 }
-.position:active .badge {
+.position:active .notif-badge {
   background-color: #555;
   transform: scale(1);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.75);
 }
 @media (max-width: 600px) {
-  .position:active .badge {
+  .position:active .notif-badge {
     transition: none;
   }
   .icon {
     width: 44px;
   }
-  .badge {
+  .notif-badge {
     position: absolute;
     top: -6px;
     right: 0px;
@@ -127,7 +127,14 @@
     font-size: 10px;
     transition: transform 0.1s, background-color 0.2s;
   }
-  .position:hover .badge {
+  .position:hover .notif-badge {
     transform: scale(1);
   }
+}
+
+.badgeup {
+  position: absolute;
+  bottom: 18px;
+  border-radius: 50%;
+  padding: 4%;
 }

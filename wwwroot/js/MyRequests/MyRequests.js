@@ -39,8 +39,8 @@ function i_ordershow(pagination) {
     data: JSON.stringify({
       user_id: 853,
       location_id: [],
-      from_date: "2022-06-29",
-      to_date: "2023-06-28",
+      from_date: "2022-06-30",
+      to_date: "2023-06-29",
       page: pagination,
       npp: 10,
       indent_status: [],
@@ -85,6 +85,8 @@ function showaccordion(data) {
     data.orders.pagination.perPage,
     "MyRequests"
   );
+  Logindata.user[0].role_id;
+
   var printContainer = document.getElementById("faq");
   printContainer.innerHTML = "";
   data.orders.result.forEach((element, index) => {
@@ -157,9 +159,19 @@ function showaccordion(data) {
         </a>
     </div>`;
 
-    var tr;
+    var tr = "";
+
     element.order_items.forEach((orders, o_index) => {
+      //   $("#checkbox" + o_index + 1).attr("disabled", true);
       var v_type;
+      var disabled = "";
+      orders.indent_approvals.forEach((element) => {
+        if (Logindata.user[0].role_id != element.role_id) {
+          disabled = "disabled";
+        } else {
+          disabled = "";
+        }
+      });
       if (orders.valution_type != 0) {
         v_type = `<p class="cust-badge">
                         ${orders.valution_type}
@@ -167,11 +179,14 @@ function showaccordion(data) {
       } else {
         v_type = "";
       }
+
       tr += `<tr>
                 <td>
                     <div class="form-check">
                         <input type="checkbox"
-                            class="form-check-input"
+                            class="form-check-input" id="checkbox${
+                              o_index + 1
+                            }" ${disabled}
                             value="">
                     </div>
                 </td>
@@ -201,20 +216,20 @@ function showaccordion(data) {
                 <td>${orders.quality_check_by}</td>
                 <th>
                     <div>
-                        <p> <span
+                        <p onclick="onepopshow(${orders.id})"> <span
                                 data-toggle="modal"
-                                data-target="#indent-timeline-modal"><i
-                                    class="fa fa-eye"
-                                    aria-hidden="true"></i></span>
+                                data-target="#indent-timeline-modal">
+                                <span class="material-symbols-rounded">visibility</span>
+                            </span>
                             TIMELINE
                         </p>
-                        <p> <span
+                        <p onclick="twopopshow(${orders.id})"> <span
                                 data-toggle="modal"
-                                data-target="#indentApproval"><i
-                                    class="fa fa-eye"
-                                    aria-hidden="true"></i></span>
-                            Approval
-                            Flow</p>
+                                data-target="#indentApproval">
+                                <span class="material-symbols-rounded">visibility</span>
+                            </span>
+                            Approval Flow
+                        </p>
                     </div>
                 </th>
             </tr>`;
@@ -282,4 +297,125 @@ function showaccordion(data) {
 
     printContainer.innerHTML += card;
   });
+}
+
+function onepopshow(id) {
+  console.log("call", id);
+  //   $("#indent-timeline-modal").show();
+  $.ajax({
+    url: host + path + "status_history",
+    method: "POST",
+    dataType: "json",
+    data: {
+      id: id,
+    },
+    success: function (response) {
+      if (response.success === true) {
+        console.log(response);
+        var one = "";
+        document.getElementById("timeline").innerHTML = "";
+        response.status_history.forEach((ele, index) => {
+          var status = ele.status;
+          var msg = ele.role;
+          var Remarks = "<b>Remarks:</b> " + ele.remarks;
+          if (status == "pending") {
+            status = "Indent Created";
+            msg = "Placed";
+            Remarks = "";
+          } else if (status == "PR Raised") {
+            msg = "PR Requested";
+            Remarks =
+              `<p><b> SAP Document ID</b>` +
+              ele.sap_ref_id +
+              " " +
+              formatted_datetime(ele.updated_at) +
+              `</p>`;
+          }
+          document.getElementById("timeline").innerHTML += `
+            <div class="timeline-container ${convertSpacesToHyphens(
+              ele.color
+            )}">
+                <div class="timeline-icon">
+                    <i class="far fa-grin-wink"></i>
+                </div>
+                <div class="timeline-body">
+                    <h4 class="timeline-title">
+                        <span class="badge">${status}</span>
+                        <span class="badge">Quantity: ${ele.qty} </span>
+                    </h4>
+                    <p>${msg} by <b>${ele.name}</b>  At ${formatted_datetime(
+            ele.created_at
+          )}</p>
+                    ${Remarks}
+                </div>
+            </div>
+            `;
+        });
+        /* <p class="timeline-subtitle">1 Hours A   go</p> */
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      toast("warning", "Login failed. Please try again.");
+    },
+
+    complete: function (xhr, status) {
+      if (status === "error" || !xhr.responseText) {
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
+}
+
+function twopopshow(id) {
+  console.log("call", id);
+  //   $("#indentApproval").show();
+  $.ajax({
+    url: host + path + "approvals_details?id=" + id,
+    method: "GET",
+    dataType: "json",
+    success: function (response) {
+      if (response.success === true) {
+        console.log(response);
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      toast("warning", "Login failed. Please try again.");
+    },
+
+    complete: function (xhr, status) {
+      if (status === "error" || !xhr.responseText) {
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
+}
+
+function formatted_datetime(input) {
+  // Parse the timestamp
+  var timestamp = new Date(input);
+
+  // Convert to the desired format
+  var day = timestamp.getDate();
+  var month = timestamp.toLocaleString("default", { month: "short" });
+  var year = timestamp.getFullYear();
+
+  var hours = timestamp.getHours();
+  var minutes = timestamp.getMinutes();
+  var seconds = timestamp.getSeconds();
+  var ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  var formatted_date = day + "th " + month + " " + year;
+  var formatted_time = hours + ":" + minutes + ":" + seconds + " " + ampm;
+
+  return formatted_date + ", " + formatted_time;
+}
+
+function convertSpacesToHyphens(str) {
+  return str.replace(/ /g, "-");
 }

@@ -357,10 +357,6 @@
 .table-scroll.table-scroll-wrap th:last-child div p i {
   color: #1976d2;
 }
-.table-scroll.table-scroll-wrap th:last-child div p i {
-  color: #1976d2;
-}
-
 .table-search {
   display: flex;
   justify-content: end;
@@ -471,7 +467,7 @@ nav.pagination-wrap {
 .indent-main-wrapper .nav-pills .show > .nav-link {
   color: #212529;
   background-color: transparent !important;
-  border-bottom: 3px solid #ff9800;
+  border-bottom: 3px solid #10457a;
 }
 .indent-main-wrapper .tabbable .nav-pills {
   margin-left: 0px;
@@ -488,6 +484,8 @@ nav.pagination-wrap {
   font-weight: 500;
   white-space: nowrap;
   font-size: 14px;
+  border-radius: 4px 0px 0px 0px;
+  /* border-bottom: 3px solid #10457a; */
 }
 .indent-main-wrapper .tabbable-responsive.inner-tab {
   margin: unset;
@@ -499,7 +497,7 @@ nav.pagination-wrap {
   .nav-pills
   .show
   > .nav-link {
-  background-color: #ff9800 !important;
+  background-color: #1976d2 !important;
   color: #fff;
 }
 .indent-tab-filter {
@@ -655,6 +653,11 @@ nav.pagination-wrap {
 .timeline .timeline-container.danger .badge,
 .timeline .timeline-container.danger .timeline-icon {
   background: #fd5d93 !important;
+}
+
+.timeline .timeline-container.yellow .badge,
+.timeline .timeline-container.yellow .timeline-icon {
+  background: yellow !important;
 }
 .author {
   font-family: inherit;

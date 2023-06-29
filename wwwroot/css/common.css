@@ -3,13 +3,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
   padding-bottom: 30px;
   position: relative;
   min-height: 100%;
 }
-
+/* html {
+  scroll-behavior: smooth;
+} */
 :root {
 }
 
@@ -971,7 +974,8 @@ nav.pagination-wrap {
   border-radius: 3px;
   font-size: 14px;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
+  color: #f3f3f3;
 }
 .timeline .timeline-container .timeline-body .timeline-subtitle {
   font-weight: 500;
@@ -999,6 +1003,16 @@ nav.pagination-wrap {
 .timeline .timeline-container.danger .badge,
 .timeline .timeline-container.danger .timeline-icon {
   background: #fd5d93 !important;
+}
+
+.timeline .timeline-container.yellow .badge,
+.timeline .timeline-container.yellow .timeline-icon {
+  background: rgb(255 235 59) !important;
+  color: #000 !important;
+}
+.timeline .timeline-container.light-blue .badge,
+.timeline .timeline-container.light-blue .timeline-icon {
+  background: rgb(33 150 243) !important;
 }
 .author {
   font-family: inherit;

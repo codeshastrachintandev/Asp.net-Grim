@@ -129,6 +129,10 @@
       "PackagePath": "staticwebassets\\js\\Logout.js"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\MyRequests\\MyRequests copy.js",
+      "PackagePath": "staticwebassets\\js\\MyRequests\\MyRequests copy.js"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\MyRequests\\MyRequests.js",
       "PackagePath": "staticwebassets\\js\\MyRequests\\MyRequests.js"
     },
