@@ -1,6 +1,8 @@
 let approval_count_api = host + path + "approval_count";
 let i_orders_api = host + path + "indent/i_orders";
 let pagination = 1;
+var statusbtn = "Pending";
+var search = "";
 
 function MyRequests() {
   $.ajax({
@@ -21,7 +23,7 @@ function MyRequests() {
     },
     error: function (xhr, status, error) {
       console.log("Error: " + error);
-      toast("warning", "Login failed. Please try again.");
+      toast("warning", "failed. Please try again.");
     },
 
     complete: function (xhr, status) {
@@ -31,41 +33,73 @@ function MyRequests() {
     },
   });
 }
-function i_ordershow(pagination) {
+
+if (Logindata.user[0].id == 859) {
+  statusbtn = "Open";
+}
+
+function orders(type) {
+  statusbtn = type;
+  spinner(true);
+  i_ordershow(pagination, search);
+}
+
+$("#searchIndentNumber").on("input", function (event) {
+  search = $(this).val();
+  pagination = 1;
+  //   console.log("searchindentnumber--->", search);
+  i_ordershow(pagination, search);
+});
+
+function i_ordershow(pagination, search) {
+  document.getElementById("paginationlist").innerHTML = "";
+  document.getElementById("faq").innerHTML = "";
+
   $.ajax({
     url: host + path + "indent/i_orders",
     method: "POST",
-    contentType: "application/json",
+    contentType: "application/json;charset=UTF-8",
     data: JSON.stringify({
-      user_id: 853,
+      user_id: Logindata.user[0].id,
       location_id: [],
-      from_date: "2022-06-30",
-      to_date: "2023-06-29",
+      from_date: currentdate(1),
+      to_date: currentdate(0),
       page: pagination,
       npp: 10,
+      search: search,
       indent_status: [],
-      role_id: 3,
-      indent_type: "Pending",
+      role_id: Logindata.user[0].role_id,
+      indent_type: statusbtn,
     }),
 
     success: function (response) {
       if (response.success === true) {
         showaccordion(response);
+        setTimeout(() => {
+          spinner(false);
+        }, 300);
       }
     },
     error: function (xhr, status, error) {
       console.log("Error: " + error);
+      setTimeout(() => {
+        spinner(false);
+      }, 300);
       toast("warning", "Api failed. Please try again.");
     },
     complete: function (xhr, status) {
       if (status === "error" || !xhr.responseText) {
+        setTimeout(() => {
+          spinner(false);
+        }, 300);
         toast("error", "Network error. Please try again later.");
       }
     },
   });
 }
 MyRequests();
-i_ordershow(pagination);
+spinner(true);
+i_ordershow(pagination, search);
 
 //date convert
 function dateconvert(date) {
@@ -75,8 +109,34 @@ function dateconvert(date) {
   var year = dateObject.getFullYear();
   return day + "th " + month + " " + year;
 }
-//date end
 
+function currentdate(val) {
+  // Create a new Date object
+  var currentDate = new Date();
+
+  if (val == 1) {
+    // Subtract 1 year from the current date
+    currentDate.setFullYear(currentDate.getFullYear() - 1);
+    // Add one day
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  // Get the updated date components
+  var year = currentDate.getFullYear();
+  var month = currentDate.getMonth() + 1; // Note: January is 0, so we add 1 to get the correct month
+  var day = currentDate.getDate();
+
+  // Format the updated date as desired (e.g., YYYY-MM-DD)
+  return (
+    year +
+    "-" +
+    month.toString().padStart(2, "0") +
+    "-" +
+    day.toString().padStart(2, "0")
+  );
+}
+//date end
+var obj;
 function showaccordion(data) {
   paginationlist(
     data.orders.pagination.current,
@@ -88,8 +148,20 @@ function showaccordion(data) {
   Logindata.user[0].role_id;
 
   var printContainer = document.getElementById("faq");
+
   printContainer.innerHTML = "";
   data.orders.result.forEach((element, index) => {
+    var Indent_status;
+    if (element.order_items.every((element) => element.status == "pending")) {
+      Indent_status = "New";
+    } else if (
+      element.order_items.some((element) => element.remaining_qty > 0)
+    ) {
+      Indent_status = "Open";
+    } else {
+      Indent_status = "Close";
+    }
+
     // indent_approvals
     var card_header = `
     <div class="card-header" id="faqhead1">
@@ -103,7 +175,7 @@ function showaccordion(data) {
                             <h3>${dateconvert(element.created_at)}</h3>
                             <div class="mb-4">
                                 <button
-                                    class="common-button common-blue-button">new</button>
+                                    class="common-button common-blue-button">${Indent_status}</button>
                             </div>
                             <div>
                                 <button
@@ -162,9 +234,9 @@ function showaccordion(data) {
     var tr = "";
 
     element.order_items.forEach((orders, o_index) => {
-      //   $("#checkbox" + o_index + 1).attr("disabled", true);
       var v_type;
       var disabled = "";
+
       orders.indent_approvals.forEach((element) => {
         if (Logindata.user[0].role_id != element.role_id) {
           disabled = "disabled";
@@ -172,10 +244,38 @@ function showaccordion(data) {
           disabled = "";
         }
       });
+      var edit;
+
+      if (
+        orders.status == "pending" &&
+        Logindata.user[0].id == element.created_by
+      ) {
+        edit = ` <span onclick="editpopshow(${orders.id})"
+                        data-toggle="modal"
+                        data-target="#indentApproval">
+                        <span class="material-symbols-rounded">edit</span>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <span class="redicon" onclick="showModal('Do you really want to remove?',
+                        'Warning', 'myrequestdelete','${orders.id}','bg-yellow')">
+                        <span class="material-symbols-rounded">delete</span>
+                    </span>`;
+        obj = element;
+      } else if (orders.status == "PR Raised") {
+        edit = `
+                <span onclick="editpopshow(${orders.id})"
+                    data-toggle="modal"
+                    data-target="#indentApproval">
+                    <span class="material-symbols-rounded" style="color: green;">keyboard_return</span>
+                </span>`;
+      } else {
+        edit = "";
+      }
+
       if (orders.valution_type != 0) {
         v_type = `<p class="cust-badge">
-                        ${orders.valution_type}
-                        </p>`;
+                    ${orders.valution_type}
+                 </p>`;
       } else {
         v_type = "";
       }
@@ -230,6 +330,9 @@ function showaccordion(data) {
                             </span>
                             Approval Flow
                         </p>
+                        <p> 
+                            ${edit}
+                        </p>
                     </div>
                 </th>
             </tr>`;
@@ -247,8 +350,7 @@ function showaccordion(data) {
                                     <input type="text"
                                         placeholder="Search.."
                                         name="search">
-                                    <button type="submit"><i
-                                            class="fa fa-search"></i></button>
+                                    <button type="submit"><span class="material-symbols-rounded">search</span></button>
                                 </div>
 
                             </form>
@@ -376,7 +478,23 @@ function twopopshow(id) {
     dataType: "json",
     success: function (response) {
       if (response.success === true) {
-        console.log(response);
+        console.log("test->>>", response);
+        document.getElementById("timelinebody").innerHTML = "";
+        response.approvals_details.forEach((element, index) => {
+          document.getElementById("timelinebody").innerHTML += `
+                <div class="timeline-container warning">
+                    <div class="timeline-icon">
+                        <i class="far fa-grin-wink">${index + 1}</i>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Requires approval from <b>${element.role}</b> ${
+            element.approver_name
+          }
+                        </p>
+                    </div>
+                </div>        
+            `;
+        });
       }
     },
     error: function (xhr, status, error) {
@@ -391,6 +509,8 @@ function twopopshow(id) {
     },
   });
 }
+
+function editpopshow(id) {}
 
 function formatted_datetime(input) {
   // Parse the timestamp
@@ -418,4 +538,54 @@ function formatted_datetime(input) {
 
 function convertSpacesToHyphens(str) {
   return str.replace(/ /g, "-");
+}
+
+function showModal(bodyContent, title, popname, id, color) {
+  const modal = $("#customModalCentermy");
+  const bgcolor = modal.find(".modal-headermy");
+  const modalTitle = modal.find(".modal-titlemy");
+  const modalBody = modal.find(".modal-bodymy");
+  const modalbtnyes = modal.find(".common-blue-buttonmy");
+  bgcolor.addClass(color);
+  modalTitle.text(title);
+  modalBody.text(bodyContent);
+  //   switch (popname) {
+  //     case "delete":
+
+  modal.modal("show");
+  modalbtnyes.on("click", function () {
+    modal.modal("hide");
+    deleteapi(id);
+  });
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+  //   deleteapi(id);
+}
+var count = 0;
+function deleteapi(id) {
+  console.log("get val->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", id);
+  console.log("api call count->", count);
+  //   $.ajax({
+  //     url: host + path + "delete_indent",
+  //     method: "delete",
+  //     contentType: "application/json;charset=UTF-8",
+  //     data: JSON.stringify({}),
+  //     success: function (response) {
+  //       if (response.success === true) {
+  //         toast("success", "prodect deleted");
+  //       }
+  //     },
+  //     error: function (xhr, status, error) {
+  //       console.log("Error: " + error);
+  //       toast("warning", "Api failed. Please try again.");
+  //     },
+  //     complete: function (xhr, status) {
+  //       if (status === "error" || !xhr.responseText) {
+  //         toast("error", "Network error. Please try again later.");
+  //       }
+  //     },
+  //   });
 }

@@ -1,11 +1,13 @@
 ﻿function logout() {
   localStorage.removeItem("user_info");
   localStorage.removeItem("cart");
+  localStorage.removeItem("sidemenu");
   window.location.href = "../Login";
 }
 function logoutsession() {
   localStorage.removeItem("user_info");
   localStorage.removeItem("cart");
+  localStorage.removeItem("sidemenu");
   alert("session time out");
   window.location.href = "../Login";
 }

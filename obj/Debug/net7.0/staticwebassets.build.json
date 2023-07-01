@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VAo3XSGgtgmr0iglACSWwYdoPrGDOuA1mF8Zeh6E9Jg=",
+  "Hash": "whrgActZ8Ytz92QoG+Aevb6YNrKwM1EnZgL0CKIIUIs=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -712,6 +712,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\vendors\\vendors.js",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "js/vendors/vendors.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\vendors\\vendors.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

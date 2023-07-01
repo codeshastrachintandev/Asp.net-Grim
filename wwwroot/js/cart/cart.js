@@ -42,6 +42,7 @@ function dropdownfor_user_loc(data) {
     });
   }
 }
+
 var selectedId;
 $("#sel2").change(function () {
   selectedValue = $(this).val();
@@ -56,6 +57,7 @@ $("#sel2").change(function () {
 });
 
 function WBS_Element_Number(no) {
+  spinner(true);
   if (no != "0") {
     $.ajax({
       url: host + path + "wbs_numbers?plant_id=" + no,
@@ -85,6 +87,9 @@ function WBS_Element_Number(no) {
             });
             dropdown.append(optionElement);
           }
+          setTimeout(() => {
+            spinner(false);
+          }, 300);
         }
       },
       error: function (error) {
@@ -103,6 +108,7 @@ function WBS_Element_Number(no) {
 }
 cartshow();
 function cartshow() {
+  spinner(true);
   document.getElementById("showmsg").innerHTML = "";
   document.getElementById("tbody").innerHTML = "";
   const cartdata = JSON.parse(localStorage.getItem("cart"));
@@ -117,6 +123,9 @@ function cartshow() {
       "showmsg"
     ).innerHTML += `<div class="showmsg">Your indent is currently empty.</div> `;
   }
+  setTimeout(() => {
+    spinner(false);
+  }, 500);
 }
 
 function roundUp(num, precision) {
@@ -280,7 +289,7 @@ function Pordectorder() {
         ticket_id: "", //??
       },
     };
-    console.log("itemsdata--->>", temporderobj);
+    //console.log("itemsdata--->>", temporderobj);
     // console.log(temporderobj);
     // api call
     $.ajax({

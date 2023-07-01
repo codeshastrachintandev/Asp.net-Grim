@@ -241,9 +241,9 @@
         if (!Logindata) {
             window.location.href = "Login";
         }
-        var menu=[] ;
+       
         var icon;
-        var menuOptions = roles_menus[Logindata.user[0].role_id][0];
+        var menuOptions = roles_menus[Logindata.user[0].role_id][0];       
 
         $.each(menuOptions, function(key, value) {
             $.each(icons_list, function(ikey, ivalue) {
@@ -254,6 +254,7 @@
                 "asp-action": key,
                 "asp-controller": "Home",
                 "href": key,
+                "class":"Home",
             }).addClass("nav-link").html(`${icon}<span>${value}</span>`);
             $li.append($a);
             $("#sidebar-nav").append($li);
@@ -262,6 +263,24 @@
         $b = $("<a>").addClass("nav-link").attr({"onclick":"logout()"}).html(`<span class="material-symbols-rounded">logout</span><span>LogOut</span>`);
         $li.append($b);
         $("#sidebar-nav").append($li);
+        
+        $(document).on("click", ".Home", function () {
+            activeMenuItem = $(this).attr("asp-action");
+            localStorage.setItem("sidemenu",activeMenuItem);
+        });
+
+        var activeMenuItem = localStorage.getItem("sidemenu");
+        if(activeMenuItem==null){
+            activeMenuItem = "NewIndent"; 
+        }
+        // Iterate through the side menu items
+        $("#sidebar-nav li").each(function() {
+            var menuItem = $(this).find("a").attr("asp-action");
+            if (menuItem === activeMenuItem) {
+            $(this).addClass("active");
+            }
+        });        
+
 
     </script>
     @await RenderSectionAsync("Scripts", required: false)

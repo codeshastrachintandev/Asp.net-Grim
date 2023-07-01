@@ -162,7 +162,7 @@ function spinner(isloading) {
   if (isloading == true) {
     document.getElementById("spinnerbody").style.display = "block";
   } else {
-    document.getElementById("spinnerbody").style.display = none;
+    document.getElementById("spinnerbody").style.display = "none";
   }
 }
 
@@ -235,7 +235,7 @@ var roles_menus = {
     {
       Index: "report",
       MyProfile: "MyProfile",
-      MyRequests: "MyRequests",
+      MyRequests: "Approvals",
       CretateSTO: "Cretate STO",
       Itemmaterials: "Item materials",
       Notifications: "Notifications",
@@ -326,7 +326,7 @@ function showModal(bodyContent, title, popname, otherMessage, color) {
   bgcolor.addClass(color);
   modalTitle.text(title);
   modalBody.text(bodyContent);
-
+  var count = "";
   switch (popname) {
     case "s_p_delete":
       modalbtnyes.on("click", function () {
@@ -359,6 +359,19 @@ function showModal(bodyContent, title, popname, otherMessage, color) {
       modalbtnyes.on("click", function () {
         console.log("PR_raised");
         modal.modal("hide");
+      });
+      break;
+
+    case "myrequestdelete":
+      modal.find(".common-blue-button").text("Yes");
+      modal.find(".common-red-button").text("Cancel");
+      modalbtnyes.on("click", function () {
+        console.log("myrequestdelete");
+        modal.modal("hide");
+        console.log(count);
+        count++;
+        console.log(count);
+        i_ordershow(1);
       });
       break;
 
