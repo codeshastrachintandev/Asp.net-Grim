@@ -3,6 +3,7 @@ let i_orders_api = host + path + "indent/i_orders";
 let pagination = 1;
 var statusbtn = "Pending";
 var search = "";
+var tempobj;
 
 function MyRequests() {
   $.ajax({
@@ -145,10 +146,10 @@ function showaccordion(data) {
     data.orders.pagination.perPage,
     "MyRequests"
   );
-  Logindata.user[0].role_id;
+  // Logindata.user[0].role_id;
 
   var printContainer = document.getElementById("faq");
-
+  tempobj = data.orders.result;
   printContainer.innerHTML = "";
   data.orders.result.forEach((element, index) => {
     var Indent_status;
@@ -232,7 +233,6 @@ function showaccordion(data) {
     </div>`;
 
     var tr = "";
-
     element.order_items.forEach((orders, o_index) => {
       var v_type;
       var disabled = "";
@@ -245,25 +245,22 @@ function showaccordion(data) {
         }
       });
       var edit;
-
       if (
         orders.status == "pending" &&
         Logindata.user[0].id == element.created_by
       ) {
-        edit = ` <span onclick="editpopshow(${orders.id})"
+        edit = ` <span onclick="editpopshow(${orders.id},${element.id})"
                         data-toggle="modal"
-                        data-target="#indentApproval">
+                        data-target="#indentApprovaledit">
                         <span class="material-symbols-rounded">edit</span>
                     </span>
                     &nbsp;&nbsp;&nbsp;
-                    <span class="redicon" onclick="showModal('Do you really want to remove?',
-                        'Warning', 'myrequestdelete','${orders.id}','bg-yellow')">
+                    <span class="redicon" onclick="deletealert(${orders.id},${element.id})">
                         <span class="material-symbols-rounded">delete</span>
                     </span>`;
-        obj = element;
       } else if (orders.status == "PR Raised") {
         edit = `
-                <span onclick="editpopshow(${orders.id})"
+                <span 
                     data-toggle="modal"
                     data-target="#indentApproval">
                     <span class="material-symbols-rounded" style="color: green;">keyboard_return</span>
@@ -415,6 +412,7 @@ function onepopshow(id) {
       if (response.success === true) {
         console.log(response);
         var one = "";
+        $("#timelinebody").addClass("timeline");
         document.getElementById("timeline").innerHTML = "";
         response.status_history.forEach((ele, index) => {
           var status = ele.status;
@@ -478,7 +476,7 @@ function twopopshow(id) {
     dataType: "json",
     success: function (response) {
       if (response.success === true) {
-        console.log("test->>>", response);
+        // console.log("test->>>", response);
         document.getElementById("timelinebody").innerHTML = "";
         response.approvals_details.forEach((element, index) => {
           document.getElementById("timelinebody").innerHTML += `
@@ -510,7 +508,134 @@ function twopopshow(id) {
   });
 }
 
-function editpopshow(id) {}
+function editpopshow(orders_id, item_id) {
+  $("#timelinebody").removeClass("timeline");
+  tempobj.forEach((data) => {
+    if (data.id == item_id) {
+      data.order_items.forEach((orders) => {
+        if (orders.id == orders_id) {
+          temp = orders;
+          console.log("edit->> id ", orders_id);
+          console.log("edit->> id ", data);
+          $("#ItemName").val(orders.product_name);
+          $("#iteminput1").val(orders.intial_qty);
+          $("#iteminput2").val(orders.delivery_priority);
+          $("#iteminput3").val(orders.priority_days);
+          $("#iteminput4").val(orders.tracking_no);
+          $("#iteminput5").val(orders.section);
+          $("#iteminput7").val(orders.reason);
+          $("#iteminput6").val(orders.where_used);
+          $("#update").click(function () {
+            var temp = {
+              item: {
+                id: 138,
+                delivery_priority: $("#iteminput2").val(),
+                quantity: $("#iteminput1").val(),
+                reason: $("#iteminput7").val(),
+                where_used: $("#iteminput6").val(),
+                section: $("#iteminput5").val(),
+                tracking_no: $("#iteminput4").val(),
+                priority_days: $("#iteminput3").val(),
+                total_price: 259.58, ///?
+                updated_at: currentgetdate(),
+                first_name: Logindata.user[0].first_name,
+                indentUser_id: Logindata.user[0].id,
+                role_id: Logindata.user[0].role_id,
+              },
+            };
+          });
+        }
+      });
+    }
+  });
+
+  //   $("#indentApproval").show();
+  // $.ajax({
+  //   url: host + path + "approvals_details?id=" + id,
+  //   method: "GET",
+  //   dataType: "json",
+  //   success: function (response) {
+  //     if (response.success === true) {
+  //       // console.log("test->>>", response);
+  //       document.getElementById("timelinebody").innerHTML = "";
+  //       response.approvals_details.forEach((element, index) => {
+  //         document.getElementById("timelinebody").innerHTML += `
+  //               <div class="timeline-container warning">
+  //                   <div class="timeline-icon">
+  //                       <i class="far fa-grin-wink">${index + 1}</i>
+  //                   </div>
+  //                   <div class="timeline-body">
+  //                       <p>Requires approval from <b>${element.role}</b> ${
+  //           element.approver_name
+  //         }
+  //                       </p>
+  //                   </div>
+  //               </div>
+  //           `;
+  //       });
+  //     }
+  //   },
+  //   error: function (xhr, status, error) {
+  //     console.log("Error: " + error);
+  //     toast("warning", "Login failed. Please try again.");
+  //   },
+
+  //   complete: function (xhr, status) {
+  //     if (status === "error" || !xhr.responseText) {
+  //       toast("error", "Network error. Please try again later.");
+  //     }
+  //   },
+  // });
+}
+
+function deletealert(orders_id, item_id) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    var temp;
+    if (result.isConfirmed) {
+      tempobj.forEach((data) => {
+        if (data.id == item_id) {
+          data.order_items.forEach((order) => {
+            if (order.id == orders_id) {
+              console.log(order);
+              temp = order;
+            }
+          });
+        }
+      });
+      var payload = { order_id: orders_id, item: temp };
+      $.ajax({
+        url: host + path + "delete_indent",
+        method: "delete",
+        contentType: "application/json;charset=UTF-8",
+        data: JSON.stringify(payload),
+        success: function (response) {
+          if (response.success === true) {
+            Swal.fire("Deleted!", "Your request has been deleted.", "success");
+            toast("success", "prodect deleted");
+            i_ordershow(pagination, search);
+            spinner(true);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.log("Error: " + error);
+          toast("warning", "Api failed. Please try again.");
+        },
+        complete: function (xhr, status) {
+          if (status === "error" || !xhr.responseText) {
+            toast("error", "Network error. Please try again later.");
+          }
+        },
+      });
+    }
+  });
+}
 
 function formatted_datetime(input) {
   // Parse the timestamp
@@ -540,52 +665,20 @@ function convertSpacesToHyphens(str) {
   return str.replace(/ /g, "-");
 }
 
-function showModal(bodyContent, title, popname, id, color) {
-  const modal = $("#customModalCentermy");
-  const bgcolor = modal.find(".modal-headermy");
-  const modalTitle = modal.find(".modal-titlemy");
-  const modalBody = modal.find(".modal-bodymy");
-  const modalbtnyes = modal.find(".common-blue-buttonmy");
-  bgcolor.addClass(color);
-  modalTitle.text(title);
-  modalBody.text(bodyContent);
-  //   switch (popname) {
-  //     case "delete":
+function currentgetdate() {
+  // Create a new Date object
+  const currentDate = new Date();
 
-  modal.modal("show");
-  modalbtnyes.on("click", function () {
-    modal.modal("hide");
-    deleteapi(id);
-  });
-  //       break;
+  // Extract the components of the date and time
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const hours = String(currentDate.getHours()).padStart(2, "0");
+  const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+  const seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
-  //     default:
-  //       break;
-  //   }
-  //   deleteapi(id);
-}
-var count = 0;
-function deleteapi(id) {
-  console.log("get val->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", id);
-  console.log("api call count->", count);
-  //   $.ajax({
-  //     url: host + path + "delete_indent",
-  //     method: "delete",
-  //     contentType: "application/json;charset=UTF-8",
-  //     data: JSON.stringify({}),
-  //     success: function (response) {
-  //       if (response.success === true) {
-  //         toast("success", "prodect deleted");
-  //       }
-  //     },
-  //     error: function (xhr, status, error) {
-  //       console.log("Error: " + error);
-  //       toast("warning", "Api failed. Please try again.");
-  //     },
-  //     complete: function (xhr, status) {
-  //       if (status === "error" || !xhr.responseText) {
-  //         toast("error", "Network error. Please try again later.");
-  //       }
-  //     },
-  //   });
+  // Combine the components into the desired format
+  const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+  return formattedDateTime;
 }

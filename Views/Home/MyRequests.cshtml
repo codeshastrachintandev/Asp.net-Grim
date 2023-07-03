@@ -114,7 +114,7 @@
                                         <div>
                                             <div id="main">
                                                 <div class="accordion accordionbody" id="faq">
-                                                
+
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                         </div>
 
                                     </div>
-                                    @* <div class="tab-pane fade" id="eleve-standard" role="tabpanel"
+                            @* <div class="tab-pane fade" id="eleve-standard" role="tabpanel"
                                         aria-labelledby="eleve-standard-tab">
 
                                         <!-- ****************************************************** -->
@@ -219,19 +219,7 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="timeline" id="timeline">
-                        @* <div class="timeline-container warning">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin-wink"></i>
-                            </div>
-                            <div class="timeline-body">
-                                <h4 class="timeline-title">
-                                    <span class="badge">INDENT CREATED</span>
-                                    <span class="badge">Quantity: 1 </span>
-                                </h4>
-                                <p>Placed by Indent User Indent user At 29th Jun 2023 , 11:03:11 am</p>
-                                <p class="timeline-subtitle">1 Hours Ago</p>
-                            </div>
-                        </div> *@
+                
                     </div>
                 </div>
 
@@ -255,87 +243,88 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body">
                     <div class="timeline" id="timelinebody">
-                        @* <div class="timeline-container warning">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin-wink">1</i>
-                            </div>
-                            <div class="timeline-body">
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">1 Hours Ago</p>
-                            </div>
-                        </div> *@
-                        @* <div class="timeline-container primary">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin-hearts"></i>
-                            </div>
-                            <div class="timeline-body">
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">2 Hours Ago</p>
-                            </div>
-                        </div>
-                        <div class="timeline-container info">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin-tears"></i>
-                            </div>
-                            <div class="timeline-body">
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">6 Hours Ago</p>
-                            </div>
-                        </div>
-                        <div class="timeline-container success">
-                            <div class="timeline-icon">
-                                <i class="far fa-grimace"></i>
-                            </div>
-                            <div class="timeline-body">
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">1 Day Ago</p>
-                            </div>
-                        </div>
-                        <div class="timeline-container danger">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin-beam-sweat"></i>
-                            </div>
-                            <div class="timeline-body">
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">3 Days Ago</p>
-                            </div>
-                        </div>
-                        <div class="timeline-container ">
-                            <div class="timeline-icon">
-                                <i class="far fa-grin"></i>
-                            </div>
-                            <div class="timeline-body">
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                                    necessitatibus <b>Indent Manager</b>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
-                                </p>
-                                <p class="timeline-subtitle">4 Days Ago</p>
-                            </div>
-                        </div> *@
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal for edit -->
+    <div class="modal fade timeline-modal-wrap" id="indentApprovaledit">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Indent Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="timelinebodyedit">
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-6"> 
+                                        <label for="recipient-name" class="col-form-label">Item Name:</label>
+                                        <input type="text"  disabled="disabled" class="form-control quantity " id="ItemName" value="" required>
+                                    </div>
+                                    <div class="col-6"> 
+                                        <label for="recipient-name" class="col-form-label">Oty:</label>
+                                        <input type="number"  min="1" class="form-control quantity quantity" id="iteminput1" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                        <select class="form-control DeliveryPriority DeliveryPriority" data-obj="" placeholder="Delivery Priority*" id="iteminput2">
+                                            <option value="High">High</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Low">Low</option>
+                                        </select>
+                                    <span class="error-msg cartdropbox4" id="DeliveryPriority" style="display: none;">*The DeliveryPriority field is required.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Priority days*:</label>
+                                <input type="text" id="iteminput3" disabled name="input1" class="form-control" required>
+                                <p>0 / 3</p>
+                                <span class="error-msg cartdropbox4" id="" style="display: none;">*The DeliveryPriority field is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Tracking No*:</label>
+                                <input type="text" class="form-control input1" id="iteminput4" value="test"  required>
+                                <p>0/ 3</p>
+                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Section*:</label>
+                                <input type="text" class="form-control input"id="iteminput5" value="test"  required>
+                                <p>0 / 20</p>
+                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Reason*:</label>
+                                <textarea class="form-control" id="iteminput6" required></textarea>
+                                <p>0 / 100</p>
+                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Wher Uesd*:</label>
+                                <textarea class="form-control" id="iteminput7" required></textarea> 
+                                <p>0 / 100</p>
+                                <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is required.</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modal-footer">
+                    <button type="button" class="common-button common-red-button" data-dismiss="modal" onclick="popClose('customModalCenter')">cancel</button>
+                    <button type="button" class="common-button common-blue-button" id="update">Save</button>
                 </div>
             </div>
         </div>

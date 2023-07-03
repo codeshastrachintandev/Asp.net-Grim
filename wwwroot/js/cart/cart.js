@@ -290,10 +290,10 @@ function Pordectorder() {
       },
     };
     //console.log("itemsdata--->>", temporderobj);
-    // console.log(temporderobj);
+
     // api call
     $.ajax({
-      url: "https://172.16.1.69:3002/api/v4/create_orders",
+      url: host + path + "create_orders",
       type: "POST",
       dataType: "json",
       contentType: "application/json",
@@ -320,7 +320,6 @@ function Pordectorder() {
           );
           //remove localstorege cart data
           localStorage.removeItem("cart");
-          showModal("");
           cartshow();
           cartcount();
         }

@@ -1338,3 +1338,17 @@ nav.pagination-wrap {
   opacity: 1;
 }
 /* ---------------- model yes and no common end---------------- */
+
+/* ---------------- my request page start---------------- */
+.form-group p {
+  text-align: end;
+  display: block;
+  margin: 0;
+}
+.form-group {
+  margin: 0;
+}
+.form-group .row {
+  margin-bottom: 1rem;
+}
+/* ---------------- my request page start---------------- */
