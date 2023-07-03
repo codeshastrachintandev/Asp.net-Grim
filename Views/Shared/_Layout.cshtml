@@ -116,7 +116,7 @@
 
 
     </div>
-    @* sidebar menu end *@
+    @* sidebar menu end *@     
 
 
 <!-- Modal -->
@@ -163,9 +163,9 @@
                 <p id="orderid">Your ordetr id:56 is placed and will be delivered from NC09 Centerl Gen Stor</p>
             </div>
             <div class="modal-footer">
-                <a href="/NewIndent"><button type="button" asp-controller="Home" asp-action="NewIndent" class="common-button common-blue-button" data-dismiss="modal">Your Next
+                <a asp-controller="Home" asp-action="NewIndent" ><button type="button"  class="common-button common-blue-button" data-dismiss="modal">Your Next
                     Order</button></a>
-                <a href="/MyRequests"><button type="button" asp-controller="Home" asp-action="MyRequests" class="common-button common-green-button">Track Your Order</button></a>
+                <a asp-controller="Home" asp-action="MyRequests" ><button type="button"  class="common-button common-green-button">Track Your Order</button></a>
             </div>
         </div>
     </div>
@@ -206,6 +206,9 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/assets/sweetalert/11.7.12_dist_sweetalert2.min.css">
+    <script src="~/assets/sweetalert/11.7.12_dist_sweetalert2.all.min.js"></script>
 
     <script src="~/js/main.js"></script>
     <script src="~/js/Home/Home.js"></script>
@@ -251,9 +254,9 @@
             });
             var $li = $("<li>");
             var $a = $("<a>").attr({
-                "asp-action": key,
                 "asp-controller": "Home",
-                "href": key,
+                "asp-action": key,
+                "href": "../Home/"+key,
                 "class":"Home",
             }).addClass("nav-link").html(`${icon}<span>${value}</span>`);
             $li.append($a);
