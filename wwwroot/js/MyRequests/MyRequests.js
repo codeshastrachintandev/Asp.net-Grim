@@ -508,84 +508,90 @@ function twopopshow(id) {
   });
 }
 
+$("#delivery_priority").change(function () {
+  selectedValue = $(this).val();
+  if (selectedValue == "High") {
+    $("#priority_days").val(3);
+  } else if (selectedValue == "Medium") {
+    $("#priority_days").val(6);
+  } else if (selectedValue == "Low") {
+    $("#priority_days").val(15);
+  }
+});
+
 function editpopshow(orders_id, item_id) {
-  $("#timelinebody").removeClass("timeline");
+  var tempid;
+  var tempordersprice;
+  // $("#timelinebody").removeClass("timeline");
   tempobj.forEach((data) => {
     if (data.id == item_id) {
       data.order_items.forEach((orders) => {
         if (orders.id == orders_id) {
-          temp = orders;
           console.log("edit->> id ", orders_id);
           console.log("edit->> id ", data);
-          $("#ItemName").val(orders.product_name);
-          $("#iteminput1").val(orders.intial_qty);
-          $("#iteminput2").val(orders.delivery_priority);
-          $("#iteminput3").val(orders.priority_days);
-          $("#iteminput4").val(orders.tracking_no);
-          $("#iteminput5").val(orders.section);
-          $("#iteminput7").val(orders.reason);
-          $("#iteminput6").val(orders.where_used);
-          $("#update").click(function () {
-            var temp = {
-              item: {
-                id: 138,
-                delivery_priority: $("#iteminput2").val(),
-                quantity: $("#iteminput1").val(),
-                reason: $("#iteminput7").val(),
-                where_used: $("#iteminput6").val(),
-                section: $("#iteminput5").val(),
-                tracking_no: $("#iteminput4").val(),
-                priority_days: $("#iteminput3").val(),
-                total_price: 259.58, ///?
-                updated_at: currentgetdate(),
-                first_name: Logindata.user[0].first_name,
-                indentUser_id: Logindata.user[0].id,
-                role_id: Logindata.user[0].role_id,
-              },
-            };
-          });
+          $("#product_name").val(orders.product_name);
+          $("#intial_qty").val(orders.intial_qty);
+          $("#delivery_priority").val(orders.delivery_priority);
+          $("#priority_days").val(orders.priority_days);
+          $("#tracking_no").val(orders.tracking_no);
+          $("#section").val(orders.section);
+          $("#reason").val(orders.reason);
+          $("#where_used").val(orders.where_used);
+          tempid = orders_id;
+          tempordersprice = orders.price;
         }
       });
     }
   });
 
-  //   $("#indentApproval").show();
-  // $.ajax({
-  //   url: host + path + "approvals_details?id=" + id,
-  //   method: "GET",
-  //   dataType: "json",
-  //   success: function (response) {
-  //     if (response.success === true) {
-  //       // console.log("test->>>", response);
-  //       document.getElementById("timelinebody").innerHTML = "";
-  //       response.approvals_details.forEach((element, index) => {
-  //         document.getElementById("timelinebody").innerHTML += `
-  //               <div class="timeline-container warning">
-  //                   <div class="timeline-icon">
-  //                       <i class="far fa-grin-wink">${index + 1}</i>
-  //                   </div>
-  //                   <div class="timeline-body">
-  //                       <p>Requires approval from <b>${element.role}</b> ${
-  //           element.approver_name
-  //         }
-  //                       </p>
-  //                   </div>
-  //               </div>
-  //           `;
-  //       });
-  //     }
-  //   },
-  //   error: function (xhr, status, error) {
-  //     console.log("Error: " + error);
-  //     toast("warning", "Login failed. Please try again.");
-  //   },
+  $("#update").click(function () {
+    spinner(true);
+    var temp = {
+      item: {
+        id: tempid,
+        delivery_priority: $("#delivery_priority").val(),
+        quantity: $("#intial_qty").val(),
+        reason: $("#reason").val(),
+        where_used: $("#where_used").val(),
+        section: $("#section").val(),
+        tracking_no: $("#tracking_no").val(),
+        priority_days: $("#priority_days").val(),
+        total_price: $("#intial_qty").val() * tempordersprice,
+        updated_at: getcurrentdate(),
+        first_name: Logindata.user[0].first_name,
+        indentUser_id: Logindata.user[0].id,
+        role_id: Logindata.user[0].role_id,
+      },
+    };
 
-  //   complete: function (xhr, status) {
-  //     if (status === "error" || !xhr.responseText) {
-  //       toast("error", "Network error. Please try again later.");
-  //     }
-  //   },
-  // });
+    // $("#indentApproval").show();
+    $.ajax({
+      url: host + path + "edit_indent",
+      method: "PUT",
+      contentType: "application/json;charset=UTF-8",
+      data: JSON.stringify(temp),
+      success: function (response) {
+        if (response.success === true) {
+          spinner(false);
+          toast("success", response.message);
+          i_ordershow(pagination, search);
+        }
+      },
+
+      error: function (xhr, status, error) {
+        console.log("Error: " + error);
+        spinner(false);
+        toast("warning", "Login failed. Please try again.");
+      },
+
+      complete: function (xhr, status) {
+        if (status === "error" || !xhr.responseText) {
+          spinner(false);
+          toast("error", "Network error. Please try again later.");
+        }
+      },
+    });
+  });
 }
 
 function deletealert(orders_id, item_id) {
@@ -617,8 +623,8 @@ function deletealert(orders_id, item_id) {
         data: JSON.stringify(payload),
         success: function (response) {
           if (response.success === true) {
-            Swal.fire("Deleted!", "Your request has been deleted.", "success");
-            toast("success", "prodect deleted");
+            // Swal.fire("Deleted!", "Your request has been deleted.", "success");
+            toast("success", response.message);
             i_ordershow(pagination, search);
             spinner(true);
           }
@@ -665,7 +671,7 @@ function convertSpacesToHyphens(str) {
   return str.replace(/ /g, "-");
 }
 
-function currentgetdate() {
+function getcurrentdate() {
   // Create a new Date object
   const currentDate = new Date();
 

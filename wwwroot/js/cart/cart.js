@@ -20,6 +20,7 @@ $.ajax({
     console.error("Error creating data on user_store_locations:->>", error);
   },
 });
+
 function dropdownfor_user_loc(data) {
   if (data.success === true) {
     var locations = data.locations;
@@ -106,7 +107,9 @@ function WBS_Element_Number(no) {
     dropdown.append(optionElement);
   }
 }
+
 cartshow();
+
 function cartshow() {
   spinner(true);
   document.getElementById("showmsg").innerHTML = "";

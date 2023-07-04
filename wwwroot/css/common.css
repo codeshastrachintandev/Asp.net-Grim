@@ -1345,10 +1345,10 @@ nav.pagination-wrap {
   display: block;
   margin: 0;
 }
-.form-group {
+.myrequestpage > .form-group {
   margin: 0;
 }
-.form-group .row {
+.myrequestpage > .form-group .row {
   margin-bottom: 1rem;
 }
 /* ---------------- my request page start---------------- */

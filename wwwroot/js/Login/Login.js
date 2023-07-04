@@ -73,7 +73,7 @@ function CheckAll() {
               response.user[0].role_id == 8 ||
               response.user[0].role_id == 9
             ) {
-              window.location.href = "/Home/"; //home controller
+              window.location.href = "/Home/MyRequests";
             } else if (response.user[0].role_id == 3) {
               //("itemmaster");
               window.location.href = "/Home/NewIndent";
