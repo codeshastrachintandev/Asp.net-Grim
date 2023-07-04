@@ -16,33 +16,33 @@
                                     <div>
                                         <div class="form-group">
                                             <label for="usr">Vendor Name<span>*</span></label>
-                                            <input type="text" name="name" class="form-control" id="usr">
+                                            <input type="text" name="name" class="form-control" id="usr" required>
                                             <span class="Error-show error-msg1"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="usr">Contact Name<span>*</span></label>
-                                            <input type="text" name="contactname" class="form-control" id="usr">
-                                            <span class="Error-show error-msg1"></span>
+                                            <input type="text" name="contactname" class="form-control" id="usr" required>
+                                            <span class="Error-show error-msg2"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="number">Mobile Number<span>*</span></label>
-                                            <input type="tel" name="phone" id="phone" name="phone" class="form-control">
-                                            <span class="Error-show error-msg1"></span>
+                                            <input type="tel" name="phone" id="phone" name="phone" class="form-control" required>
+                                            <span class="Error-show error-msg3"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="comment">Address<span>*</span></label>
-                                            <textarea class="form-control" name="address" rows="3" id="comment"></textarea>
-                                            <span class="Error-show error-msg1"></span>
+                                            <textarea class="form-control" name="address" rows="3" id="comment" required></textarea>
+                                            <span class="Error-show error-msg4"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="comment">Remark</label>
-                                            <textarea class="form-control" name="remark" rows="3" id="comment"></textarea>
-                                            <span class="Error-show error-msg1"></span>
+                                            <textarea class="form-control" name="remark" rows="3" id="comment" required></textarea>
+                                            <span class="Error-show error-msg5"></span>
                                         </div>
                                     </div>
                                     <div class="vendors-buttons-wrap">
                                         <button type="rest" class="common-button common-orange-button">RESET</button>
-                                        <button type="submit" class="common-button common-blue-button">SAVE</button>
+                                        <button type="submit" class="common-button common-blue-button" id ="submit-form">SAVE</button>
                                     </div>
                                 </form>
                             </div>

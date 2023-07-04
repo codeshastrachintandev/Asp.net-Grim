@@ -477,6 +477,7 @@ $("#sel4").change(function () {
     selectedOption.remove();
   }
 });
+
 $("#sel3").change(function () {
   const selectedOption = $(this).find("option:selected");
 

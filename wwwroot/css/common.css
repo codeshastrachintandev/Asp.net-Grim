@@ -1351,4 +1351,10 @@ nav.pagination-wrap {
 .myrequestpage > .form-group .row {
   margin-bottom: 1rem;
 }
+.fromgroup-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+}
 /* ---------------- my request page start---------------- */

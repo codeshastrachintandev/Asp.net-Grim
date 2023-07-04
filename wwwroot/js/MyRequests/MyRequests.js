@@ -72,6 +72,17 @@ function i_ordershow(pagination, search) {
       role_id: Logindata.user[0].role_id,
       indent_type: statusbtn,
     }),
+    // data: JSON.stringify({
+    //   user_id: 854,
+    //   location_id: [],
+    //   from_date: "2022-07-05",
+    //   to_date: "2023-07-04",
+    //   page: 1,
+    //   npp: 10,
+    //   indent_status: [],
+    //   role_id: 2,
+    //   indent_type: "Pending",
+    // }),
 
     success: function (response) {
       if (response.success === true) {
@@ -334,7 +345,16 @@ function showaccordion(data) {
                 </th>
             </tr>`;
     });
-
+    var inputbox = `
+    <div class="form-group" id="inputbox1" style="display: none;">
+        <label for="comment">Remark</label>
+        <textarea class="form-control" name="remark" rows="3" id="comment" required></textarea>
+        <span class="Error-show error-msg5"></span>
+        <div class="fromgroup-btn">
+            <button class="common-button common-blue-button">APPROVE<span class="material-symbols-rounded">check</span></button>
+            <button class="common-button common-red-button">REJECT<span class="material-symbols-rounded">close</span></button>
+        </div>
+    </div>`;
     var collapse = `
         <div id="faq${index}" class="collapse showx" aria-labelledby="faqhead1"
             data-parent="#faq">
@@ -385,6 +405,7 @@ function showaccordion(data) {
                             </tbody>
                         </table>
                     </div>
+                    ${inputbox}
                 </div>
             </div>
         </div>`;
@@ -572,7 +593,6 @@ function editpopshow(orders_id, item_id) {
       data: JSON.stringify(temp),
       success: function (response) {
         if (response.success === true) {
-          spinner(false);
           toast("success", response.message);
           i_ordershow(pagination, search);
         }
@@ -687,4 +707,27 @@ function getcurrentdate() {
   const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
   return formattedDateTime;
+}
+
+$(document).on("click", "#checkbox1", function () {
+  var inputbox = document.getElementById("inputbox1");
+  if ($(this).is(":checked")) {
+    inputbox.style.display = "block";
+  } else {
+    inputbox.style.display = "none";
+  }
+});
+
+function checkboxforremark(checkboxid, inputid) {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("inputbox");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
 }

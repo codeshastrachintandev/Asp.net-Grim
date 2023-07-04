@@ -29,4 +29,5 @@ function checkvendor() {
     document.getElementById("Error-show").style.display = "block";
     document.getElementById("error-msg5").innerHTML = "Please enter remark";
   }
+  return false;
 }
