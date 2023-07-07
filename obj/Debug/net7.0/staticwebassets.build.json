@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e4TfwRFBSKWbWm1ZydOEEHdUAMEgM0HWzUDC5l9Keh4=",
+  "Hash": "xpjuQWG0TyCVbgwJyfmaKYWqjdHcTJVy/cbMLLi62Cg=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -712,6 +712,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\MyRequests\\MyRequests.js"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\NewPurchaseReq\\NewPurchaseReq.js",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "js/NewPurchaseReq/NewPurchaseReq.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\NewPurchaseReq\\NewPurchaseReq.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Notifications\\Notifications.js",

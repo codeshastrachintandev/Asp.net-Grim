@@ -149,6 +149,10 @@
       "PackagePath": "staticwebassets\\js\\MyRequests\\MyRequests.js"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\NewPurchaseReq\\NewPurchaseReq.js",
+      "PackagePath": "staticwebassets\\js\\NewPurchaseReq\\NewPurchaseReq.js"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Notifications\\Notifications.js",
       "PackagePath": "staticwebassets\\js\\Notifications\\Notifications.js"
     },

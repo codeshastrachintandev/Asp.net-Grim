@@ -1,4 +1,10 @@
-﻿<section id="content-wrapper">
+﻿<style>
+.error {
+  border: 1px solid red;
+}
+
+</style>
+<section id="content-wrapper">
     <div class="header-inner-title">
         <div class="page-title">
             <h1>New Purchase Request</h1>
@@ -9,76 +15,90 @@
     </div>
     <div class="container-fluid">
         <div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Material Name<span>*</span></label>
-                        <input type="text" class="form-control" id="usr">
+            <form>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="MaterialName">Material Name<span>*</span></label>
+                            <input type="text" class="form-control"
+                                id="MaterialName">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Material group<span>*</span></label>
-                        <select class="form-control" id="sel1"
-                            name="Acct Assignment Cart">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="Materialgroup">Material group<span>*</span></label>
+                            <select class="form-control" id="Materialgroup"
+                                name="Acct Assignment Cart">
+                                <option value="0">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Unit Of Measure <span>*</span></label>
-                        <select class="form-control" id="sel1" name="sellist1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="UnitOfMeasure">Unit Of Measure <span>*</span></label>
+                            <select class="form-control" id="UnitOfMeasure"
+                                name="sellist1">
+                                <option value="0">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Select Location</label>
-                        <select class="form-control" id="sel1" name="sellist1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                    <div class=" col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="SelectLocation">Select
+                                Location</label>
+                            <select class="form-control"
+                                id="SelectLocation"
+                                name="sellist1">
+                                <option value="0">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="comment">Material Description</label>
-                        <textarea class="form-control" rows="1" id="comment"></textarea>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="MaterialDescription">Material
+                                Description</label>
+                            <textarea class="form-control" rows="1"
+                                id="MaterialDescription"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Moving price<span>*</span></label>
-                        <input type="text" class="form-control" id="usr">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="Movingprice">Moving price<span>*</span></label>
+                            <input type="text" class="form-control"
+                                id="Movingprice">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                        <div class="switch-btn-wrap">
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                            <span class="switch-text">Batch Management</span>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="switch-btn-wrap">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span for class="switch-text">Batch
+                                    Management</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="vendors-buttons-wrap">
-                <button class="common-button common-orange-button">RESET</button>
-                <button class="common-button common-blue-button">SAVE</button>
-            </div>
+                <div class="vendors-buttons-wrap">
+                    <button type="reset"
+                        class="common-button common-orange-button">RESET</button>
+                    <button type="submit"
+                        class="common-button common-blue-button">SAVE</button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
+<script src="~/js/NewPurchaseReq/NewPurchaseReq.js"></script>
