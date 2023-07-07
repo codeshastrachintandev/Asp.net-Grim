@@ -1,156 +1,172 @@
-﻿ <section id="content-wrapper">
+﻿<link rel="stylesheet" href="~/css/Servicerequest/Servicerequest.css"/>
+<section id="content-wrapper">
             <div class="page-title">
-                <h1>Service Request</h1>
+                <h1>Service Request</h1>N
             </div>
             <div class="container-fluid">
-                <div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">PR Type Service<span>*</span></label>
-                                <input type="text" class="form-control" id="usr">
+                <form method="post" name="My_Form" onsubmit="javascript:return checkServicerequst()">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="PRTypeService" id="error1">PR Type Service<span>*</span></label>
+                                    <input type="text" class="form-control" id="PRTypeService">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="ItemcategoryD-Service" id="error2">Item category D-Service<span>*</span></label>
+                                    <input type="text" class="form-control" id="ItemcategoryD-Service">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="acctAssignment" id="error3">Acct Assignment Cart<span>*</span></label>
+                                    <select class="form-control" id="acctAssignment" name="Acct Assignment Cart">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="searchPlant" id="error4">Search Plant <span>*</span></label>
+                                    <select class="form-control" id="searchPlant" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="serviceGroup" id="error5">Service Group</label>
+                                    <select class="form-control" id="serviceGroup" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="serviceNo" id="error6">Service No</label>
+                                    <select class="form-control" id="serviceNo" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="Quantity" id="error7">Quantity<span>*</span></label>
+                                    <input type="text" class="form-control" id="Quantity">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="usr" id="error8">UOM</label>
+                                    <select class="form-control" id="sel1" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="GrossPrice" id="error9">Gross Price</label>
+                                    <input type="text" class="form-control" id="GrossPrice">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group" id="error10">
+                                    <label for="glAccount">G/L Account</label>
+                                    <select class="form-control" id="glAccount" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
                             </div>
 
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Item category D-Service<span>*</span></label>
-                                <input type="text" class="form-control" id="usr">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="costCenter" id="error11">Cost Center<span>*</span></label>
+                                    <select class="form-control" id="costCenter" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="PurchaseGroup" id="error12">Purchase Group</label>
+                                    <select class="form-control" id="PurchaseGroup" name="sellist1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="purchaseOrg" id="error13">Purchase Organization<span>*</span></label>
+                                    <input type="text" class="form-control" id="purchaseOrg">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="ShortText" id="error14">Short Text<span>*</span></label>
+                                    <textarea class="form-control" rows="1" id="ShortText"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="Reason" id="error15">Reason<span>*</span></label>
+                                    <textarea class="form-control" rows="1" id="Reason"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    @* <label class="filelabel">
+                                        <span class="material-symbols-rounded">attach_file</span>
+                                        <span class="title">Add File</span>
+                                        
+                                    </label> *@
+                                    @* <div id="dropzone" class="dropzone filelabel" for="FileInput">
+                                        <span class="material-symbols-rounded" >attach_file</span>
+                                        <span class="title" >Add File</span>
+                                        <input class="FileUpload1" id="FileInput" name="booking_attachment" type="file" />
+                                        <span class="dropzone-text">Drag and drop your images here (max 3)</span>
+                                    </div>
+                                    <div id="uploadedFiles"></div> *@
+                                    <div class="form">
+                                        <label class="form__container" id="upload-container">Choose or Drag & Drop Files
+                                            <input class="form__file" id="upload-files" type="file" accept="image/*" multiple="multiple"/>
+                                        </label>
+                                        <div class="form__files-container" id="files-list-container"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Acct Assignment Cart<span>*</span></label>
-                                <select class="form-control" id="sel1" name="Acct Assignment Cart">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Search Plant <span>*</span></label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Service Group</label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Service No</label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Quantity<span>*</span></label>
-                                <input type="text" class="form-control" id="usr">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">UOM</label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Gross Price</label>
-                                <input type="text" class="form-control" id="usr">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">G/L Account</label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Cost Center<span>*</span></label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Purchase Group</label>
-                                <select class="form-control" id="sel1" name="sellist1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="usr">Purchase Organization<span>*</span></label>
-                                <input type="text" class="form-control" id="usr">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="comment">Short Text<span>*</span></label>
-                                <textarea class="form-control" rows="1" id="comment"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="comment">Reason<span>*</span></label>
-                                <textarea class="form-control" rows="1" id="comment"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="form-group">
-                                <label class="filelabel">
-                                    <span class="material-symbols-rounded">attach_file</span>
-                                    <span class="title">Add File</span>
-                                    <input class="FileUpload1" id="FileInput" name="booking_attachment" type="file" />
-                                </label>
-                            </div>
+                        <div class="vendors-buttons-wrap">
+                            <button type="reset" class="common-button common-orange-button">RESET</button>
+                            <button type="submit" class="common-button common-blue-button" id="submit-form">SAVE</button>
                         </div>
                     </div>
-                    <div class="vendors-buttons-wrap">
-                        <button class="common-button common-orange-button">RESET</button>
-                        <button class="common-button common-blue-button">SAVE</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
+<script src="~/js/Servicerequest/Servicerequest.js"></script>

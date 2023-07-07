@@ -63,12 +63,12 @@ function Notifications() {
       if (status === "error") {
         spinner(false);
         console.log("Error: " + error);
-        toastlogin("warning", error);
+        toast("warning", error);
       }
     },
     error: function (error) {
-      toastlogin("error", error);
-      toastlogin("error", "Network error. Please try again later.");
+      toast("error", error);
+      toast("error", "Network error. Please try again later.");
       console.error("Error creating data on user_store_locations:->>", error);
     },
   });
@@ -167,7 +167,7 @@ function spinner(isloading) {
 }
 
 var icons_list = {
-  Index: '<span class="material-symbols-rounded">dashboard</span>',
+  Report: '<span class="material-symbols-rounded">dashboard</span>',
   MyProfile: '<span class="material-symbols-rounded">assignment_ind</span>',
   MyRequests: '<span class="material-symbols-rounded">check_circle</span>',
   NewIndent: '<span class="material-symbols-rounded">assignment</span>',
@@ -175,7 +175,8 @@ var icons_list = {
   NewPurchaseReq:
     '<span class="material-symbols-rounded">assignment_add</span>',
   Servicerequest: '<span class="material-symbols-rounded">settings</span>',
-  Itemmaterials: '<span class="material-symbols-rounded">priority_high</span>',
+  Itemmaterials:
+    '<span class="material-symbols-rounded">format_list_bulleted</span > ',
   Vendors: '<span class="material-symbols-rounded">group</span>',
   Notifications:
     '<span class="material-symbols-rounded">mark_chat_unread</span>',
@@ -190,7 +191,7 @@ var roles_menus = {
   //Indent user role = 3
   3: [
     {
-      Index: "Index",
+      Report: "Report",
       MyProfile: "My Profile",
       MyRequests: "My Requests",
       NewIndent: "New Indent",
@@ -203,7 +204,7 @@ var roles_menus = {
   //Indent manager role = 2
   2: [
     {
-      Index: "Index",
+      Report: "Report",
       MyProfile: "My Profile",
       MyRequests: "My Requests",
       NewIndent: "New Indent",
@@ -218,7 +219,7 @@ var roles_menus = {
   //HOD role = 7
   7: [
     {
-      Index: "report",
+      Report: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyRequests",
       NewIndent: "NewIndent",
@@ -233,7 +234,7 @@ var roles_menus = {
   //Issue manager role = 5
   5: [
     {
-      Index: "report",
+      Report: "report",
       MyProfile: "MyProfile",
       MyRequests: "Approvals",
       CretateSTO: "Cretate STO",
@@ -244,7 +245,7 @@ var roles_menus = {
   //SUBHOD role = 19
   19: [
     {
-      Index: "report",
+      Report: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyRequests",
       NewIndent: "NewIndent",
@@ -259,15 +260,10 @@ var roles_menus = {
   // requestmanager
   11: [
     {
-      Index: "report",
+      Report: "report",
       MyProfile: "MyProfile",
       MyRequests: "MyApprovals",
-      NewIndent: "NewIndent",
       Itemmaterials: "Item materials",
-      returns: "returns",
-      Newmaterialrequest: "New material request",
-      Servicerequest: "Service request",
-      Vendors: "Vendors",
       Notifications: "Notifications",
     },
   ],

@@ -16,10 +16,19 @@ function MyRequests() {
     },
     success: function (response) {
       if (response.success === true) {
-        $(".badgeall").text(response.all_count);
-        $(".badgeclose").text(response.closed_count);
-        $(".badgeopen").text(response.open_count);
-        $(".badgepending").text(response.pending_count);
+        response.pending_count == 0
+          ? $(".badgeall").hide()
+          : $(".badgeall").text(response.all_count);
+        response.pending_count == 0
+          ? $(".badgeclose").hide()
+          : $(".badgeclose").text(response.closed_count);
+        response.pending_count == 0
+          ? $(".badgeopen").hide()
+          : $(".badgeopen").text(response.open_count);
+        response.pending_count == 0
+          ? $(".badgepending").hide()
+          : $(".badgepending").text(response.pending_count);
+        //$('#id').show();
       }
     },
     error: function (xhr, status, error) {
@@ -72,18 +81,6 @@ function i_ordershow(pagination, search) {
       role_id: Logindata.user[0].role_id,
       indent_type: statusbtn,
     }),
-    // data: JSON.stringify({
-    //   user_id: 854,
-    //   location_id: [],
-    //   from_date: "2022-07-05",
-    //   to_date: "2023-07-04",
-    //   page: 1,
-    //   npp: 10,
-    //   indent_status: [],
-    //   role_id: 2,
-    //   indent_type: "Pending",
-    // }),
-
     success: function (response) {
       if (response.success === true) {
         showaccordion(response);
@@ -109,9 +106,6 @@ function i_ordershow(pagination, search) {
     },
   });
 }
-MyRequests();
-spinner(true);
-i_ordershow(pagination, search);
 
 //date convert
 function dateconvert(date) {
@@ -147,6 +141,7 @@ function currentdate(val) {
     day.toString().padStart(2, "0")
   );
 }
+
 //date end
 var obj;
 function showaccordion(data) {
@@ -183,6 +178,9 @@ function showaccordion(data) {
             <div>
                 <div class="row">
                     <div class="col-md-2 cust-border-wrap">
+                        <div class="urgent-img-wrap">
+                            <img src="https://172.16.1.69/img/urgent.df4378bd.png">
+                        </div>
                         <div class="date-time-wrap">
                             <h3>${dateconvert(element.created_at)}</h3>
                             <div class="mb-4">
@@ -287,7 +285,7 @@ function showaccordion(data) {
       } else {
         v_type = "";
       }
-
+      var status = `<span class="cust-badge pendiing-badge">Pendiing</span>`;
       tr += `<tr>
                 <td>
                     <div class="form-check">
@@ -324,23 +322,19 @@ function showaccordion(data) {
                 <td>${orders.quality_check_by}</td>
                 <th>
                     <div>
-                        <p onclick="onepopshow(${orders.id})"> <span
-                                data-toggle="modal"
-                                data-target="#indent-timeline-modal">
-                                <span class="material-symbols-rounded">visibility</span>
-                            </span>
-                            TIMELINE
-                        </p>
-                        <p onclick="twopopshow(${orders.id})"> <span
-                                data-toggle="modal"
-                                data-target="#indentApproval">
-                                <span class="material-symbols-rounded">visibility</span>
-                            </span>
-                            Approval Flow
-                        </p>
-                        <p> 
-                            ${edit}
-                        </p>
+                      <p class="timeline-text-modal" onclick="onepopshow(${
+                        orders.id
+                      })" data-toggle="modal" data-target="#indent-timeline-modal">
+                        <span class="material-symbols-rounded">visibility</span>TIMELINE
+                      </p>
+                      <p class="timeline-text-modal" onclick="twopopshow(${
+                        orders.id
+                      })"data-toggle="modal" data-target="#indentApproval"> 
+                        <span class="material-symbols-rounded">visibility</span>Approval Flow
+                      </p>
+                      <p> 
+                          ${edit}
+                      </p>
                     </div>
                 </th>
             </tr>`;
@@ -351,8 +345,8 @@ function showaccordion(data) {
         <textarea class="form-control" name="remark" rows="3" id="comment" required></textarea>
         <span class="Error-show error-msg5"></span>
         <div class="fromgroup-btn">
-            <button class="common-button common-blue-button">APPROVE<span class="material-symbols-rounded">check</span></button>
-            <button class="common-button common-red-button">REJECT<span class="material-symbols-rounded">close</span></button>
+            <button class="common-button common-flex-icon-btn common-blue-button">APPROVE<span class="material-symbols-rounded">check</span></button>
+            <button class="common-button common-flex-icon-btn common-red-button">REJECT<span class="material-symbols-rounded">close</span></button>
         </div>
     </div>`;
     var collapse = `
@@ -731,3 +725,246 @@ function checkboxforremark(checkboxid, inputid) {
     text.style.display = "none";
   }
 }
+
+function service_requestsApi() {
+  spinner(true);
+  $.ajax({
+    url: host + path + "manager/service_requests",
+    method: "POST",
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify({
+      user_id: Logindata.user[0].id,
+      role_id: Logindata.user[0].role_id,
+    }),
+    success: function (response) {
+      if (response.success === true) {
+        service_requests(response);
+        setTimeout(() => {
+          spinner(false);
+        }, 500);
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      setTimeout(() => {
+        spinner(false);
+      }, 300);
+      toast("warning", "Api failed. Please try again.");
+    },
+    complete: function (xhr, status) {
+      if (status === "error" || !xhr.responseText) {
+        setTimeout(() => {
+          spinner(false);
+        }, 300);
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
+}
+
+function service_requests(res) {
+  console.log(res);
+  document.getElementById("service_requests_tbody").innerHTML = "";
+  res.service_requests.result.forEach((element, index) => {
+    // console.log(element);
+    var Indent_status;
+    var v_type;
+    var disabled = "disabled";
+    var WBS_NO;
+    if (element.WBS_NO == "" || element.WBS_NO == null) {
+      WBS_NO = "";
+    } else {
+      WBS_NO = element.WBS_NO;
+    }
+
+    document.getElementById("service_requests_tbody").innerHTML += `
+              <tr>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox"
+                            class="form-check-input" id="checkbox${
+                              index + 1
+                            }" ${disabled}
+                            value="">
+                    </div>
+                </td>
+                <td>${index + 1}</td>
+                <td>${element.id}</td>
+                <td>${dateconverfun(element.created_at)}</td>
+                <td>${element.first_name}</td>
+                <td>${element.statuss}</td>
+                <td>${element.pr_type}</td>
+                <td>${element.acc_assg_cat}</td>
+                <td>${WBS_NO}</td>
+                <td>${element.item_category}</td>
+                <td>${
+                  element.location.plant_id +
+                  element.location.storage_loc +
+                  element.location.storage_location_desc
+                }</td>
+                <td>${element.service_group}</td>
+                <td>${element.service_no}</td>
+                <td>${element.quantity}</td>
+                <td>${element.UOM}</td>
+                <td>${element.gross_price}</td>
+                <td>${element.GLAccount}</td>
+                <td>${element.cost_center}</td>
+                <td>${element.purchase_group}</td>
+                <td>${element.purchase_organization}</td>
+                <td>${element.short_text}</td>
+                <td>${element.reason}</td>
+                <td><img src=""></img></td>
+                
+                <th>
+                    <div>
+                      <p data-toggle="modal" data-target="#indent-timeline-modal" onclick="ServiceRequestTimeline(${
+                        element.id
+                      })">
+                        <span class="material-symbols-rounded">visibility</span>TIMELINE
+                      </p>
+                      <p data-toggle="modal" data-target="#indentApproval" onclick="ServiceRequestApprovalFlow(${
+                        element.id
+                      },${Logindata.user[0].role_id})"> 
+                        <span class="material-symbols-rounded">visibility</span>Approval Flow
+                      </p>
+                      <p> 
+                         
+                      </p>
+                    </div>
+                </th>
+              </tr>`;
+  });
+}
+
+function dateconverfun(dateString) {
+  const date = new Date(dateString);
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
+}
+
+function ServiceRequestTimeline(id) {
+  $.ajax({
+    url: host + path + "service_status_history",
+    method: "POST",
+    dataType: "json",
+    data: {
+      id: id,
+    },
+    success: function (response) {
+      if (response.success === true) {
+        console.log(response);
+        var one = "";
+        $("#timelinebody").addClass("timeline");
+        document.getElementById("timeline").innerHTML = "";
+        response.service_status_history.forEach((ele, index) => {
+          var status = ele.status;
+          var msg = ele.role;
+          var Remarks = "<b>Remarks:</b> " + ele.remarks;
+          if (status == "pending") {
+            status = "Indent Created";
+            msg = "Placed";
+            Remarks = "";
+          } else if (status == "PR Raised") {
+            msg = "PR Requested";
+            Remarks =
+              `<p><b> SAP Document ID</b>` +
+              ele.sap_ref_id +
+              " " +
+              formatted_datetime(ele.updated_at) +
+              `</p>`;
+          }
+          document.getElementById("timeline").innerHTML += `
+            <div class="timeline-container ${convertSpacesToHyphens(
+              ele.color
+            )}">
+                <div class="timeline-icon">
+                    <i class="far fa-grin-wink"></i>
+                </div>
+                <div class="timeline-body">
+                    <h4 class="timeline-title">
+                        <span class="badge">${status}</span>
+                    </h4>
+                    <p>${msg} by <b>${ele.name}</b>  At ${formatted_datetime(
+            ele.created_at
+          )}</p>
+                    ${Remarks}
+                </div>
+            </div>
+            `;
+        });
+        /* <p class="timeline-subtitle">1 Hours A   go</p> */
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      toast("warning", "Login failed. Please try again.");
+    },
+
+    complete: function (xhr, status) {
+      if (status === "error" || !xhr.responseText) {
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
+  // setTimeout(() => {
+  //   $("body").css("padding-right", "0");
+  // }, 500);
+}
+
+function ServiceRequestApprovalFlow(id, service_id) {
+  $.ajax({
+    url:
+      host + path + "approvals_details?id=" + id + "&service_id=" + service_id,
+    method: "GET",
+    dataType: "json",
+    success: function (response) {
+      if (response.success === true) {
+        // console.log("test->>>", response);
+        document.getElementById("timelinebody").innerHTML = "";
+        response.approvals_details.forEach((element, index) => {
+          document.getElementById("timelinebody").innerHTML += `
+                <div class="timeline-container warning">
+                    <div class="timeline-icon">
+                        <i class="far fa-grin-wink">${index + 1}</i>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Requires approval from <b>${element.role}</b> ${
+            element.approver_name
+          }
+                        </p>
+                    </div>
+                </div>        
+            `;
+        });
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      toast("warning", "Login failed. Please try again.");
+    },
+
+    complete: function (xhr, status) {
+      if (status === "error" || !xhr.responseText) {
+        toast("error", "Network error. Please try again later.");
+      }
+    },
+  });
+  // setTimeout(() => {
+  //   $("body").css("padding-right", "0");
+  // }, 500);
+}
+
+// let table = new DataTable("#service_requests-table");
+
+MyRequests();
+i_ordershow(pagination, search);
+// service_requestsApi();
+spinner(true);
+
+$("#service_requests_table").DataTable({
+  dom: "Bfrtip",
+  buttons: ["print"],
+  paging: false,
+  info: false,
+});

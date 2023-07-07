@@ -1,334 +1,394 @@
-﻿
-@* <link rel="stylesheet" type="text/css" href="~/css/MyRequests.css"> *@
+﻿@* <link rel="stylesheet" type="text/css" href="~/css/MyRequests.css"> *@
+@* <link rel="stylesheet" type="text/css"
+href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"> *@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
+@* for table *@
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
 
 <section id="content-wrapper">
 
-            <div class="container-fluid">
-                <div class="indent-main-wrapper">
-                    <div class="">
+    <div class="container-fluid">
+        <div class="indent-main-wrapper">
+            <div class="">
 
 
+                <!-- START TABS DIV -->
+                <div class="tabbable-responsive">
+                    <div class="tabbable">
+                        <ul class="nav nav-pills nav-justified" id="linxea-avenir" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="eleve-tab" data-toggle="tab" href="#eleve" role="tab"
+                                    aria-controls="first" aria-selected="true">INDENTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="moyen-tab" data-toggle="tab" href="#moyen" role="tab"
+                                    aria-controls="second" aria-selected="false">NEW MATERIAL REQUESTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="service_requestsApi()" class="nav-link" id="faible-tab" data-toggle="tab" href="#faible" role="tab"
+                                    aria-controls="second" aria-selected="false">SERVICE REQUESTS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" style="margin-top:2px">
+                    <div class="tab-pane fade show active" id="eleve" role="tabpanel" aria-labelledby="eleve-tab">
                         <!-- START TABS DIV -->
-                        <div class="tabbable-responsive">
+                        <div class="tabbable-responsive inner-tab">
                             <div class="tabbable">
-                                <ul class="nav nav-pills nav-justified" id="linxea-avenir" role="tablist">
+                                <ul class="nav nav-pills nav-justified" id="eleve-nav" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="eleve-tab" data-toggle="tab" href="#eleve"
-                                            role="tab" aria-controls="first" aria-selected="true">INDENTS</a>
+                                        <a class="nav-link active" onclick="orders('Pending')" id="eleve-eco-tab"
+                                            data-toggle="tab" href="#eleve-eco" role="tab" aria-controls="first"
+                                            aria-selected="true">
+                                            <div class="position">
+                                                PENDIND APPROVALS<span
+                                                    class="badge badgeup badge-success badgepending">1</span>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="moyen-tab" data-toggle="tab" href="#moyen" role="tab"
-                                            aria-controls="second" aria-selected="false">NEW MATERIAL REQUESTS</a>
+                                        <a class="nav-link" onclick="orders('Open')" id="eleve-standard-tab"
+                                            data-toggle="tab" href="#eleve-standard" role="tab" aria-controls="second"
+                                            aria-selected="false">
+                                            <div class="position">
+                                                OPEN INDENTS<span class="badge badgeup badge-success badgeopen">1</span>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="faible-tab" data-toggle="tab" href="#faible" role="tab"
-                                            aria-controls="second" aria-selected="false">SERVICE REQUESTS</a>
+                                        <a class="nav-link" onclick="orders('Closed')" id="eleve-standard-tab1"
+                                            data-toggle="tab" href="#eleve-standard1" role="tab" aria-controls="second1"
+                                            aria-selected="false">
+                                            <div class="position">
+                                                CLOSE INDENTS<span
+                                                    class="badge badgeup badge-success badgeclose">1</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" onclick="orders('All')" id="eleve-standard-tab2"
+                                            data-toggle="tab" href="#eleve-standard2" role="tab" aria-controls="second2"
+                                            aria-selected="false">
+                                            <div class="position">
+                                                ALL INDENTS<span class="badge badgeup badge-success badgeall">1</span>
+                                            </div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="tab-content" style="margin-top:2px">
-                            <div class="tab-pane fade show active" id="eleve" role="tabpanel"
-                                aria-labelledby="eleve-tab">
-                                <!-- START TABS DIV -->
-                                <div class="tabbable-responsive inner-tab">
-                                    <div class="tabbable">
-                                        <ul class="nav nav-pills nav-justified" id="eleve-nav" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" onclick="orders('Pending')" id="eleve-eco-tab" data-toggle="tab"
-                                                    href="#eleve-eco" role="tab" aria-controls="first"
-                                                    aria-selected="true">
-                                                        <div class="position">
-                                                            PENDIND APPROVALS<span class="badge badgeup badge-success badgepending">1</span>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" onclick="orders('Open')" id="eleve-standard-tab" data-toggle="tab"
-                                                    href="#eleve-standard" role="tab" aria-controls="second"
-                                                    aria-selected="false">
-                                                        <div class="position">
-                                                           OPEN INDENTS<span class="badge badgeup badge-success badgeopen">1</span>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" onclick="orders('Closed')" id="eleve-standard-tab1" data-toggle="tab"
-                                                    href="#eleve-standard1" role="tab" aria-controls="second1"
-                                                    aria-selected="false">
-                                                        <div class="position">
-                                                           CLOSE INDENTS<span class="badge badgeup badge-success badgeclose">1</span>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" onclick="orders('All')" id="eleve-standard-tab2" data-toggle="tab"
-                                                    href="#eleve-standard2" role="tab" aria-controls="second2"
-                                                    aria-selected="false">
-                                                    <div class="position">
-                                                           ALL INDENTS<span class="badge badgeup badge-success badgeall">1</span>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="eleve-eco" role="tabpanel"
+                                aria-labelledby="eleve-eco-tab">
+
+                                <!-- ****************************************************** -->
+                                <!-- START inner tab one  -->
+
+                                <div class="indent-tab-filter">
+                                    <div class="indent-tab-item search-container">
+                                        <form>
+                                            <div class="search-container-inner">
+                                                <input type="number"
+                                                    placeholder="Search by Indent Number Or Material Number"
+                                                    name="search" id="searchIndentNumber">
+                                                <button type="submit"><span
+                                                        class="material-symbols-rounded">search</span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="indent-tab-item">
+                                        <button class="common-button common-blue-button">
+                                            <span class="material-symbols-rounded">print</span>
+                                            PRINT
+                                        </button>
+                                    </div>
+                                    <div class="indent-tab-item">
+                                        <button class="common-button-icon"><span
+                                                class="material-symbols-rounded">filter_list</span>
+                                        </button>
+                                    </div>
+                                    <div class="indent-tab-item">
+                                        <button class="common-button common-blue-button"><span
+                                                class="material-symbols-rounded">add</span> NEW
+                                            INDENT</button>
                                     </div>
                                 </div>
 
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="eleve-eco" role="tabpanel"
-                                        aria-labelledby="eleve-eco-tab">
 
-                                        <!-- ****************************************************** -->
-                                        <!-- START inner tab one  -->
 
-                                        <div class="indent-tab-filter">
-                                            <div class="indent-tab-item search-container">
-                                                <form>
-                                                    <div class="search-container-inner">
-                                                        <input type="number" placeholder="Search by Indent Number Or Material Number" name="search" id="searchIndentNumber">
-                                                        <button type="submit"><span class="material-symbols-rounded">search</span></button>
-                                                    </div>
-                                                </form>
-                                            </div>
 
-                                            <div class="indent-tab-item">
-                                                <button class="common-button common-blue-button">
-                                                    <span class="material-symbols-rounded">print</span>
-                                                    PRINT
-                                                </button>
-                                            </div>
-                                            <div class="indent-tab-item">
-                                                <button class="common-button-icon"><span class="material-symbols-rounded">filter_list</span>
-                                                </button>
-                                            </div>
-                                            <div class="indent-tab-item">
-                                                <button class="common-button common-blue-button"><span class="material-symbols-rounded">add</span> NEW
-                                                    INDENT</button>
-                                            </div>
+                                <div>
+                                    <div id="main">
+                                        <div class="accordion accordionbody" id="faq">
+
                                         </div>
-
-
-
-
-                                        <div>
-                                            <div id="main">
-                                                <div class="accordion accordionbody" id="faq">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- ****************************************************** -->
-                                        <!-- END inner tab one -->
-                                        <div>
-                                            <!--Pagination 4-->
-                                            <nav class="pagination-wrap"
-                                                aria-label="pagination example" style="display: flex;flex-direction: row;justify-content: center;">
-                                                <ul class="pagination pagination-circle justify-content-center" id="paginationlist" > </ul>
-                                            </nav>
-                                        </div>
-
                                     </div>
-                            @* <div class="tab-pane fade" id="eleve-standard" role="tabpanel"
-                                        aria-labelledby="eleve-standard-tab">
+                                </div>
 
-                                        <!-- ****************************************************** -->
-                                        <!-- START SECTION 2 -->
 
-                                        <p>exemple 2</p>
-
-                                        <!-- ****************************************************** -->
-                                        <!-- END SECTION 2 -->
-
-                                    </div>
-                                    <div class="tab-pane fade" id="eleve-standard1" role="tabpanel"
-                                        aria-labelledby="eleve-standard-tab1">
-
-                                        <!-- ****************************************************** -->
-                                        <!-- START SECTION 3 -->
-
-                                        <p>exemple 3</p>
-
-                                        <!-- ****************************************************** -->
-                                        <!-- END SECTION 3 -->
-
-                                    </div>
-                                    <div class="tab-pane fade" id="eleve-standard2" role="tabpanel"
-                                        aria-labelledby="eleve-standard-tab2">
-
-                                        <!-- ****************************************************** -->
-                                        <!-- START SECTION 4 -->
-
-                                        <p>exemple 4</p>
-
-                                        <!-- ****************************************************** -->
-                                        <!-- END SECTION 4 -->
-
-                                    </div> *@
+                                <!-- ****************************************************** -->
+                                <!-- END inner tab one -->
+                                <div>
+                                    <!--Pagination 4-->
+                                    <nav class="pagination-wrap" aria-label="pagination example"
+                                        style="display: flex;flex-direction: row;justify-content: center;">
+                                        <ul class="pagination pagination-circle justify-content-center"
+                                            id="paginationlist"> </ul>
+                                    </nav>
                                 </div>
 
                             </div>
-
-                            <div class="tab-pane fade" id="moyen" role="tabpanel" aria-labelledby="moyen-tab">
-
-                                <div class="tab-content" style="margin-top:2px">
-                                    <div class="tab-pane fade show active" id="moyen" role="tabpanel"
-                                        aria-labelledby="moyen-tab">
-                                        <!-- START TABS DIV -->
-                                        <p>main-tab 2</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane fade" id="faible" role="tabpanel" aria-labelledby="faible-tab">
-
-                                <div class="tab-content" style="margin-top:2px">
-                                    <div class="tab-pane fade show active" id="faible" role="tabpanel"
-                                        aria-labelledby="faible-tab">
-                                        <!-- START TABS DIV -->
-                                        <p>main-tab 3</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                        
                         </div>
 
                     </div>
-                </div>
-            </div>
 
-        </section>
+                    <div class="tab-pane fade" id="moyen" role="tabpanel" aria-labelledby="moyen-tab">
+
+                        <div class="tab-content" style="margin-top:2px">
+                            <div class="tab-pane fade show active" id="moyen" role="tabpanel"
+                                aria-labelledby="moyen-tab">
+                                <!-- START TABS DIV -->
+                                <div>
+                                    <div id="table-scroll" class="table-scroll table-scroll-wrap">
+                                        <table class="main-table" id="new_material_requests_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>&nbsp;</th>
+                                                    <th>S NO</th>
+                                                    <th>Service ID</th>
+                                                    <th>Date</th>
+                                                    <th>User</th>
+                                                    <th>Status</th>
+                                                    <th>PR Type</th>
+                                                    <th>Acct Assignment Cat</th>
+                                                    <th>WBS Number</th>
+                                                    <th>Item Category</th>
+                                                    <th>Plant</th>
+                                                    <th>Service Group</th>
+                                                    <th>Service No</th>
+                                                    <th>Quantity</th>
+                                                    <th>UOM</th>
+                                                    <th>Gross Price</th>
+                                                    <th>G/L Account</th>
+                                                    <th>Cost Center</th>
+                                                    <th>Purchase Group</th>
+                                                    <th>Purchase Organization</th>
+                                                    <th>Short Text</th>
+                                                    <th>Reason</th>
+                                                    <th>Images</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="new_material_requests_tbody">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="faible" role="tabpanel" aria-labelledby="faible-tab">
+
+                        <div class="tab-content" style="margin-top:2px">
+                            <div class="tab-pane fade show active" id="faible" role="tabpanel"
+                                aria-labelledby="faible-tab">
+                                <!-- START TABS DIV -->
+                                <div>
+                                    <div id="table-scroll" class="table-scroll table-scroll-wrap">
+                                        <table class="main-table" id="service_requests_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>&nbsp;</th>
+                                                    <th>S NO</th>
+                                                    <th>Service ID</th>
+                                                    <th>Date</th>
+                                                    <th>User</th>
+                                                    <th>Status</th>
+                                                    <th>PR Type</th>
+                                                    <th>Acct Assignment Cat</th>
+                                                    <th>WBS Number</th>
+                                                    <th>Item Category</th>
+                                                    <th>Plant</th>
+                                                    <th>Service Group</th>
+                                                    <th>Service No</th>
+                                                    <th>Quantity</th>
+                                                    <th>UOM</th>
+                                                    <th>Gross Price</th>
+                                                    <th>G/L Account</th>
+                                                    <th>Cost Center</th>
+                                                    <th>Purchase Group</th>
+                                                    <th>Purchase Organization</th>
+                                                    <th>Short Text</th>
+                                                    <th>Reason</th>
+                                                    <th>Images</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="service_requests_tbody">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
 <br>
 <br>
 
 <!-- The Modal -->
-    <div class="modal fade timeline-modal-wrap" id="indent-timeline-modal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+<div class="modal fade timeline-modal-wrap" id="indent-timeline-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Indent Timeline</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Indent Timeline</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="timeline" id="timeline">
+
                 </div>
+            </div>
 
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="timeline" id="timeline">
-                
-                    </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal fade timeline-modal-wrap" id="indentApproval">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Indent Approval Flow</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" id="modal-body">
+                <div class="timeline" id="timelinebody">
+
                 </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <div class="modal fade timeline-modal-wrap" id="indentApproval">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+</div>
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Indent Approval Flow</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
+<!-- The Modal for edit -->
+<div class="modal fade timeline-modal-wrap" id="indentApprovaledit">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-                <!-- Modal body -->
-                <div class="modal-body" id="modal-body">
-                    <div class="timeline" id="timelinebody">
-
-                    </div>
-                </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Indent Item</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-        </div>
-    </div>
 
-    <!-- The Modal for edit -->
-    <div class="modal fade timeline-modal-wrap" id="indentApprovaledit">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Indent Item</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div id="timelinebodyedit">
-                        <form class="myrequestpage">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-6"> 
-                                        <label for="recipient-name" class="col-form-label">Item Name:</label>
-                                        <input type="text"  disabled="disabled" class="form-control quantity " id="product_name" value="" required>
-                                    </div>
-                                    <div class="col-6"> 
-                                        <label for="recipient-name" class="col-form-label">Oty:</label>
-                                        <input type="number"  min="1" class="form-control quantity quantity" id="intial_qty" value="" required>
-                                    </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="timelinebodyedit">
+                    <form class="myrequestpage">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="recipient-name" class="col-form-label">Item Name:</label>
+                                    <input type="text" disabled="disabled" class="form-control quantity "
+                                        id="product_name" value="" required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="recipient-name" class="col-form-label">Oty:</label>
+                                    <input type="number" min="1" class="form-control quantity quantity" id="intial_qty"
+                                        value="" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="">
-                                        <select class="form-control DeliveryPriority DeliveryPriority" data-obj="" placeholder="Delivery Priority*" id="delivery_priority">
-                                            <option value="High">High</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="Low">Low</option>
-                                        </select>
-                                    <span class="error-msg cartdropbox4" id="DeliveryPriority" style="display: none;">*The DeliveryPriority field is required.</span>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="">
+                                <select class="form-control DeliveryPriority DeliveryPriority" data-obj=""
+                                    placeholder="Delivery Priority*" id="delivery_priority">
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                                <span class="error-msg cartdropbox4" id="DeliveryPriority" style="display: none;">*The
+                                    DeliveryPriority field is required.</span>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Priority days*:</label>
-                                <input type="text" id="priority_days" disabled name="input1" class="form-control" required>
-                                <p>0 / 3</p>
-                                <span class="error-msg cartdropbox4" id="" style="display: none;">*The DeliveryPriority field is required.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Tracking No*:</label>
-                                <input type="text" class="form-control input1" id="tracking_no" value="test"  required>
-                                <p>0/ 3</p>
-                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Section*:</label>
-                                <input type="text" class="form-control input"id="section" value="test"  required>
-                                <p>0 / 20</p>
-                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Reason*:</label>
-                                <textarea class="form-control" id="reason" required></textarea>
-                                <p>0 / 100</p>
-                                <span class="error-msg cartdropbox4"  style="display: none;">*The DeliveryPriority field is required.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Wher Uesd*:</label>
-                                <textarea class="form-control" id="where_used" required></textarea> 
-                                <p>0 / 100</p>
-                                <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is required.</span>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Priority days*:</label>
+                            <input type="text" id="priority_days" disabled name="input1" class="form-control" required>
+                            <p>0 / 3</p>
+                            <span class="error-msg cartdropbox4" id="" style="display: none;">*The DeliveryPriority
+                                field is required.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Tracking No*:</label>
+                            <input type="text" class="form-control input1" id="tracking_no" value="test" required>
+                            <p>0/ 3</p>
+                            <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is
+                                required.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Section*:</label>
+                            <input type="text" class="form-control input" id="section" value="test" required>
+                            <p>0 / 20</p>
+                            <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is
+                                required.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Reason*:</label>
+                            <textarea class="form-control" id="reason" required></textarea>
+                            <p>0 / 100</p>
+                            <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is
+                                required.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Wher Uesd*:</label>
+                            <textarea class="form-control" id="where_used" required></textarea>
+                            <p>0 / 100</p>
+                            <span class="error-msg cartdropbox4" style="display: none;">*The DeliveryPriority field is
+                                required.</span>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer" id="modal-footer">
-                    <button type="button" class="common-button common-red-button" data-dismiss="modal" onclick="popClose('customModalCenter')">cancel</button>
-                    <button type="button" class="common-button common-blue-button" data-dismiss="modal" id="update">Save</button>
-                </div>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <button type="button" class="common-button common-red-button" data-dismiss="modal"
+                    onclick="popClose('customModalCenter')">cancel</button>
+                <button type="button" class="common-button common-blue-button" data-dismiss="modal"
+                    id="update">Save</button>
             </div>
         </div>
     </div>
+</div>
 
 <!-- custom Modal center model yes and no  -->
 <div class="modal fade" id="customModalCentermy" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -340,7 +400,8 @@
                     <span class="material-symbols-rounded">warning</span>
                     Replace Cart Material
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" onclick="popClose('customModalCenter')" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" onclick="popClose('customModalCenter')"
+                    aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -350,7 +411,8 @@
                     Central Gen Stor?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="common-button common-red-button" data-dismiss="modal" onclick="popClose('customModalCenter')">No</button>
+                <button type="button" class="common-button common-red-button" data-dismiss="modal"
+                    onclick="popClose('customModalCenter')">No</button>
                 <button type="button" class="common-button common-blue-buttonmy">Yes</button>
             </div>
         </div>
@@ -369,11 +431,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 @* table script *@
+@* 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script> *@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@* for table *@
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
 @* <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> *@
 
 <script src="~/js/main.js"></script>
 <script src="~/js/MyRequests/MyRequests.js"></script>
 
+<script>
+@* $("#service_requests_table").DataTable({
+  dom: "Bfrtip",
+  buttons: ["print"],
+  paging: false,
+  info: false,
+}); *@
 
-@* <span class="material-symbols-rounded">visibility</span> *@
+</script>

@@ -1,15 +1,31 @@
-﻿function logout() {
-  localStorage.removeItem("user_info");
-  localStorage.removeItem("cart");
-  localStorage.removeItem("sidemenu");
-  window.location.href = "../Login";
+﻿
+
+function logout() {
+    Swal.fire({
+        title: "Are you sure you want to Logout?",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Logout!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            logoutmethod();
+            window.location.href = "../Login";
+        }
+    });
 }
+
 function logoutsession() {
-  localStorage.removeItem("user_info");
-  localStorage.removeItem("cart");
-  localStorage.removeItem("sidemenu");
-  alert("session time out");
-  window.location.href = "../Login";
+    logoutmethod();
+    alert("session time out");
+    window.location.href = "../Login";
+}
+
+function logoutmethod() {
+    localStorage.removeItem("user_info");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("sidemenu");
 }
 
 function resetTimer() {

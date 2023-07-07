@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\css\\Profile.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\Servicerequest\\Servicerequest.css",
+      "PackagePath": "staticwebassets\\css\\Servicerequest\\Servicerequest.css"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\badge_notifiction.css",
       "PackagePath": "staticwebassets\\css\\badge_notifiction.css"
     },
@@ -151,6 +155,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Profile\\profile.js",
       "PackagePath": "staticwebassets\\js\\Profile\\profile.js"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Servicerequest\\Servicerequest.js",
+      "PackagePath": "staticwebassets\\js\\Servicerequest\\Servicerequest.js"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\cart\\cart.js",

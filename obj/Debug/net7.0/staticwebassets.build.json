@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nmrNO6MahxBK7Ag65p9KfVeZPejbqitOuaITxZ8xSII=",
+  "Hash": "e4TfwRFBSKWbWm1ZydOEEHdUAMEgM0HWzUDC5l9Keh4=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -338,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\section.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\Servicerequest\\Servicerequest.css",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "css/Servicerequest/Servicerequest.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Servicerequest\\Servicerequest.css"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\css\\sidebar.css",
@@ -729,6 +746,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Profile\\profile.js"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Servicerequest\\Servicerequest.js",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "js/Servicerequest/Servicerequest.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Servicerequest\\Servicerequest.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\site.js",

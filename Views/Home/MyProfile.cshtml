@@ -1,148 +1,155 @@
 ﻿
 <link rel="stylesheet" type="text/css" href="~/css/Profile.css">
 <section class="profile-banner">
-            <div class="profile-banner-wrap">
-                <img src="https://172.16.1.69/img/profile.28fb3626.jpg">
-                <div class="profile-banner-user-info">
-                    <p id="profile-banner1"></p>
-                    <p id="profile-banner2"></p>
-                    <p id="profile-banner3"></p>
-                </div>
-            </div>
-        </section>
-        <section id="content-wrapper">
+    <div class="profile-banner-wrap">
+        <img src="https://172.16.1.69/img/profile.28fb3626.jpg">
+        <div class="profile-banner-user-info">
+            <p id="profile-banner1"></p>
+            <p id="profile-banner2"></p>
+            <p id="profile-banner3"></p>
+        </div>
+    </div>
+</section>
+<section id="content-wrapper">
 
-            <div class="container-fluid">
-                <div class="profile-tab-wrap">
-                    <!-- Nav pills -->
-                    <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="#home">PROFILE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#menu1">LOCATIONS</a>
-                        </li>
-                    </ul>
+    <div class="container-fluid">
+        <div class="profile-tab-wrap">
+            <!-- Nav pills -->
+            <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#home">PROFILE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#menu1">LOCATIONS</a>
+                </li>
+            </ul>
 
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div id="home" class=" tab-pane active"><br>
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">work</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id="user-role">Indent User</h3>
-                                                <p>Role</p>
-                                            </div>
-                                        </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="home" class=" tab-pane active"><br>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">work</span></span>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">call</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id ="user-mobile_no"></h3>
-                                                <p>Mobile</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">mail</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id="user-email"></h3>
-                                                <p>Email</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">event</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id="user-joining_date"></h3>
-                                                <p>Date of joining</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">assignment_ind</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id="user-sap_user_id">10000019</h3>
-                                                <p>SAP ID</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="profile-item-wrap">
-                                            <div class="item-icon-wrap">
-                                                <span><span class="material-symbols-rounded">assignment_ind</span></span>
-                                            </div>
-                                            <div class="item-info-wrap">
-                                                <h3 id="user-manager_id"></h3>
-                                                <p>Reporting to</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-        @* my_location *@
-
-                        <div id="menu1" class=" tab-pane fade"><br>
-                            <div>
-                                <div class="row">
-                                    @* Store Location *@
-                                    <div class="col-md-6 col-sm-12" id="store_loc1">
-                                        <h2>Store Location</h2>
-
-
-                                        @* <div class="location-wrap">
-                                            <div class="location-item-wrap">
-                                                <span class="bg-green material-symbols-rounded">my_location</span>
-                                                <span>NC01-CGEN centrel Gen Store</span>
-                                            </div>
-                                        </div> *@
-
-                                       
-                                    </div>
-                                    @* Delivery Location *@
-                                    <div class="col-md-6 col-sm-12" id="store_loc2">
-                                        <h2>Delivery Location</h2>
-
-                                        @* <div class="location-wrap">
-                                            <div class="location-item-wrap">
-                                                <span class="bg-green material-symbols-outlined">
-                                                    my_location
-                                                </span>
-                                                <span>NC01-CGEN centrel Gen Store</span>
-                                            </div>
-                                        </div> *@
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-role">Indent User</h3>
+                                        <p>Role</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">call</span></span>
+                                    </div>
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-mobile_no"></h3>
+                                        <p>Mobile</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">mail</span></span>
+                                    </div>
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-email"></h3>
+                                        <p>Email</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">event</span></span>
+                                    </div>
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-joining_date"></h3>
+                                        <p>Date of joining</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">assignment_ind</span></span>
+                                    </div>
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-sap_user_id">10000019</h3>
+                                        <p>SAP ID</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="profile-item-wrap">
+                                    <div class="item-icon-wrap">
+                                        <span><span
+                                                class="material-symbols-rounded">assignment_ind</span></span>
+                                    </div>
+                                    <div class="item-info-wrap">
+                                        <h3 id="user-manager_id"></h3>
+                                        <p>Reporting to</p>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </section>
+                @* my_location *@
+
+                <div id="menu1" class=" tab-pane fade"><br>
+                    <div class="store-location-main">
+                        <div class="row">
+                            @* Store Location *@
+                            <div class="col-md-6 col-sm-12" id="store_loc1">
+                                <h2 class="profile-title">Store Location</h2>
+
+                                @* <div class="location-wrap">
+                                <div class="location-item-wrap">
+                                <span class="bg-green
+                                material-symbols-rounded">my_location</span>
+                                <span>NC01-CGEN centrel Gen Store</span>
+                                </div>
+                                </div> *@
+
+                            </div>
+                            @* Delivery Location *@
+                            <div class="col-md-6 col-sm-12" id="store_loc2">
+                                <h2 class="profile-title">Delivery Location</h2>
+
+                                @* <div class="location-wrap">
+                                <div class="location-item-wrap">
+                                <span class="bg-green
+                                material-symbols-outlined">
+                                my_location
+                                </span>
+                                <span>NC01-CGEN centrel Gen Store</span>
+                                </div>
+                                </div> *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="~/js/main.js"></script>
 <script src="~/js/profile/profile.js"></script>

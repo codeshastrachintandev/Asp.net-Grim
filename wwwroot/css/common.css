@@ -10,12 +10,20 @@ body {
   position: relative;
   min-height: 100%;
 }
+/* body {
+  padding-right: 0 !important;
+  overflow-y: scroll !important;
+  overflow-x: scroll !important;
+} */
 /* html {
   scroll-behavior: smooth;
 } */
 :root {
 }
 
+body.modal-open {
+  padding-right: unset !important;
+}
 a {
   transition: background 0.2s, color 0.2s;
 }
@@ -33,9 +41,9 @@ a:focus {
   outline: unset;
   box-shadow: none;
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  /* display: flex; */
+  /* align-items: center;
+  gap: 5px; */
 }
 .common-button:hover {
   color: #fff;
@@ -103,7 +111,11 @@ a:focus {
   border: unset;
   font-size: 20px;
 }
-
+.common-flex-icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .bg-yellow {
   background-color: #ff9800;
 }
@@ -188,7 +200,7 @@ img {
   text-decoration: none;
   color: #f3f3f3;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 }
 .toggled .sidebar-nav > li a > span {
   display: block;
@@ -334,7 +346,13 @@ img {
   #wrapper {
     padding-left: 0;
   }
-
+  .header-inner {
+    justify-content: flex-start;
+  }
+  .sidebar-nav,
+  .sidebar-brand {
+    width: 100px;
+  }
   #sidebar-wrapper {
     width: 0;
   }
@@ -363,7 +381,7 @@ img {
   }
 
   #wrapper.toggled {
-    padding-left: 70px;
+    padding-left: 100px;
   }
 
   #content-wrapper {
@@ -455,6 +473,11 @@ img {
   height: 35px;
   width: 35px;
 }
+@media (max-width: 767px) {
+  .search-container-inner input {
+    font-size: 13px;
+  }
+}
 /* --------------------------------COMMON CSS sidebar and header END--------------------------------------- */
 
 /* -----------------------------table common start --------------------- */
@@ -537,6 +560,8 @@ img {
 .table-scroll.table-scroll-wrap th:last-child div p {
   cursor: pointer;
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
 }
 .table-scroll.table-scroll-wrap th:last-child div p i {
   color: #0000ff;
@@ -688,6 +713,10 @@ nav.pagination-wrap {
 }
 .cust-border-wrap {
   border-right: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .amount-info {
   text-align: end;
@@ -810,6 +839,7 @@ nav.pagination-wrap {
 @media (max-width: 767px) {
   .cust-border-wrap {
     border-right: unset;
+    padding-bottom: 15px;
   }
   .date-time-wrap,
   .amount-info {
@@ -852,7 +882,7 @@ nav.pagination-wrap {
   .nav-pills
   .show
   > .nav-link {
-  background-color: #ff9800 !important;
+  background-color: #1976d2 !important;
   color: #fff;
 }
 .indent-tab-filter {
@@ -862,6 +892,12 @@ nav.pagination-wrap {
 }
 .indent-tab-filter .indent-tab-item {
   padding: 0 15px;
+}
+.indent-tab-filter .indent-tab-item .common-button-icon,
+.indent-tab-filter .indent-tab-item .common-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 @media (max-width: 1440px) {
   .indent-tab-filter {
@@ -890,7 +926,12 @@ nav.pagination-wrap {
   .indent-tab-filter .indent-tab-item .common-button-icon,
   .indent-tab-filter .indent-tab-item .common-button {
     margin: 10px 0;
-    font-size: 14px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 575px) {
+  .tabbable ul li {
+    margin-bottom: 30px;
   }
 }
 /* ----------- indents accordion css END ---------- */
@@ -1122,6 +1163,7 @@ nav.pagination-wrap {
 }
 .page-title h1 {
   color: #1976d2;
+  font-size: 20px;
 }
 .notification-wrap {
   /* border-bottom: 1px solid #ddd; */
@@ -1140,7 +1182,6 @@ nav.pagination-wrap {
 }
 .notification-wrap .notification-inner .user-img img {
   width: 45px;
-  max-width: 100%;
   border-radius: 50%;
   flex-wrap: wrap;
 }
@@ -1167,6 +1208,9 @@ nav.pagination-wrap {
   font-size: 24px;
 }
 @media (max-width: 767px) {
+  .page-title h1 {
+    font-size: 18px;
+  }
   #orderPlacedModal .modal-body h3 {
     font-size: 18px;
   }
@@ -1356,5 +1400,28 @@ nav.pagination-wrap {
   flex-direction: row;
   justify-content: center;
   margin-top: 10px;
+}
+.urgent-img-wrap {
+  position: absolute;
+}
+.urgent-img-wrap img {
+  width: auto;
+  height: auto;
+  max-height: 25%;
+  max-width: 25%;
+}
+.timeline-text-modal {
+  color: #000;
+}
+.timeline-text-modal .material-symbols-rounded {
+  color: #1976d2;
+}
+@media (max-width: 767px) {
+  #main #faq .card .card-header p {
+    font-size: 14px;
+  }
+  .accordion.accordionbody .card-body {
+    padding: 0;
+  }
 }
 /* ---------------- my request page start---------------- */

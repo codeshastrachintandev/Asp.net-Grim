@@ -91,6 +91,7 @@ $("#searchIndent").on("input", function (event) {
 //cardshow function and product APi call hear
 
 function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
+  spinner(true);
   document.getElementById("cardbody").innerHTML = "";
   user_loc_response.locations.forEach((element) => {
     if (element.id == loc_id) {
@@ -135,9 +136,11 @@ function cardshow(loc_id, user_loc_response, sort_by, search, pagenumber) {
       products_pagination = response.products.pagination;
       // console.log("result ajax in Home js ->>>>>", result);
       homepagecards(products_result, products_pagination);
+      spinner(false);
     },
     error: function (error) {
       console.error("Error creating data:", error);
+      spinner(false);
     },
   });
 

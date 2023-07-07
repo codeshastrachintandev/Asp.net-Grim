@@ -32,7 +32,7 @@
   /* justify-content: center; */
 }
 .profile-tab-wrap ul.nav-pills li {
-  padding: 0 15px;
+  padding: 0 6px;
 }
 .profile-item-wrap {
   display: flex;
@@ -55,13 +55,18 @@
   color: #1976d2;
   font-weight: 500;
   border: 1px solid #1976d2;
+  font-size: 14px;
 }
 .profile-item-wrap .item-info-wrap h3 {
-  font-size: 1.2rem;
+  font-size: 16px;
   margin-bottom: 0;
+  line-height: 20px;
 }
 .profile-item-wrap .item-info-wrap p {
   margin-bottom: 0;
+}
+.store-location-main h2.profile-title {
+  font-size: 20px;
 }
 .location-wrap {
   margin: 10px 0;
@@ -76,7 +81,7 @@
   vertical-align: middle;
 }
 .location-item-wrap {
-  width: max-content;
+  width: fit-content;
   padding-right: 10px;
   background: #ddd;
   border-radius: 20px;
@@ -91,5 +96,15 @@
 .location-item-wrap span:last-child {
   padding: 0 8px;
 }
-
+.profile-tab-wrap .nav-link {
+  font-size: 14px;
+}
+.item-icon-wrap .material-symbols-rounded {
+  color: #3f51b5;
+}
+@media (max-width: 767px) {
+  .store-location-main h2.profile-title {
+    font-size: 18px;
+  }
+}
 /* --------------------profile css end------------------ */

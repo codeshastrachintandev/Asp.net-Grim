@@ -29,26 +29,16 @@ function CheckAll() {
 
   var notification = $(".notification");
 
-  var email = $("#email").val();
-  var password = $("#password").val();
-  var sap_id = "";
-
-  console.log("api call");
-  const api_url = hostlogin + "/api/v4/login";
-  console.log(
-    "login---->",
-    JSON.stringify({ email: email, password: password })
-  );
-
   spinner(true);
   // Make AJAX request to the server
   $.ajax({
-    url: api_url,
+    url: hostlogin + "/api/v4/login",
     method: "POST",
     dataType: "json",
     data: {
-      email: email,
-      password: password,
+      email: $("#email").val(),
+      password: $("#password").val(),
+      sap_id: "",
     },
     success: function (response) {
       // Handle successful login
@@ -71,7 +61,8 @@ function CheckAll() {
               response.user[0].role_id == 2 ||
               response.user[0].role_id == 7 ||
               response.user[0].role_id == 8 ||
-              response.user[0].role_id == 9
+              response.user[0].role_id == 9 ||
+              response.user[0].role_id == 19
             ) {
               window.location.href = "/Home/MyRequests";
             } else if (response.user[0].role_id == 3) {

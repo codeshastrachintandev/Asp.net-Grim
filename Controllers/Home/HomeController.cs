@@ -54,6 +54,18 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Itemmaterials()
+    {
+        return View();
+    } 
+    public IActionResult Newmaterialrequest()
+    {
+        return View();
+    }
+    public IActionResult Returns()
+    {
+        return View();
+    }
 
     // [Route("Home/{statusCode}")]
     // public IActionResult NotFoundPageHandler(int statusCode)
