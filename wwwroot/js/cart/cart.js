@@ -284,7 +284,7 @@ function Pordectorder() {
         plant: plantdata,
         items: itemsdata,
         total: total, //total from all prodects -> items
-        address: selectedId, //
+        address: selectedId,
         WBS_NO: $("#sel3").val(),
         urgent_flag: $("#urgent-indent").is(":checked"),
         delivery_type: $("#sel4").val(),
@@ -362,7 +362,9 @@ function validation() {
   if (!Qualitycheckby()) {
     valid = false;
   }
-
+  if (!minDate()) {
+    valid = false;
+  }
   return valid;
 }
 
@@ -405,6 +407,16 @@ function Qualitycheckby() {
   });
 
   return valid;
+}
+
+function minDate() {
+  let valid;
+  let date_val = $(".minDate").val();
+  if (date_val == "") {
+    valid = false;
+  } else {
+    valid = true;
+  }
 }
 
 function checkerrormsg(dorpdownval, index, span_name) {

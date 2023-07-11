@@ -135,7 +135,8 @@ function forgot_password() {
 
     success: function (response) {
       // Handle successful login
-      console.log("Login successful!");
+      console.log();
+      console.log("password send to your mail successful!");
     },
 
     error: function (xhr, status, error) {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xpjuQWG0TyCVbgwJyfmaKYWqjdHcTJVy/cbMLLi62Cg=",
+  "Hash": "i5Y0R5fohS6vvgeFXytahZcFHrxqxY+zCSNmH1cS4Uc=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -544,12 +544,12 @@
       "OriginalItemSpec": "wwwroot\\images\\profile-bg.jpg"
     },
     {
-      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\urgent.df4378bd.png",
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\urgent.png",
       "SourceId": "GrimLogin",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
       "BasePath": "_content/GrimLogin",
-      "RelativePath": "images/urgent.df4378bd.png",
+      "RelativePath": "images/urgent.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -558,7 +558,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\urgent.df4378bd.png"
+      "OriginalItemSpec": "wwwroot\\images\\urgent.png"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\cart\\cart.js",
@@ -763,6 +763,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Profile\\profile.js"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Report\\Report.JS",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "js/Report/Report.JS",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Report\\Report.JS"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Servicerequest\\Servicerequest.js",

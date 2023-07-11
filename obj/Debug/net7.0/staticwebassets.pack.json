@@ -121,8 +121,8 @@
       "PackagePath": "staticwebassets\\images\\profile-bg.jpg"
     },
     {
-      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\urgent.df4378bd.png",
-      "PackagePath": "staticwebassets\\images\\urgent.df4378bd.png"
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\images\\urgent.png",
+      "PackagePath": "staticwebassets\\images\\urgent.png"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Home\\Home.js",
@@ -159,6 +159,10 @@
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Profile\\profile.js",
       "PackagePath": "staticwebassets\\js\\Profile\\profile.js"
+    },
+    {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Report\\Report.JS",
+      "PackagePath": "staticwebassets\\js\\Report\\Report.JS"
     },
     {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\js\\Servicerequest\\Servicerequest.js",

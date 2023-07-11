@@ -135,23 +135,32 @@ $(document).ready(function () {
       var address = params["address"];
       var remark = params["remark"];
       console.log(formData);
-      // $.ajax({
-      //   url: host + path + "", // Replace with the URL to submit the form data
-      //   type: "POST",
-      //   data: formData,
-      //   success: function (response) {
-      //     // Handle the success response here
-      //     console.log("Form submitted successfully!");
-      //     toast("success", "successfully");
-      //     // You can also display a success message to the user
-      //   },
-      //   error: function (xhr, status, error) {
-      //     // Handle the error response here
-      //     console.error("Form submission failed: " + error);
-      //     toast("error", error);
-      //     // You can display an error message to the user if needed
-      //   },
-      // });
+      $.ajax({
+        url: host + path + "", // Replace with the URL to submit the form data
+        type: "POST",
+        data: JSON.stringify({
+          user_id: Logindata.user[0].id,
+          name: name,
+          vendor_name: contactName,
+          mobile_no: phone,
+          address: address,
+          remarks: remark,
+          is_verified: "0",
+          created_by: Logindata.user[0].id,
+        }),
+        success: function (response) {
+          // Handle the success response here
+          console.log("Form submitted successfully!");
+          toast("success", "successfully");
+          // You can also display a success message to the user
+        },
+        error: function (xhr, status, error) {
+          // Handle the error response here
+          console.error("Form submission failed: " + error);
+          toast("error", error);
+          // You can display an error message to the user if needed
+        },
+      });
     }
   });
 });

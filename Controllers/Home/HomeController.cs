@@ -65,6 +65,10 @@ public class HomeController : Controller
     public IActionResult Returns()
     {
         return View();
+    } 
+    public IActionResult Report()
+    {
+        return View();
     }
 
     // [Route("Home/{statusCode}")]
