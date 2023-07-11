@@ -168,6 +168,12 @@ function showaccordion(data) {
     } else {
       Indent_status = "Close";
     }
+    let urgent_flag;
+    element.urgent_flag == 1
+      ? (urgent_flag = `<div class="urgent-img-wrap">
+                            <img src="../images/urgent.png">
+                        </div>`)
+      : (urgent_flag = "");
 
     // indent_approvals
     var card_header = `
@@ -178,9 +184,7 @@ function showaccordion(data) {
             <div>
                 <div class="row">
                     <div class="col-md-2 cust-border-wrap">
-                        <div class="urgent-img-wrap">
-                            <img src="https://172.16.1.69/img/urgent.df4378bd.png">
-                        </div>
+                      ${urgent_flag}
                         <div class="date-time-wrap">
                             <h3>${dateconvert(element.created_at)}</h3>
                             <div class="mb-4">
@@ -253,6 +257,22 @@ function showaccordion(data) {
           disabled = "";
         }
       });
+      var status_bar;
+      if (orders.status == "pending") {
+        status_bar = `<span class="cust-badge bg-yellow">Pendiing</span>`;
+      } else if (orders.status == "approved") {
+        status_bar = `<span class="cust-badge bg-blue">Approved</span>`;
+      } else if (orders.status == "rejected") {
+        status_bar = `<span class="cust-badge bg-red ">Rejected</span>`;
+      } else if (orders.status == "cancelled") {
+        status_bar = `<span class="cust-badge bg-cancelled">Cancelled</span>`;
+      } else if (orders.status == "dispatched") {
+        status_bar = `<span class="cust-badge bg-green-darken">Dispatched</span>`;
+      } else if (orders.status == "PR Raised") {
+        status_bar = `<span class="cust-badge bg-blue">Dispatched</span>`;
+      } else {
+        status_bar = `<span class="cust-badge">${orders.status}</span>`;
+      }
       var edit;
       if (
         orders.status == "pending" &&
@@ -285,7 +305,7 @@ function showaccordion(data) {
       } else {
         v_type = "";
       }
-      var status = `<span class="cust-badge pendiing-badge">Pendiing</span>`;
+
       tr += `<tr>
                 <td>
                     <div class="form-check">
@@ -306,7 +326,7 @@ function showaccordion(data) {
                     </div>
                 </td>   
                 <td>${orders.base_unit}</td>
-                <td>${orders.status}</td>
+                <td>${status_bar}</td>
                 <td>${orders.intial_qty}</td>
                 <td>${orders.issued_qty}</td>
                 <td>${orders.remaining_qty}</td>
@@ -766,7 +786,7 @@ function service_requests(res) {
   console.log(res);
   document.getElementById("service_requests_tbody").innerHTML = "";
   res.service_requests.result.forEach((element, index) => {
-    // console.log(element);
+    //console.log(element);
     var Indent_status;
     var v_type;
     var disabled = "disabled";
@@ -776,7 +796,22 @@ function service_requests(res) {
     } else {
       WBS_NO = element.WBS_NO;
     }
-
+    var status_bar;
+    if (element.statuss == "pending") {
+      status_bar = `<span class="cust-badge bg-yellow">Pendiing</span>`;
+    } else if (element.statuss == "approved") {
+      status_bar = `<span class="cust-badge bg-blue">Approved</span>`;
+    } else if (element.statuss == "rejected") {
+      status_bar = `<span class="cust-badge bg-red ">Rejected</span>`;
+    } else if (element.statuss == "cancelled") {
+      status_bar = `<span class="cust-badge bg-cancelled">Cancelled</span>`;
+    } else if (element.statuss == "dispatched") {
+      status_bar = `<span class="cust-badge bg-green-darken">Dispatched</span>`;
+    } else if (element.statuss == "PR Raised") {
+      status_bar = `<span class="cust-badge bg-blue">Dispatched</span>`;
+    } else {
+      status_bar = `<span class="cust-badge">${orders.status}</span>`;
+    }
     document.getElementById("service_requests_tbody").innerHTML += `
               <tr>
                 <td>
@@ -792,7 +827,7 @@ function service_requests(res) {
                 <td>${element.id}</td>
                 <td>${dateconverfun(element.created_at)}</td>
                 <td>${element.first_name}</td>
-                <td>${element.statuss}</td>
+                <td>${status_bar}</td>
                 <td>${element.pr_type}</td>
                 <td>${element.acc_assg_cat}</td>
                 <td>${WBS_NO}</td>
