@@ -8,6 +8,40 @@ if (!Logindata) {
   window.location.href = "../Login";
 }
 
+var url = window.location.href;
+
+// Check if the URL is the error URL
+if (url === "chrome-error://chromewebdata/") {
+  console.log(
+    "Invalid URL encountered. Redirecting to home page or error page."
+  );
+  window.location.href = "../Home"; // Replace with the appropriate home page URL or error page URL
+}
+
+function checkUserRole() {
+  var url = window.location.href;
+  var parts = url.split("/");
+  var lastPart = parts[parts.length - 1];
+
+  for (var roleId in roles_menus) {
+    if (3 == roleId) {
+      var roleMenuItems = roles_menus[roleId][0];
+      if (!roleMenuItems.hasOwnProperty(lastPart)) {
+        //console.log("Routing to " + lastPart);
+        // Perform the necessary action or redirect to the page
+        href = "../NotFound";
+      }
+    }
+  }
+  // Check for HTTP error 404
+  if (lastPart === "404") {
+    console.log("Error 404 encountered. Redirecting to home page.");
+    window.location.href = "/Home/Index"; // Replace with the appropriate home page URL
+  }
+}
+
+// checkUserRole();
+
 var sort_by = "alphabetically";
 var search = "";
 var plant;
@@ -88,7 +122,7 @@ function cartcount() {
 }
 cartcount();
 
-// display pagination btn method start
+// display pagination btn method global start
 
 function paginationlist(current, total, next, perPage, pagename) {
   var Arrow_Right = "";
@@ -111,6 +145,7 @@ function paginationlist(current, total, next, perPage, pagename) {
           <span class="sr-only" >Previous</span>
       </a>
     </li>`;
+
   var current_active;
   for (var page = 0; page < total; page++) {
     if (current == page) {

@@ -136,7 +136,7 @@ $(document).ready(function () {
       var remark = params["remark"];
       console.log(formData);
       $.ajax({
-        url: host + path + "", // Replace with the URL to submit the form data
+        url: host + "/api/vendors",
         type: "POST",
         data: JSON.stringify({
           user_id: Logindata.user[0].id,

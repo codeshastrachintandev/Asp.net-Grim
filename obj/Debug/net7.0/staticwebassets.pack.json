@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\assets\\sweetalert\\11.7.12_dist_sweetalert2.min.css"
     },
     {
+      "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\sweetalert\\chart.js",
+      "PackagePath": "staticwebassets\\assets\\sweetalert\\chart.js"
+    },
+    {
       "Id": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.css",
       "PackagePath": "staticwebassets\\assets\\toastr\\toastr.css"
     },

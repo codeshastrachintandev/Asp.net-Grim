@@ -2,80 +2,90 @@
     Layout = "~/Views/Shared/_Login.cshtml";
 }
 
-  <!-- Login Start -->
-    <div class="main-login">
-        <div class="login-box">
-            <div class="login-img">
-                <ul>
-                    <li><img src="./images/ib-group-logo.png" width="50" height="50" alt="IB GROUP"></li>
-                    <li><img src="./images/abis-logo.svg" width="150" height="60" alt="ABIS"></li>
-                </ul>
-            </div>
-            <div class="login-title">
-                <h1>Welcome To GRIM</h1>
-                <p>Goods Receiving and Indent Management</p>
-            </div>
-            <div class="login-form">
-                <form   method="post"
-                        name="My_Form"
-                        onsubmit="javascript:return CheckAll()">
-                    <div class="form-box">
-                        <label>Email:</label>
-                        <input type="email" placeholder="Enter email" name="email" id="email" class="form-input" required>
-                    </div>
-                    <div class="form-box">
-                        <label>Password:</label>
-                        <input type="password" placeholder="Enter password" name="Password" id="password" class=" form-input" required>
+<!-- Login Start -->
+<div class="main-login">
+    <div class="login-box">
+        <div class="login-img">
+            <ul>
+                <li><img src="./images/ib-group-logo.png" width="50" height="50"
+                        alt="IB GROUP"></li>
+                <li><img src="./images/abis-logo.svg" width="150" height="60"
+                        alt="ABIS"></li>
+            </ul>
+        </div>
+        <div class="login-title">
+            <h1>Welcome To GRIM</h1>
+            <p>Goods Receiving and Indent Management</p>
+        </div>
+        <div class="login-form">
+            <form method="post"
+                name="My_Form"
+                onsubmit="javascript:return CheckAll()">
+                <div class="form-box">
+                    <label>Email:</label>
+                    <input type="email" placeholder="Enter email" name="email"
+                        id="email" class="form-input" required>
+                </div>
+                <div class="form-box">
+                    <label>Password:</label>
+                    <input type="password" placeholder="Enter password"
+                        name="Password" id="password" class=" form-input"
+                        required>
 
+                </div>
+                <div class="form-box">
+                    <button class="login-btn" id="submit" type="submit">Login To
+                        GRIM</button>
+                    <div class="forgot-pass">
+                        <a href="#" onclick="forgot()" title="Forgot Password?">Forgot
+                            Password?</a>
                     </div>
-                    <div class="form-box">
-                        <button class="login-btn" id="submit" type="submit">Login To GRIM</button>
-                        <div class="forgot-pass">
-                            <a href="#" onclick="forgot()" title="Forgot Password?">Forgot Password?</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="Error-show" id="Error-show">
-                <i class="bi bi-exclamation-triangle"></i>
-                 <span id ="error-msg"></span>
-            </div>
+                </div>
+            </form>
+        </div>
+        <div class="Error-show" id="Error-show">
+            <i class="bi bi-exclamation-triangle"></i>
+            <span id="error-msg"></span>
         </div>
     </div>
-    <!-- Login End -->
+</div>
+<!-- Login End -->
 
-    <!-- Forgot Password Popup Start -->
-    <div class="popup-forgot-pass" id="popup-forgot-pass">
-        <div class="forgot-pass-box">
-            <div class="popup-forgot-title">
-                <h3>Forgot your password?</h3>
-                <span class="popup-forgot-close" onclick="popClose()" >&#10006;</span>
-            </div>
-            <div class="popup-forgot-content">
-                <p>Don't worry. Resetting your password is easy, just tell us the email address you registered with GRIM.</p>
+<!-- Forgot Password Popup Start -->
+<div class="popup-forgot-pass" id="popup-forgot-pass">
+    <div class="forgot-pass-box">
+        <div class="popup-forgot-title">
+            <h3>Forgot your password?</h3>
+            <span class="popup-forgot-close" onclick="popClose()">&#10006;</span>
+        </div>
+        <div class="popup-forgot-content">
+            <p>Don't worry. Resetting your password is easy, just tell us the
+                email address you registered with GRIM.</p>
             @* <form> *@
-                    <div class="form-box">
-                        <input type="email" id="forgot-email" placeholder="Enter email" class="form-input" required>
-                        <button type="submit" onclick="forgot_password()" class="send-btn">Send</button>
-                    </div>
-            @* </form> *@
+            <div class="form-box">
+                <input type="email" id="forgot-email" placeholder="Enter email"
+                    class="form-input" required>
+                <button type="submit" onclick="forgot_password()"
+                    class="send-btn">Send</button>
             </div>
+            @* </form> *@
         </div>
     </div>
-    <!-- Forgot Password Popup End -->
+</div>
+<!-- Forgot Password Popup End -->
 
 @* spinner *@
-        <div class="spinnerbody" id="spinnerbody">
-            <div class="spinnerchild">
-                <div class="spinner-border text-success " role="status">
-                    <span class="sr-only"></span>
-                </div>
-            </div>
+<div class="spinnerbody" id="spinnerbody">
+    <div class="spinnerchild">
+        <div class="spinner-border text-success " role="status">
+            <span class="sr-only"></span>
         </div>
+    </div>
+</div>
 @* spinner end *@
-    <div class="notification"></div>
-    <!-- Login script -->
-    <script src="./js/Login/Login.js"></script>
+<div class="notification"></div>
+<!-- Login script -->
+<script src="./js/Login/Login.js"></script>
 
-    <!-- Jquery CDN Link -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!-- Jquery CDN Link -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

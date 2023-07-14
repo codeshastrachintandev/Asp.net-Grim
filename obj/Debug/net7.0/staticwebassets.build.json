@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "i5Y0R5fohS6vvgeFXytahZcFHrxqxY+zCSNmH1cS4Uc=",
+  "Hash": "4qwjMR8qlu1IylUyv1AMqRZxw4PeK63Vy7zC44ZCzZI=",
   "Source": "GrimLogin",
   "BasePath": "_content/GrimLogin",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\sweetalert\\11.7.12_dist_sweetalert2.min.css"
+    },
+    {
+      "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\sweetalert\\chart.js",
+      "SourceId": "GrimLogin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\",
+      "BasePath": "_content/GrimLogin",
+      "RelativePath": "assets/sweetalert/chart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\sweetalert\\chart.js"
     },
     {
       "Identity": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\wwwroot\\assets\\toastr\\toastr.css",
