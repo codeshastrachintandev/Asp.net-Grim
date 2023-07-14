@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj": {}
+    "D:\\Chintan\\GRIM route 404 status code\\Asp.net-Grim\\GrimLogin.csproj": {}
   },
   "projects": {
-    "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj": {
+    "D:\\Chintan\\GRIM route 404 status code\\Asp.net-Grim\\GrimLogin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj",
+        "projectUniqueName": "D:\\Chintan\\GRIM route 404 status code\\Asp.net-Grim\\GrimLogin.csproj",
         "projectName": "GrimLogin",
-        "projectPath": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\GrimLogin.csproj",
+        "projectPath": "D:\\Chintan\\GRIM route 404 status code\\Asp.net-Grim\\GrimLogin.csproj",
         "packagesPath": "C:\\Users\\sai\\.nuget\\packages\\",
-        "outputPath": "D:\\Chintan\\GRIM\\Grim_v1\\Grim\\obj\\",
+        "outputPath": "D:\\Chintan\\GRIM route 404 status code\\Asp.net-Grim\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sai\\AppData\\Roaming\\NuGet\\NuGet.Config",
