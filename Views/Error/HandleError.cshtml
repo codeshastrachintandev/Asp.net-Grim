@@ -1,15 +1,41 @@
 ﻿@{
     Layout = "~/Views/Shared/_NotFound.cshtml";
 }
+<style>
+div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+a{
+    font-size: x-large;
+    text-decoration: none;
+    color: #2a195f;
+}
+</style>
 
-<div style="
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-align-content: center;">
+<div>
     <img src="~/images/ooop404.jpg" style="width: fit-content;" />
-    <p>
-        <a asp-action="MyProfile" asp-controller="Home">Click here to navigate to the Home page</a>
+    <p id="tag1">
+        <a asp-action="Index" asp-controller="Login">Click here to navigate to
+            the Login page</a>
+    </p>
+    <p id="tag2">
+        <a asp-action="MyProfile" asp-controller="Home">Click here to navigate
+            to the Home page</a>
     </p>
 </div>
+<script>
+    let Logindata = JSON.parse(localStorage.getItem("user_info"));
+
+    console.log("Logindata data on Home js", Logindata);
+    if (!Logindata) {
+        document.getElementById("tag2").style.display="none";
+        document.getElementById("tag1").style.display="block";
+    }else{
+        document.getElementById("tag1").style.display="none";
+        document.getElementById("tag2").style.display="block";
+    }
+</script>

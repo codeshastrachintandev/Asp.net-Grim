@@ -3,43 +3,109 @@ var path = "/api/v4/";
 
 //check login user data
 var Logindata = JSON.parse(localStorage.getItem("user_info"));
-// console.log("Logindata data on Home js----->", Logindata);
+console.log("Logindata data on Home js----->", Logindata);
 if (!Logindata) {
   window.location.href = "../Login";
 }
 
-var url = window.location.href;
+var roles_menus = {
+  //Indent user role = 3
+  3: [
+    {
+      Report: "Report",
+      MyProfile: "My Profile",
+      MyRequests: "My Requests",
+      NewIndent: "New Indent",
+      NewPurchaseReq: "New PurchaseReq",
+      Servicerequest: "Servicerequest",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
+  ],
+  //Indent manager role = 2
+  2: [
+    {
+      Report: "Report",
+      MyProfile: "My Profile",
+      MyRequests: "My Requests",
+      NewIndent: "New Indent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      newmaterialrequest: "new material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
+  ],
+  //HOD role = 7
+  7: [
+    {
+      Report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyRequests",
+      NewIndent: "NewIndent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      newmaterialrequest: "new material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
+  ],
+  //Issue manager role = 5
+  5: [
+    {
+      Report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "Approvals",
+      CretateSTO: "Cretate STO",
+      Itemmaterials: "Item materials",
+      Notifications: "Notifications",
+    },
+  ],
+  //SUBHOD role = 19
+  19: [
+    {
+      Report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyRequests",
+      NewIndent: "NewIndent",
+      Itemmaterials: "Item materials",
+      returns: "returns",
+      Newmaterialrequest: "New material request",
+      Servicerequest: "Service request",
+      Vendors: "Vendors",
+      Notifications: "Notifications",
+    },
+  ],
+  // requestmanager
+  11: [
+    {
+      Report: "report",
+      MyProfile: "MyProfile",
+      MyRequests: "MyApprovals",
+      Itemmaterials: "Item materials",
+      Notifications: "Notifications",
+    },
+  ],
+};
 
-// Check if the URL is the error URL
-// if (url === "chrome-error://chromewebdata/") {
-//   console.log(
-//     "Invalid URL encountered. Redirecting to home page or error page."
-//   );
-//   window.location.href = "../Home"; // Replace with the appropriate home page URL or error page URL
+// function checkUserRole() {
+//   const url = window.location.href;
+//   const parts = url.split("/");
+//   let lastPart = parts[parts.length - 1];
+
+//   for (var roleId in roles_menus) {
+//     if (3 == roleId) {
+//       let roleMenuItems = roles_menus[roleId][0];
+//       if (roleMenuItems.hasOwnProperty(lastPart)) {
+//         console.log("Routing to " + lastPart);
+//         // Perform the necessary action or redirect to the page
+//         //href = "../NotFound";
+//       }
+//     }
+//   }
 // }
-
-function checkUserRole() {
-  var url = window.location.href;
-  var parts = url.split("/");
-  var lastPart = parts[parts.length - 1];
-
-  for (var roleId in roles_menus) {
-    if (3 == roleId) {
-      var roleMenuItems = roles_menus[roleId][0];
-      if (!roleMenuItems.hasOwnProperty(lastPart)) {
-        //console.log("Routing to " + lastPart);
-        // Perform the necessary action or redirect to the page
-        href = "../NotFound";
-      }
-    }
-  }
-  // Check for HTTP error 404
-  if (lastPart === "404") {
-    console.log("Error 404 encountered. Redirecting to home page.");
-    window.location.href = "/Home/Index"; // Replace with the appropriate home page URL
-  }
-}
-
 // checkUserRole();
 
 var sort_by = "alphabetically";
@@ -222,87 +288,6 @@ var icons_list = {
 };
 
 //else{icon='<span class="material-symbols-rounded">priority_high</span>'}
-var roles_menus = {
-  //Indent user role = 3
-  3: [
-    {
-      Report: "Report",
-      MyProfile: "My Profile",
-      MyRequests: "My Requests",
-      NewIndent: "New Indent",
-      NewPurchaseReq: "New PurchaseReq",
-      Servicerequest: "Servicerequest",
-      Vendors: "Vendors",
-      Notifications: "Notifications",
-    },
-  ],
-  //Indent manager role = 2
-  2: [
-    {
-      Report: "Report",
-      MyProfile: "My Profile",
-      MyRequests: "My Requests",
-      NewIndent: "New Indent",
-      Itemmaterials: "Item materials",
-      returns: "returns",
-      newmaterialrequest: "new material request",
-      Servicerequest: "Service request",
-      Vendors: "Vendors",
-      Notifications: "Notifications",
-    },
-  ],
-  //HOD role = 7
-  7: [
-    {
-      Report: "report",
-      MyProfile: "MyProfile",
-      MyRequests: "MyRequests",
-      NewIndent: "NewIndent",
-      Itemmaterials: "Item materials",
-      returns: "returns",
-      newmaterialrequest: "new material request",
-      Servicerequest: "Service request",
-      Vendors: "Vendors",
-      Notifications: "Notifications",
-    },
-  ],
-  //Issue manager role = 5
-  5: [
-    {
-      Report: "report",
-      MyProfile: "MyProfile",
-      MyRequests: "Approvals",
-      CretateSTO: "Cretate STO",
-      Itemmaterials: "Item materials",
-      Notifications: "Notifications",
-    },
-  ],
-  //SUBHOD role = 19
-  19: [
-    {
-      Report: "report",
-      MyProfile: "MyProfile",
-      MyRequests: "MyRequests",
-      NewIndent: "NewIndent",
-      Itemmaterials: "Item materials",
-      returns: "returns",
-      Newmaterialrequest: "New material request",
-      Servicerequest: "Service request",
-      Vendors: "Vendors",
-      Notifications: "Notifications",
-    },
-  ],
-  // requestmanager
-  11: [
-    {
-      Report: "report",
-      MyProfile: "MyProfile",
-      MyRequests: "MyApprovals",
-      Itemmaterials: "Item materials",
-      Notifications: "Notifications",
-    },
-  ],
-};
 
 // toast function
 function toast(action, msg) {
