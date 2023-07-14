@@ -8,12 +8,11 @@ namespace GrimLogin.Controllers.NotFound
         {
             if (statusCode == 404)
             {
-                // Redirect to home page or error page
-                return RedirectToAction("Index", "Home");
+                // Handle other status codes or redirect to a default error page
+                return View();
             }
-
-            // Handle other status codes or redirect to a default error page
-
+            // Redirect to home page or error page
+            //return RedirectToAction("Index", "Home");
             return View();
         }
     }

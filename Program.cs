@@ -1,3 +1,9 @@
+// using Microsoft.Extensions.Configuration;
+
+// var configuration = new ConfigurationBuilder()
+//     .AddJsonFile("appsettings.json")
+//     .Build();
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,5 +33,18 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");
+
+
+// Custom error handling for 404 errors and invalid routes
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
+    {
+        // Redirect to home page or error page
+        context.Response.Redirect("/Error/HandleError");
+    }
+});
 
 app.Run();

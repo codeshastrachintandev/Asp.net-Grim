@@ -4,9 +4,9 @@ var path = "/api/v4/";
 //check login user data
 var Logindata = JSON.parse(localStorage.getItem("user_info"));
 // console.log("Logindata data on Home js----->", Logindata);
-// if (!Logindata) {
-//   window.location.href = "../Login";
-// }
+if (!Logindata) {
+  window.location.href = "../Login";
+}
 
 var url = window.location.href;
 
