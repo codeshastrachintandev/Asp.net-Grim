@@ -4,19 +4,19 @@ var path = "/api/v4/";
 //check login user data
 var Logindata = JSON.parse(localStorage.getItem("user_info"));
 // console.log("Logindata data on Home js----->", Logindata);
-if (!Logindata) {
-  window.location.href = "../Login";
-}
+// if (!Logindata) {
+//   window.location.href = "../Login";
+// }
 
 var url = window.location.href;
 
 // Check if the URL is the error URL
-if (url === "chrome-error://chromewebdata/") {
-  console.log(
-    "Invalid URL encountered. Redirecting to home page or error page."
-  );
-  window.location.href = "../Home"; // Replace with the appropriate home page URL or error page URL
-}
+// if (url === "chrome-error://chromewebdata/") {
+//   console.log(
+//     "Invalid URL encountered. Redirecting to home page or error page."
+//   );
+//   window.location.href = "../Home"; // Replace with the appropriate home page URL or error page URL
+// }
 
 function checkUserRole() {
   var url = window.location.href;

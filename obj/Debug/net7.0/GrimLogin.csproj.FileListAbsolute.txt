@@ -60,3 +60,34 @@ D:\Chintan\GRIM\Grim_v1\Grim\obj\Debug\net7.0\refint\GrimLogin.dll
 D:\Chintan\GRIM\Grim_v1\Grim\obj\Debug\net7.0\GrimLogin.pdb
 D:\Chintan\GRIM\Grim_v1\Grim\obj\Debug\net7.0\GrimLogin.genruntimeconfig.cache
 D:\Chintan\GRIM\Grim_v1\Grim\obj\Debug\net7.0\ref\GrimLogin.dll
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\appsettings.Development.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\appsettings.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.staticwebassets.runtime.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.exe
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.deps.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.runtimeconfig.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.dll
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\bin\Debug\net7.0\GrimLogin.pdb
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.csproj.AssemblyReference.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.GeneratedMSBuildEditorConfig.editorconfig
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.AssemblyInfoInputs.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.AssemblyInfo.cs
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.csproj.CoreCompileInputs.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.MvcApplicationPartsAssemblyInfo.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.RazorAssemblyInfo.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.RazorAssemblyInfo.cs
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets\msbuild.GrimLogin.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets\msbuild.build.GrimLogin.props
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.GrimLogin.props
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.GrimLogin.props
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets.build.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\staticwebassets.development.json
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\scopedcss\bundle\GrimLogin.styles.css
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\scopedcss\projectbundle\GrimLogin.bundle.scp.css
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.dll
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\refint\GrimLogin.dll
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.pdb
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\GrimLogin.genruntimeconfig.cache
+D:\Chintan\GRIM route 404 status code\Asp.net-Grim\obj\Debug\net7.0\ref\GrimLogin.dll
